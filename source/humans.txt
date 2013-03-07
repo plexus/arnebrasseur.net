@@ -1,0 +1,10 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+    Arne Brasseur -- Author -- @plexus
+
+# TECHNOLOGY COLOPHON
+
+    Middleman,
+    HTML5, CSS3
+    jQuery, Modernizr
