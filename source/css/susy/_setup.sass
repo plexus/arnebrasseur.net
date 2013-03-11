@@ -9,3 +9,9 @@ $grid-padding   : $gutter-width  // grid-padding equal to gutters
 div.wrap
   @include container
   // @include susy-grid-background
+
+main
+  @include span-columns(9, 12)
+
+aside#sidebar
+  @include span-columns(3 omega, 12)

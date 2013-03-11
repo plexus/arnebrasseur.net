@@ -1,3 +1,24 @@
 @import html5boilerplate/main
 @import html5boilerplate/normalize
 @import susy/setup
+@import pygments-zenburn
+@import compass/typography/vertical_rhythm
+
+$base-font-size: 16px
+$base-line-height: 25px
+@include establish-baseline
+
+html
+  font-family: "Open Sans", sans-serif
+
+h1,h2,h3,h4
+  font-family: "Lobster", serif
+
+h1
+  font-size: 4em
+
+h2
+  font-size: 3em
+
+h3
+  font-size: 2em
