@@ -15,11 +15,6 @@
 # Page options, layouts, aliases and proxies
 ###
 
-# Per-page layout changes:
-#
-# With no layout
-# page "/path/to/file.html", :layout => false
-#
 # With alternative layout
 # page "/path/to/file.html", :layout => :otherlayout
 #
@@ -33,6 +28,8 @@
 #   @which_fake_page = "Rendering a fake page with a variable"
 # end
 
+page "/feed.xml", :layout => false
+
 ###
 # Helpers
 ###
@@ -40,18 +37,26 @@
 # Automatic image dimensions on image_tag helper
 # activate :automatic_image_sizes
 
-# Methods defined in the helpers block are available in templates
-# helpers do
-#   def some_helper
-#     "Helping"
-#   end
-# end
+helpers do
+  def blog_config
+    {
+      :title    => '@plexus Devblog &mdash; All Over the Map', #'',
+      :subtitle => '',
+      :author   => 'Arne Brasseur',
+      :url      => 'http://arnebrasseur.net'
+    }.freeze
+  end
+
+  def feed_articles
+    #blog.articles[0..5]
+    blog.articles
+  end
+end
 
 set :css_dir, 'css'
-
 set :js_dir, 'js'
-
 set :images_dir, 'img'
+
 
 # Build-specific configuration
 configure :build do
@@ -83,3 +88,5 @@ end
 activate :syntax
 set :markdown_engine, :redcarpet
 set :markdown, :fenced_code_blocks => true, :smartypants => true
+
+activate :livereload
