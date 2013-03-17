@@ -40,11 +40,14 @@
         <main role="main">
           <% if is_blog_article? %>
             <h2><%= current_article.title %></h2>
-            <span class="published-on">Posted on <%= current_article.date.strftime('%b %e') %>.</span>
+            <span class="published-on"><em>Posted on <%= current_article.date.strftime('%b %e') %>.</em></span>
           <% end %>
           <article>
             <%= yield %>
           </article>
+          <em>
+            This blog is converted to static HTML, which is the main reason it doesn't have comments at the moment. I am still debating whether to include something like DISQUS. However, I encourage you to respond on Twitter (tip : hash tag #emergence). I will also link back to blog posts that were written in response.
+          </em>
         </main>
       </div>
       <aside id="about">

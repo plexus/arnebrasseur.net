@@ -1,5 +1,6 @@
 ---
 title: Plain text
+published: false
 ---
 
 Take this example of escaping text :
