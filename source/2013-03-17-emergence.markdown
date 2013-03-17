@@ -21,7 +21,7 @@ That's pretty much all there is to it, you could be up and playing in ten minute
 
 There are lots of good examples of emergence in nature. There are emergent structures like sand dunes or water crystals. Organisms like animals and plants could be called emergent, since how they behave is not immediately apparent by looking at the organs, cells and molecules they are composed of.
 
-Flocks of birds can appear to have a mind of their own, changing directions, dodging and diving with wondrous coordination. Yet the basic "rules" that govern are simply that each bird 1) flies in the sames direction as its neighbors, 2) remains close to its neighbors and 3) avoids collision.
+Flocks of birds can appear to have a mind of their own, changing directions, dodging and diving with wondrous coordination. Yet the basic "rules" that govern are simply that each bird 1) flies in the same direction as its neighbors, 2) remains close to its neighbors and 3) avoids collision.
 
 ### Bitcoin
 

@@ -334,6 +334,8 @@ FileETag None
 # Options +SymLinksIfOwnerMatch
   RewriteEngine On
 # RewriteBase /
+
+  RewriteRule ^([^.]*)$ $1 [type=text/html]
 </IfModule>
 
 

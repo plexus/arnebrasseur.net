@@ -40,8 +40,8 @@ page "/feed.xml", :layout => false
 helpers do
   def blog_config
     {
-      :title    => '@plexus Devblog &mdash; All Over the Map', #'',
-      :subtitle => '',
+      :title    => '@plexus Devblog', #'',
+      :subtitle => 'All Over the Map',
       :author   => 'Arne Brasseur',
       :url      => 'http://arnebrasseur.net'
     }.freeze
