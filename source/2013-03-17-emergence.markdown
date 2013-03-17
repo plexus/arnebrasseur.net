@@ -27,7 +27,7 @@ Flocks of birds can appear to have a mind of their own, changing directions, dod
 
 A favorite topic among programmers! While there is some very ingenious cryptography involved in Bitcoin, the general principles are relatively easy to understand. Yet the fact that Bitcoin "works" is because some of the amazing properties that emerge through its network of cooperating clients. Essentially Bitcoin consists of a long history of financial transactions. This history is continuously shared between all clients.
 
-The clients have some simple rules to determine what they accept as the correct version of history. With enough processing power, and enough luck, you can "find" the next chunk of history, one that has all the necessary properties to be accepted by the others. It can happen however that two valid "chunks" are found at the same time, creating two versions of history. Yet again by some simple rules, before long all will "agree" which version is correct, and the other one will be discarded.
+The clients have some simple rules to determine what they accept as the correct version of history. With enough processing power, and enough luck, you can "find" the next chunk of history, one that has all the necessary properties to be accepted by the other clients. It can happen however that two valid "chunks" are found at the same time, creating two versions of history. Yet again by some simple rules, before long all will "agree" which version is correct, and the other one will be discarded.
 
 (There has been a recent case of history actually "forking", requiring human intervention. This was due to a difference in client implementations, it shows though that small changes in the system can be enough to make emergent properties disappear again.)
 
@@ -49,7 +49,7 @@ The Taoists have other interesting things to say that relate to this. For instan
 
 ### Interacting Objects
 
-I find that once you start framing things in the picture of emergence, many rules of thumb in modern day programming become self obvious. Take the Single Responsibility Principle (let each object do one thing well) and the rule of Encapsulation (have clear defined boundaries between objects). They simply prepare the stage for your emergent feature to unfold.
+I find that once you start framing things in the picture of emergence, many rules of thumb in modern day programming become self obvious. Take the Single Responsibility Principle (let each object do one thing well) and the rule of Encapsulation (have clear defined boundaries between objects). They simply set the stage for your emergent feature to unfold.
 
 In computer science literature it seems emergence is really only talked about in cases that take direct inspiration from nature, such as genetic algorithms, neural networks or Conway's Game of Life. But we do have a term for many of the emergent properties our programs exhibit. These are called "non-functional requirements", such as security, performance, maintainability, and being adaptable to change.
 
