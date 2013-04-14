@@ -8,5 +8,6 @@ gem 'middleman-syntax'     , '~> 1.1.0'
 gem 'middleman-livereload' , '~> 3.0.1'
 gem 'redcarpet'            , '~> 2.2.2'
 gem 'builder'              , '~> 2.1.2'
+gem 'erubis'
 
 gem 'rake'

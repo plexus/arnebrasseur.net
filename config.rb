@@ -51,6 +51,14 @@ helpers do
     #blog.articles[0..5]
     blog.articles
   end
+
+  def booklog_articles
+    sitemap.resources.select do |resource|
+      resource.path =~ /booklog\/\d{4}.*html/
+    end.map {|r| r.metadata[:page].merge('path' => r.path) }.sort do |a1,a2|
+      a2['date'] <=> a1['date'] || 0
+    end
+  end
 end
 
 set :css_dir, 'css'
@@ -90,3 +98,11 @@ set :markdown_engine, :redcarpet
 set :markdown, :fenced_code_blocks => true, :smartypants => true
 
 activate :livereload
+
+
+class Middleman::Application
+  # Stop middleman from munging our image paths
+  def image_path(src)
+    src
+  end
+end

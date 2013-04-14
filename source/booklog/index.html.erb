@@ -1,0 +1,11 @@
+---
+title: Booklog
+layout: booklog
+---
+
+<% booklog_articles.each do |article| %>
+
+<h2><a href="/<%= article['path'] %>"><%= article['title'] %></a></h2>
+<img src="../booklog/<%= article['image'] %>" style="width: 500px">
+
+<% end %>
