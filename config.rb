@@ -90,7 +90,7 @@ configure :build do
 end
 
 activate :blog do |blog|
-  blog.permalink = ":title"
+  blog.permalink = ":year-:month-:title"
 end
 
 activate :syntax
