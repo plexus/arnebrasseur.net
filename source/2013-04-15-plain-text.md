@@ -3,7 +3,7 @@ title: The Devil in Plain Text
 date: 2013-04-15
 ---
 
-When developing for the web, one inevitably deals with lots of strings. When a browser talks to your killer web app they converse in plain text. String manipulation seems to be a web developers core business.
+When developing for the web, one inevitably deals with lots of strings. When a browser talks to your killer web app they converse in plain text. String manipulation seems to be a web developer's core business.
 
 A language like Ruby is a natural fit for this kind of job, since it inherits the exquisite text manipulation features from Perl. Here's a partial list of the languages you might be dealing with in a modern day web project :
 
@@ -89,4 +89,4 @@ Here's an exercise : go back to the list of languages at the top and for each of
 * can you manipulate the parsed data structure, adding, removing and changing nodes?
 * can you turn the result back into its textual representation?
 
-There is a gap in our tooling waiting to be filled. We need an elegant API contract that all parser/generator libraries can implement. Learn once, use everywhere. My hope is that you will look at all this string wizardry with different eyes. You might find it hard to unsee a pattern, it may even start itching. And if it does, scratch.
+There is a gap in our tooling waiting to be filled. We need an elegant API contract that all parser/generator libraries can implement. Learn once, use everywhere. My hope is that you will look at all this string wizardry with different eyes. You might find it hard to unsee a pattern, it may even start to itch. And when it does, scratch.
