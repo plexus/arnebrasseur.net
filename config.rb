@@ -43,7 +43,7 @@ helpers do
       :title    => '@plexus Devblog', #'',
       :subtitle => 'All Over the Map',
       :author   => 'Arne Brasseur',
-      :url      => 'http://arnebrasseur.net'
+      :url      => 'http://devblog.arnebrasseur.net'
     }.freeze
   end
 
