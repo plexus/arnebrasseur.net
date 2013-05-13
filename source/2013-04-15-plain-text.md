@@ -35,7 +35,7 @@ User.where("age > ?", params[:min_age])
 
 Now the database driver will 'escape' the value before inserting it into the SQL statement, making sure that in its target context it is still just a single value.
 
-Sadly SQL seems to be the only case where this mechanism has become standardized, automated, and commonly used. We still manually `CGI.escape`, `Regepx.escape`, `json_escape`, `Shellwords.escape`, and just as often, we forget.
+Sadly SQL seems to be the only case where this mechanism has become standardized, automated, and commonly used. We still manually `CGI.escape`, `Regexp.escape`, `json_escape`, `Shellwords.escape`, and just as often, we forget.
 
 ## Semantics, semantics, semantics!
 
@@ -69,6 +69,8 @@ html = p1 + foo + p2
 ````
 
 This is a step in the right direction. It is a trivial example however, and I don't want to dwell on it too long in this post. My main point is that we could use a unified API for constructing and composing 'strings with meaning'. But it would be no more than a compromise, an iterative step up from where we are.
+
+**Update: [Coping by James Coglan](https://github.com/jcoglan/coping) is an implementation of this idea.**
 
 ## The Universal Data Type, Revisited
 
