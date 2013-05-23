@@ -3,5 +3,5 @@ task :build do
 end
 
 task :deploy => :build do
-  `scp -r build/* build/.htaccess arnebrasseur@arnebrasseur.net:subdomains/devblog`
+  puts `scp -r build/* build/.htaccess arnebrasseur@arnebrasseur.net:subdomains/devblog`
 end
