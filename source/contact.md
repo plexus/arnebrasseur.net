@@ -1,0 +1,43 @@
+I am often on the move, look here to find out ways to contact me.
+
+My main email is arne@arnebrasseur.net.
+
+You can find me on Twitter and Github as "plexus".
+
+I will be in Berlin until July 8, then in Belgium until July 27.
+
+My PGP key :
+
+<pre>
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v1.4.12 (GNU/Linux)
+
+mQENBFHIAzIBCACpxtq9t/7RhTtFQdTlwpqFoQUOPERYE92WVf7DMwm3qZAvqIC4
+yruqEwEcD9p+PL9Y+DpVjRsZ/qcyOfZiEt0dWSCxmgdBywIq0B3Uojfmkx9IOk9J
+MvRd4TJeu88kK0iIXttNlxbd03wSvpyew/G4x5mqDoEs4bVEithX58v7+tSQe7Iv
+RWGL2ics8fNXrePWbu1RU4vv4qRxuVvtVbTReoxDmQbgp+yB0Jqb6yw2sQMJgXVm
+MTbsc1dQd4bGOPLc2K8P8BqaTvS9IpO72xkFnhv5DahmgYWaX1oKtFcfWZnvPZ8u
+tA5hTfiB7+YKYWW/a2W7S3Ua//ZcpGU7xMr7ABEBAAG0L0FybmUgQnJhc3NldXIg
+KEBwbGV4dXMpIDxhcm5lQGFybmVicmFzc2V1ci5uZXQ+iQE+BBMBAgAoBQJRyAMy
+AhsDBQkDwmcABgsJCAcDAgYVCAIJCgsEFgIDAQIeAQIXgAAKCRA3sgiN6Yh9NRQ0
+B/90W6P5BDZ9NauIdkaBp6//xeu9aggfyZhXSfdCH+jbNPbJZhTWSQGxdmyQ4cgl
+6Bw0vmMsnvTVUaaxHCISSGJkSP1EEXuubxP7KXXZOPZxPIPmBxkFOyq2GjzUEGUk
+SikV5HauIAs2/JLzX346tbwU39AM9x5wrCeXjyiKjHBUCgjQ8+LyRj5A7nCi1hwR
+/4UQnHl6bnrIcwmaJV2dbir9WfCgCq6AYynAERiIS8sB22HMyubac21/YGIJGvxn
+rg9amTbtYSnDeAfxLkNAkduWRKKRBX2bXhBnb/o49OAxJ+52TpgbF0WIpyP9KL72
+F5RzhiarAb/oxcoxE2LgcELRuQENBFHIAzIBCACspcHQhPQ3iyEyLz5WIebqCd/v
+MSbLybXZtBi+4geuytR1nZCkcvJ7HmjTTsbct8qESvRhnK+JVUg6dT3hycfMw5IR
+NzRVTqvfZXYDH3ilw5QeWJ8GB0GY9LZv98DM/wqIaiv44ajBwmxoDTiFeVqWsCCo
+S3/ZvQe0vdW3SUKFJiRBy1VJ5Yu91vr+NsVT57nn9oMUc85Tk4C4e1OguS/CiI8V
+Tk5J50yNSIpUVS1j+Ijrxeq4NUI65lIv6JJWH8IjFIeq3vZ+1tJf+5Jjn8zr6ETn
+TvQmqX5AjLmCaawFpyesBQye0raJIGA77WtWgeOqDYG5wzzA9hVajrIwOJM3ABEB
+AAGJASUEGAECAA8FAlHIAzICGwwFCQPCZwAACgkQN7IIjemIfTXXhwgAmodmw9Ku
+DQr35xtNGowNghQUQS4Q2vZfmYlNrbp9sd52UcdtD6z9hvFkSFWSn6Sd7WTqUwSX
+Ac2/QI+8XmHdOh5wglz72+Eu2RyzQAZ9/ZXTiEyS6S2T6c5vFMrAchqKlB90IZr8
+2VZg2oypj4YFvrg9jUqQc2VtrjuCd2rfJfeK84IBZeIohW8QIRmHx0wQ642PiFcM
+legmnyB5lIi6wu0xPSIMptIS2TW2bMqXfwo9iMuwz9VyC0EkqF+YvqmObyHcZRJz
+l3/K2Tm+mcik2ZXbqpmDnvWz8qDDMNq4t0niM9OYqA+ERrLEkUeEL0/0rEyZUJYv
+NHVsSSRAy+wDWg==
+=k6+9
+-----END PGP PUBLIC KEY BLOCK-----
+</pre>
