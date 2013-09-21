@@ -1,16 +1,21 @@
 @import 'susy'
 
-$total-columns  : 12             // a 12-column grid
-$column-width   : 3em            // each column is 4em wide
-$gutter-width   : 1em            // 1em gutters between columns
-$grid-padding   : $gutter-width  // grid-padding equal to gutters
+$total-columns  : 6
+$column-width   : 4em
+$gutter-width   : 1em
+$grid-padding   : $gutter-width
 
 div.wrap
   @include container
-  // @include susy-grid-background
+  //@include susy-grid-background
 
-main
-  @include span-columns(12 omega, 12)
+#top-buttons
+  @include clearfix
+  a
+    display: block
+    @include span-columns(2,6)
+  a.rss
+    @include omega
 
 aside#about
   width: 100%

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.2"
+   width="500"
+   height="500"
+   id="svg2">
+  <defs
+     id="defs4" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(0,-552.36218)"
+     id="layer1">
+    <g
+       transform="matrix(0.55165715,0,0,0.55165715,816.18872,465.58194)"
+       id="g3040">
+      <g
+         transform="matrix(31.019862,0,0,31.019862,44415.09,-4722.3485)"
+         id="flowRoot2985"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans">
+        <path
+           d="m -1464.9141,171.68247 0,0.50781 c 0.1302,1.84897 0.8334,3.40496 2.1094,4.66797 1.2891,1.25001 2.8711,1.87501 4.7461,1.875 1.901,1e-5 3.5026,-0.67057 4.8047,-2.01172 1.3151,-1.35416 1.9726,-3.03384 1.9726,-5.03906 0,-3.61978 -1.3476,-6.75779 -4.0429,-9.41407 -2.6954,-2.65622 -5.892,-3.98434 -9.5899,-3.98437 -3.776,3e-5 -6.9336,1.26956 -9.4726,3.80859 -2.5261,2.52607 -3.9193,5.81382 -4.1797,9.86328 0.3125,-2.23956 1.0417,-3.93878 2.1875,-5.09765 1.1588,-1.15884 2.7083,-1.73826 4.6484,-1.73828 1.862,2e-5 3.4375,0.62502 4.7266,1.875 1.289,1.25001 1.9857,2.81251 2.0898,4.6875 m 14.6094,0.27343 c 0,4.03647 -1.4258,7.47397 -4.2773,10.3125 -2.8386,2.83855 -6.2826,4.25782 -10.3321,4.25782 -4.0364,0 -7.4804,-1.41927 -10.332,-4.25782 -2.8516,-2.83853 -4.2773,-6.27603 -4.2773,-10.3125 0,-4.04946 1.4257,-7.49997 4.2773,-10.35156 2.8516,-2.86455 6.2956,-4.29684 10.332,-4.29687 4.0495,3e-5 7.4935,1.43232 10.3321,4.29687 2.8515,2.85159 4.2773,6.3021 4.2773,10.35156"
+           id="path2994" />
+      </g>
+      <g
+         transform="matrix(1.4911852,0,0,1.4911852,1780.9742,1230.7263)"
+         id="flowRoot2996"
+         style="font-size:144px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Inconsolata;-inkscape-font-specification:Inconsolata Medium">
+        <path
+           d="m -1734.1003,-460.86427 -6.912,0 -23.472,12.24 2.3041,5.616 18,-5.328 0,77.328 10.0799,0 0,-89.856"
+           id="path3111" />
+      </g>
+      <g
+         transform="matrix(1.4911852,0,0,1.4911852,1358.2976,1229.9748)"
+         id="flowRoot3004"
+         style="font-size:144px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Inconsolata;-inkscape-font-specification:Inconsolata Medium">
+        <path
+           d="m -1741.0123,-461.44027 c -14.2559,0 -28.944,17.56803 -28.944,46.224 0,29.08797 14.8321,45.792 29.088,45.792 12.96,0 28.368,-14.11203 28.368,-45.072 0,-30.52797 -14.688,-46.944 -28.512,-46.944 m 13.968,20.592 -31.536,40.896 c -1.2959,-5.04 -2.016,-10.65601 -2.016,-16.992 0,-23.03998 10.5121,-35.712 19.44,-35.712 4.896,0 10.2241,3.88801 14.112,11.808 m 3.312,9.504 c 1.296,5.03999 1.872,11.088 1.872,18.144 0,25.05597 -10.8,34.56 -18.72,34.56 -5.3279,0 -10.8,-4.32001 -14.688,-12.24 l 31.536,-40.464"
+           id="path3114" />
+      </g>
+    </g>
+    <g
+       transform="matrix(0.75285856,0,0,0.75285856,91.947652,130.04131)"
+       id="flowRoot3012"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans" />
+  </g>
+</svg>

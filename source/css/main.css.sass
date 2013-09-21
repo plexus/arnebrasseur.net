@@ -1,38 +1,29 @@
 @import html5boilerplate/main
 @import html5boilerplate/normalize
-@import susy/setup
+@import grid
 @import pygments-zenburn
 @import compass/typography/vertical_rhythm
 
 $base-font-size: 16px
 $base-line-height: 25px
+
 @include establish-baseline
 
 html
   font-family: "Open Sans", sans-serif
 
-h1,h2
-  font-family: "Lobster", serif
+header
+  img
+    display: block
+    width: 45%
+    margin: 0 auto
+  h1
+    text-align: center
+    margin-top: 1em
+    font-size: 40px
+    line-height: 1.1em
 
-h1
-  font-size: 3em
-  line-height: 100%
-
-h2
-  font-size: 2em
-  line-height: 100%
-
-h3
-  font-size: 1em
-
-body
-  background-image: url(/img/ricepaper2/ricepaper2.png)
-
-div.wrap
-  padding: 1em
-
-aside#about
-  background-image: url(/img/broken_noise/broken_noise.png)
-  color: white
-  .inner
-    padding: 1em
+#top-buttons
+  background: black
+  padding-top: 1em
+  padding-bottom: 1em

@@ -40,7 +40,7 @@ page "/feed.xml", :layout => false
 helpers do
   def blog_config
     {
-      :title    => '@plexus Devblog', #'',
+      :title    => 'plexus devblog', #'',
       :subtitle => 'All Over the Map',
       :author   => 'Arne Brasseur',
       :url      => 'http://devblog.arnebrasseur.net'
