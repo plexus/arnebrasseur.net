@@ -32,15 +32,18 @@
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
 
+    <div id="top-bar">
+      <nav id="top-buttons">
+        <a href="https://github.com/plexus"><img src="/img/octocat-light.svg" alt="plexus on GitHub"></a>
+        <a href="https://twitter.com/plexus"><img src="/img/twitter-light.svg" alt="plexus on Twitter"></a>
+        <a href="/feed.xml" class="rss"><img src="/img/rss.svg" alt="Atom feed"></a>
+      </nav>
+    </div>
+
     <div class="wrap">
       <header>
-        <nav id="top-buttons">
-          <a href="https://github.com/plexus"><img src="/img/octocat-light.svg" alt="plexus on GitHub"></a>
-          <a href="https://twitter.com/plexus"><img src="/img/twitter-light.svg" alt="plexus on Twitter"></a>
-          <a href="/feed.xml" class="rss"><img src="/img/rss.svg" alt="Atom feed"></a>
-        </nav>
         <h1><%= blog_config[:title] %></h1>
-        <img src="/img/yin_yang.svg" />
+        <img id="yin-yang" src="/img/yin_yang.svg" />
       </header>
 
       <main role="main">
@@ -55,24 +58,20 @@
           <%= render_partial 'layouts/disqus' %>
         <% end %>
       </main>
+      <aside id="about">
+        <div class="inner">
+	        <h2>About me</h2>
+	        <section id="about_pic">
+	          <img src="/img/avatar.jpg" alt="moi" />
+          </section>
+          <section id="about_blurb">
+            Poetic Programmer who moved from Belgium to Berlin, and found a wonderful vibrant Ruby scene. Open Source contributor, Rails Girls coach, conference speaker, sinophile and language geek.
+          </section>
+      </aside>
+      <footer>
+        All content &copy; 2012 - <%= Time.now.year %> Arne Brasseur
+      </footer>
     </div>
-    <aside id="about">
-      <div class="inner">
-	      <h2>About me</h2>
-	      <section id="about_pic">
-	        <img src="/img/avatar.jpg" alt="moi" />
-        </section>
-        <section id="about_links">
-	        Digital nomad<br />
-	        <p>
-            <a href="http://twitter.com/plexus">Twitter</a><br />
-	          <a href="http://github.com/plexus">Github</a>
-          </p>
-	      </section>
-        <section id="about_blurb">
-          Hi, my name is Arne. I'm a Professional software developer based in Berlin. I like Ruby, Emacs, Juggling and Lentil Sprouts.
-        </section>
-    </aside>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.0.min.js"><\/script>')</script>

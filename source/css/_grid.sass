@@ -10,25 +10,69 @@ div.wrap
   //@include susy-grid-background
 
 #top-buttons
+  @include container
   @include clearfix
   a
-    display: block
-    @include span-columns(2,6)
+    @include span-columns(2, 6)
   a.rss
     @include omega
 
-aside#about
-  width: 100%
-  .inner
-    @include container
-    section#about_pic
-      @include span-columns(4, 12)
-    section#about_links
-      @include span-columns(4, 12)
+$break: 9
+$big_break: 12
 
-    @include at-breakpoint(8 40em)
-      @include container
-      section#about_pic
-        @include span-columns(8 omega, 8)
-      section#about_links
-        @include span-columns(8 omega, 8)
+div.wrap
+  @include container($total-columns, $break, $big_break)
+
+@include at-breakpoint($break)
+  #top-buttons
+    @include container
+    a:nth-child(1)
+      @include prefix(6, $break)
+    a
+      @include span-columns(1, $break)
+
+  header
+    display: block
+    margin-top: 2em
+    @include clearfix
+    html & h1
+      margin-top: 0.3em
+      @include span-columns(7 omega, $break)
+      display: block
+    #yin-yang
+      @include span-columns(2, $break)
+
+  main
+    @include span-columns(6, $break)
+  #about
+    @include span-columns(3 omega, $break)
+  footer
+    @include span-columns($break omega, $break)
+
+@include at-breakpoint($big_break)
+  #top-buttons
+    @include container
+    a:nth-child(1)
+      @include prefix(6, $big_break)
+    a
+      @include span-columns(2, $big_break)
+
+  header
+    display: block
+    margin-top: 2em
+    @include clearfix
+    html & h1
+      margin-top: 0.3em
+      @include span-columns(9 omega, $big_break)
+      display: block
+    #yin-yang
+      @include span-columns(3, $big_break)
+
+  main
+    @include span-columns(9, $big_break)
+  #about
+    img
+      width: 100%
+    @include span-columns(3 omega, $big_break)
+  footer
+    @include span-columns($big_break omega, $big_break)
