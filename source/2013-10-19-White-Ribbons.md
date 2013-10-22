@@ -1,4 +1,7 @@
-# White Ribbons
+---
+title: White Ribbons
+date: 2013-10-19
+---
 
 The Ruby is world is known to be a happy place. Rubyists are friendly, relaxed folks who like to party and have a good time. And it's an inclusive community as well, just look at Rails Girls, Railsbridge, or the couple of speakers who do the conference circuit talking about diversity.
 

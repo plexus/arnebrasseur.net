@@ -7,5 +7,5 @@ end
 
 desc 'Build and push out'
 task :deploy => :build do
-  puts `scp -r build/* build/.htaccess arnebrasseur@arnebrasseur.net:subdomains/devblog`
+  puts `rsync -rv build/ arnebrasseur@arnebrasseur.net:subdomains/devblog`
 end
