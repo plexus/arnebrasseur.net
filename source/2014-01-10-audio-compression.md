@@ -1,11 +1,11 @@
 ---
 title: Audio Compression for the Rest of Us
-date: 2013-01-10
+date: 2014-01-10
 ---
 
-It's the onset of summer, and tomorrow you'll be trotting off with your bff's to the biggest bestest music festival in decades. Full of anticipation you drift into sleep... and suddenly find yourself transported to the festival grounds, the main act is just about to take the stage, and you're the one behind the mixing desk, making sure they sound *amazing* (p.s. this is a dream).
+It's the onset of summer, and tomorrow you'll be trotting off with your bff's to the biggest bestest music festival in decades. Full of anticipation you fall asleep... and suddenly find yourself transported to the festival grounds, the main act is just about to take the stage, and you're the one behind the mixing desk, making sure they sound *amazing* (p.s. this is a dream).
 
-The thing is, you have a problem. The singer has an amazing voice, and she uses the full range of it. Not only from low to high notes (the frequency range), but also from really really quiet, to really really loud (the dynamic range). In the meanwhile the rest of the band is producing this steady wall of sound, so when her singing gets close to a whisper there's just no way anyone will hear her. And when the chorus starts and she starts screaming and hopping around the sound of the band vanishes into the background.
+The thing is, you have a problem. The singer has an amazing voice, and she uses the full range of it. Not only from low to high notes (the frequency range), but also from really really quiet, to really really loud (the dynamic range). In the meanwhile the rest of the band is producing this steady wall of sound, so when her singing gets close to a whisper there's just no way anyone will hear her. And when the chorus starts and she starts screaming and hopping around it's deafening, the sound of the band vanishes into the background.
 
 So with a sense of duty you grab hold of the fader that controls the volume of her voice. You set the baseline volume loud enough so her whispers can be heard, and every time she gets really loud you pull the fader down a little bit, and then back up afterwards.
 
@@ -19,7 +19,7 @@ The second row of leds is labeled "gain reduction", but they don't light up. It 
 
 "Maybe", you think to yourself, "gain reduction" just means "reducing the volume by this much", and I can make this machine do what I'm trying to do manually.
 
-The first knob is labeled "threshold", and it has markings going from 0dB all the way to ∞dB (you know those are decibells, i.e. a measure of how loud something is). It's currently all the way to the right, at "infinite loudness". Seems like it's time to lower the bar.
+The first knob is labeled "threshold", and it has markings going from 0dB all the way to ∞dB (you know those are decibels, i.e. a measure of how loud something is). It's currently all the way to the right, at "infinite loudness". Seems like it's time to lower the bar.
 
 So you start turning the knob to the left, and around 120dB you notice that the "gain reduction" leds start lighting up just a little bit when her singing gets really loud. You keep your ears cocked and keep turning. And amazed you find out that IT IS WORKING. Each time she goes "very very loud" the machine turns it into "very loud" just like you were trying to do before.
 
@@ -33,13 +33,13 @@ I'll quickly summarize these
 
 ### Attack and release
 
-Sound is a very organic thing, it typically goes up and down gradually. If we all of sudden decrease the volume when a certain threshold is reached it might sound a bit weird. The "attack" (a time in ms) is the time it takes the compressor to go from zero compression to the configured compression ratio (like 2:1).
+Sound is a very organic thing, it typically goes up and down gradually. If we all of a sudden decrease the volume when a certain threshold is reached it might sound a bit weird. The "attack" (a time in ms) is the time it takes the compressor to go from zero compression to the configured compression ratio (like 2:1).
 
 Release is the opposite, it's the time it takes the compressor to stop compressing after the sound has dropped below the threshold again.
 
 ### Make up gain
 
-Sine a compressor makes the loudest parts a bit more quiet, it actually makes the whole signal on average a bit more quiet. To compensate many compressors have a "make up gain" setting, it's basically just an extra amplifier to boost the volume a bit after compression.
+Since a compressor makes the loudest parts a bit more quiet, it actually makes the whole signal on average a bit more quiet. To compensate many compressors have a "make up gain" setting, it's basically just an extra amplifier to boost the volume a bit after compression.
 
 ## Special types of compressors
 
@@ -49,16 +49,20 @@ If the ratio is e.g. 1:2 instead of 2:1, then 1 decibel over the threshold will 
 
 ### Limiter
 
-Rather than reducing the volume in par with actual signal, a limiter will simply stop the signal from exceeding the threshold. It's like setting an infinite ratio. As soon as the threshold is reached, any excess volume is squashed to nothing.
+Rather than reducing the volume in par with the actual signal, a limiter will simply stop the signal from exceeding the threshold. It's like setting an infinite ratio. As soon as the threshold is reached, any excess volume is squashed to nothing.
 
 ### Normalization
 
-With digital music there is a fixed volume range to operate in, you can't go louder than 100%. Digital volume is measured in the dBFS scale, where 0 means maximum volume, anything less is a negative number.
+With digital music there is a fixed volume range to operate in, you can't go louder than 100% (all bits to 1). Digital volume is measured in the dBFS scale, where 0 means maximum volume, anything less is a negative number.
 
-If the loudest part of a recording is at -30dBFS, then that's 30dB of dynamic range you're not using. Normalization means automatically figuring out compression/expansion settings so you are using the full scale
+If the loudest part of a recording is at -30dBFS, then that's 30dB of dynamic range you're not using. Normalization means automatically applying expansion so you are using the full scale.
+
+Ever noticed how with home recordings, you sometimes have to put the volume *waaay* up, and still you can barely understand what is being said. While at the same time you've also increased the background noise. Professional recordings don't have this because they've been normalized.
 
 ## Closing thoughts
 
 Ever noticed that when TV commercials start the volume suddenly jumps up? Technically they are not louder than the rest of the broadcast, it's all been normalized to use the full range of whatever medium is being used to transmit the audio.
 
 However the commercials will have had very hard compression applied to them, so instead of quiet and loud, there's only loud and loud. It's a trick to catch your attention. In some places there is regulation to limit this "loudness war".
+
+I hope this article manages to make compression understandable. If so or if not let me know in the comments!

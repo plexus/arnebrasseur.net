@@ -9,12 +9,12 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="744.09448819"
-   height="1052.3622047"
+   width="286.98468"
+   height="286.98395"
    id="svg3067"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="New document 5">
+   sodipodi:docname="yin_yang_sprockets.svg">
   <defs
      id="defs3069" />
   <sodipodi:namedview
@@ -25,16 +25,20 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.86472131"
-     inkscape:cx="417.7267"
-     inkscape:cy="526.18109"
+     inkscape:cx="189.17202"
+     inkscape:cy="74.462002"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1918"
-     inkscape:window-height="1078"
+     inkscape:window-width="1916"
+     inkscape:window-height="536"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="0" />
+     inkscape:window-maximized="0"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
   <metadata
      id="metadata3072">
     <rdf:RDF>
@@ -43,27 +47,25 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
-    <flowRoot
-       xml:space="preserve"
-       id="flowRoot3198"
+     id="layer1"
+     transform="translate(-228.55468,-382.68913)">
+    <g
+       transform="matrix(5.5569658,3.2083157,-3.2083157,5.5569658,7368.5191,4604.4163)"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#800080;fill-opacity:1;stroke:none;font-family:Sans"
-       transform="matrix(5.5569658,3.2083157,-3.2083157,5.5569658,7368.5191,4604.4163)"><flowRegion
-         id="flowRegion3200"><rect
-           id="rect3202"
-           width="365.71429"
-           height="254.28572"
-           x="-1280"
-           y="-30.494961"
-           style="fill:#800080" /></flowRegion><flowPara
-         id="flowPara3204">☯</flowPara></flowRoot>    <g
+       id="flowRoot3198">
+      <path
+         d="m -1262.0703,-5.4737836 0,0.5078125 c 0.1302,1.8489709 0.8333,3.4049589 2.1094,4.66796879 1.289,1.25000842 2.871,1.87500781 4.7461,1.87500001 1.901,7.8e-6 3.5025,-0.67056446 4.8046,-2.01171876 1.3151,-1.35415554 1.9727,-3.03384134 1.9727,-5.03906254 0,-3.6197732 -1.3477,-6.7577904 -4.043,-9.4140624 -2.6953,-2.656223 -5.8919,-3.984347 -9.5898,-3.984375 -3.7761,2.8e-5 -6.9336,1.269558 -9.4727,3.808594 -2.526,2.526063 -3.9192,5.8138204 -4.1797,9.8632809 0.3125,-2.2395665 1.0417,-3.9387835 2.1875,-5.0976559 1.1589,-1.158834 2.7084,-1.73826 4.6485,-1.738282 1.8619,2.2e-5 3.4375,0.625021 4.7265,1.875 1.2891,1.2500187 1.9857,2.8125172 2.0899,4.6875004 m 8.789,0.2734375 c 0,0.5338682 -0.2018,0.989597 -0.6054,1.3671875 -0.3907,0.377617 -0.8334,0.5664189 -1.3281,0.5664063 -0.5469,1.26e-5 -1.0157,-0.1887893 -1.4063,-0.5664063 -0.3906,-0.3775905 -0.586,-0.8333193 -0.5859,-1.3671875 -10e-5,-0.5468598 0.1953,-1.0156094 0.5859,-1.40625 0.3906,-0.3906086 0.8594,-0.5859209 1.4063,-0.5859375 0.5208,1.66e-5 0.97,0.1953289 1.3476,0.5859375 0.3906,0.3906406 0.5859,0.8593902 0.5859,1.40625 m -13.6523,0 c 0,-0.5468598 -0.1953,-1.0156094 -0.5859,-1.40625 -0.3776,-0.3906086 -0.8334,-0.5859209 -1.3672,-0.5859375 -0.5339,1.66e-5 -0.9896,0.1953289 -1.3672,0.5859375 -0.3776,0.3906406 -0.5664,0.8593902 -0.5664,1.40625 0,0.5338682 0.1888,0.989597 0.5664,1.3671875 0.3776,0.377617 0.8333,0.5664189 1.3672,0.5664063 0.5338,1.26e-5 0.9896,-0.1952997 1.3672,-0.5859375 0.3906,-0.3906114 0.5859,-0.8398297 0.5859,-1.3476563 m 19.4727,0 c -10e-5,4.0364689 -1.4258,7.4739655 -4.2774,10.3125 -2.8385,2.8385431 -6.2826,4.2578125 -10.332,4.2578125 -4.0365,0 -7.4805,-1.4192694 -10.332,-4.2578125 -2.8516,-2.8385345 -4.2774,-6.2760311 -4.2774,-10.3125 0,-4.0494605 1.4258,-7.4999779 4.2774,-10.3515629 2.8515,-2.864555 6.2955,-4.296845 10.332,-4.296875 4.0494,3e-5 7.4935,1.43232 10.332,4.296875 2.8516,2.851585 4.2773,6.3021024 4.2774,10.3515629"
+         style=""
+         id="path3065" />
+    </g>
+    <g
        transform="matrix(10.044439,0,0,10.044439,12713.937,1080.9682)"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#241c1c;fill-opacity:1;stroke:none;font-family:FontAwesome;-inkscape-font-specification:FontAwesome"
        id="flowRoot3075">
