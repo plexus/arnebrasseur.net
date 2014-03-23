@@ -86,7 +86,7 @@ Adaptation of the lightning talk I did at JRubyConf. People really liked it, whi
 [slides](http://arnebrasseur.net/talks/arrrrcamp2013/functional_ruby.html)
 [conference website](http://2013.arrrrcamp.be/)
 
-### Eurucamp: Web Linguistics
+### eurucamp: Web Linguistics
 
 _16-08-2013 - 18-08-2013, Berlin, Germany_
 
@@ -99,7 +99,7 @@ I also did a talk at the Rails Girls workshop, titled "Learning to Learn"
 
 [slides](http://arnebrasseur.net/talks/eurucamp2013/learn_to_learn.html)
 
-### JRubyConf: Functional Patterns for Ruby
+### JRubyConf.EU: Functional Patterns for Ruby
 
 _14-08-2013 - 15-08-2013, Berlin, Germany_
 
