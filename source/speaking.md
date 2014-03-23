@@ -32,6 +32,7 @@ _08-03-2014, Berlin, Germany_
 Lightning talk about the `slippery` gem. A highly hackable tool for building in-browser slide decks based on Markdown.
 
 [slides](http://arnebrasseur.net/talks/rugb201403/presentation.html)
+[event website](http://www.rug-b.de/events/march-meetup-2014)
 
 ### Kod.io: Web Services, past, present, future
 
@@ -66,6 +67,15 @@ I also did a lightning talk on functional programming in Ruby, this time live co
 
 [gist](https://gist.github.com/plexus/7695852)
 [conference website](http://rubyconfargentina.org/en)
+
+### Rug-B: Functional Programming Demystified, with Ryan Levick
+
+_07-11-2013, Berlin, Germany_
+
+A joint talk where Ryan explains the theory, and I show how that works in Ruby.
+
+[slides](http://arnebrasseur.net/talks/rugb201311.pdf)
+[event link](http://www.rug-b.de/events/november-meetup-5e6bfcfa-5e3e-43f2-8d60-25f41afd517d)
 
 ### ArrrrCamp: Functional Patterns for Ruby
 
@@ -125,4 +135,4 @@ _09-02-2013, Berlin Ruby User Group, Germany_
 Security as an emergent property, and an in depth look into the security issues Rails had had the past months.
 
 [slides](http://www.slideshare.net/arnebrasseur/yaml-is-the-new-eval)
-[rug-b website](http://www.rug-b.de/)
+[event website](http://www.rug-b.de/events/febuary-meetup)
