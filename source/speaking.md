@@ -25,6 +25,14 @@ Showing off in 5 minutes some lesser known Ruby features. Both highly useful (ex
 [screencast](https://www.youtube.com/watch?v=72AAZiTES_0)
 [conference website](http://wrocloverb.com/)
 
+### Rug-B: Slippery Slides
+
+_08-03-2014, Berlin, Germany_
+
+Lightning talk about the `slippery` gem. A highly hackable tool for building in-browser slide decks based on Markdown.
+
+[slides](http://arnebrasseur.net/talks/rugb201403/presentation.html)
+
 ### Kod.io: Web Services, past, present, future
 
 _01-03-2014, Linz, Austria_
