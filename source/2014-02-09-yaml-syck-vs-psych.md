@@ -1,6 +1,6 @@
 ---
-title: Syck vs Psych : Differences and Conversion
-date: 2013-02-09
+title: "Syck vs Psych: Differences and Conversion"
+date: 2014-02-09
 ---
 
 YAML (rhymes with camel) is a data serialization format designed to be both human and machine readable. It's distinguishing features are use of semantic whitespace, and support for a rich set of built-in and user defined types.
