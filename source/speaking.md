@@ -8,13 +8,16 @@ If you're not sure how to make the slides work, try hitting the space bar.
 
 ## 2014
 
-### (Upcoming) RubyConf Taiwan: Functional Programming in Ruby
+### RubyConf Taiwan: Functional Programming in Ruby
 
 _25-04-2014 - 26-04-204, Taipei, Taiwan_
 
 My first chance to do a full length talk on this exciting topic:
 
+[slides](http://arnebrasseur.net/talks/rubyconftw2014/fp_in_ruby.html)
 [conference website](http://rubyconf.tw/2014/)
+
+And a lightning talk on using Ruby for learning Chinese.
 
 ### Wroc_love.rb: Nobody Knows Ruby
 
@@ -40,6 +43,7 @@ _01-03-2014, Linz, Austria_
 
 A talk about the web, REST, hypermedia, the past, the present, and the future.
 
+[video](http://www.confreaks.com/videos/3254-kodio_2014-2004-2024-two-decades-of-web-services-a-retrospective)
 [slides](http://arnebrasseur.net/talks/kodio2014/)
 [conference website](http://linz.kod.io/)
 
