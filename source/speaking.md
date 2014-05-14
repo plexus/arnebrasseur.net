@@ -118,7 +118,7 @@ I also did a talk at the Rails Girls workshop, titled "Learning to Learn"
 
 <a id="jrubyconf2013"></a>
 
-### JRubyConf: Functional Patterns for Ruby
+### JRubyConf.EU: Functional Patterns for Ruby
 
 _14-08-2013 - 15-08-2013, Berlin, Germany_
 
