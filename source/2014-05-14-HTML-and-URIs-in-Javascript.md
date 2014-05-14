@@ -43,6 +43,10 @@ URI("http://example.org/foo.html?hello=world")
 
 There are tons of edge cases that this covers that your naive let's-mash-some-strings-together code does not, including proper escaping.
 
+**Update**
+
+I should have mentioned this earlier, [URI templates](http://tools.ietf.org/html/rfc6570) are actually a RFC standardized mechanism for building and recognizing URIs. This is what `URI.expand` above is based on. It's a very useful and underused mechanism.
+
 ## HTML
 
 In contrast to URIs, browsers do come with a sane API for building HTML, it's called the DOM (Document Object Model) API.
