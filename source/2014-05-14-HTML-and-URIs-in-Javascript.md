@@ -13,7 +13,7 @@ This one is easy: use [URI.js](https://github.com/medialize/URI.js). It is unfor
 
 Some simple examples
 
-```javascript
+```js
 // bad
 window.location.origin + '/foo/bar'
 //good
@@ -47,7 +47,7 @@ There are tons of edge cases that this covers that your naive let's-mash-some-st
 
 In contrast to URIs, browsers do come with a sane API for building HTML, it's called the DOM (Document Object Model) API.
 
-```javascript
+```js
 var divNode  = document.createElement("div");
 var textNode = document.createTextNode("We all live in happy HTML! &<>");
 divNode.appendChild(textNode);
@@ -60,7 +60,7 @@ The highly informative [MDN](https://developer.mozilla.org) article [DOM Buildin
 
 The implementation there is already quite clever, allowing one to set event handlers in one go. Since this article is meant for people building browser extensions, it also has some XUL stuff that's not relevant when programming for the web.
 
-```javascript
+```js
 document.body.appendChild(jsonToDOM(
   ["div", {},
     ["a", { href: href, onclick: function() { } }, text])));
@@ -68,13 +68,13 @@ document.body.appendChild(jsonToDOM(
 
 Great idea, and with some tweaking very useful in a browser context. But chances are you're already using jQuery, in which case I have good news for you: jQuery has everything covered!
 
-```javascript
+```js
 var divNode = $('<div>', {class: 'my-div'}).append($('<a>', {href: '..'}));
 ```
 
 The `$('<tag>', {attributes})` syntax provides an easy way to build DOM objects. The result is a [jQuery object](http://learn.jquery.com/using-jquery-core/jquery-object/). You'll have to unwrap it to get to actual DOM element.
 
-```javascript
+```js
 var domNode = divNode[0];
 ```
 
@@ -82,13 +82,13 @@ You might want to convert this to an HTML string now. In that case it's highly l
 
 In this case keep in mind that calling `html()` on the jQuery object will only return the *inner* HTML. You can get the full thing from the DOM node though.
 
-```javascript
+```js
 var nodeHTML = divNode[0].outerHTML;
 ```
 
 For example in Ember.js:
 
-```javascript
+```js
 Ember.Handlebars.registerBoundHelper('linkToPost', function(postId) {
   var uri  = URI.expand('/posts/{id}', {id:  postId});
   var html = $('<a>', {href: uri, text: "goto post"})[0].outerHTML;
@@ -100,7 +100,7 @@ Ember.Handlebars.registerBoundHelper('linkToPost', function(postId) {
 
 Take this simple function
 
-```javascript
+```js
 function linkToPost(postId) {
   var uri = '/posts/' + encodeURI(postId);
   return '<a href="' + uri + '">goto post</a>';
@@ -116,7 +116,7 @@ Escaping always depends on context, and if there are multiple levels of context 
 
 think if you can let some other component that knows the details of the language you're generating better than you do, to do the work for you. Here's a corrected version of the above.
 
-```javascript
+```js
 function linkToPost(postId) {
   var uri = URI.expand('/posts/{id}', {id:  postId});
   return $('<a>', {href: uri, text: "goto post"});
@@ -131,7 +131,7 @@ But as with everything there are exceptions. If you really need to escape HTML, 
 
 Let the browser do it for you:
 
-```javascript
+```js
 var divNode  = document.createElement("div");
 var textNode = document.createTextNode("We all live in happy HTML! &<>");
 divNode.innerHTML // "We all live in happy HTML!We all live in happy HTML! &amp;&lt;&gt;"
@@ -139,7 +139,7 @@ divNode.innerHTML // "We all live in happy HTML!We all live in happy HTML! &amp;
 
 Use [Underscore.js](http://underscorejs.org/)
 
-```javascript
+```js
 _.escape("We all live in happy HTML! &<>");
 // "We all live in happy HTML!We all live in happy HTML! &amp;&lt;&gt;"
 ```
