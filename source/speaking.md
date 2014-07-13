@@ -6,7 +6,31 @@ Tech talks (full-length and lightning talks) I've given in public, in reverse ch
 
 If you're not sure how to make the slides work, try hitting the space bar.
 
+## Upcoming
+
+### ArrrrCamp: Functional Programming in Ruby
+
+_1/2-10-2014, Ghent, Belgium_
+
+### Frozen Rails: Functional Programming in Ruby
+
+_11/12-09-2014, Helsinki, Finland_
+
+### Lightning.io: Topic TBA
+
+_16-08-2014, Świnoujście, Poland_
+
 ## 2014
+
+<a id="rugb-yaks"></a>
+### Rug-B: Building Hypermedia APIs with Yaks
+
+_03-07-2014, Berlin, Germany_
+
+An introduction to REST and Hypermedia, followed by a demonstration of [Yaks](https://github.com/plexus/yaks).
+
+[slides](http://arnebrasseur.net/talks/rugb201407/hypermedia.html)
+[event website](http://www.rug-b.de/events/july-meetup-2014)
 
 <a id="rubyconftw2014"></a>
 ### RubyConf Taiwan: Functional Programming in Ruby
@@ -15,10 +39,13 @@ _25-04-2014 - 26-04-204, Taipei, Taiwan_
 
 My first chance to do a full length talk on this exciting topic:
 
+[video](https://www.youtube.com/watch?v=L8PNydBAsGo)
 [slides](http://arnebrasseur.net/talks/rubyconftw2014/fp_in_ruby.html)
 [conference website](http://rubyconf.tw/2014/)
 
 And a lightning talk on using Ruby for learning Chinese.
+
+[video](https://www.youtube.com/watch?v=Q2JqHd1ojOU)
 
 <a id="wroclove2014"></a>
 ### Wroc_love.rb: Nobody Knows Ruby
