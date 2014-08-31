@@ -1,76 +1,50 @@
-{{!------------------------------
-To add a new social icon simply duplicate one of the list items from below
-and change the class in the <i> tag to match the desired social network
-and then add your link to the <a>. Here is a full list of social network
-classes that you can use:
-
-    icon-social-500px
-    icon-social-behance
-    icon-social-delicious
-    icon-social-designer-news
-    icon-social-deviant-art
-    icon-social-digg
-    icon-social-dribbble
-    icon-social-facebook
-    icon-social-flickr
-    icon-social-forrst
-    icon-social-foursquare
-    icon-social-github
-    icon-social-google-plus
-    icon-social-hi5
-    icon-social-instagram
-    icon-social-lastfm
-    icon-social-linkedin
-    icon-social-medium
-    icon-social-myspace
-    icon-social-path
-    icon-social-pinterest
-    icon-social-rdio
-    icon-social-reddit
-    icon-social-skype
-    icon-social-spotify
-    icon-social-stack-overflow
-    icon-social-steam
-    icon-social-stumbleupon
-    icon-social-treehouse
-    icon-social-tumblr
-    icon-social-twitter
-    icon-social-vimeo
-    icon-social-xbox
-    icon-social-yelp
-    icon-social-youtube
-    icon-social-zerply
-    icon-mail
-
---------------------------------}}
-
 <nav class="cover-navigation navigation--social">
   <ul class="navigation">
-
-
-  <!-- Twitter -->
-  <li class="navigation__item">
-    <a href="http://twitter.com/daleanthony" title="@DaleAnthony on Twitter">
+    <!-- Twitter -->
+    <li class="navigation__item">
+      <a href="http://twitter.com/plexus" title="@plexus on Twitter">
       <i class='icon icon-social-twitter'></i>
       <span class="label">Twitter</span>
-    </a>
-  </li>
+      </a>
+    </li>
 
-    <!-- Dribbble -->
+    <!-- Github -->
     <li class="navigation__item">
-      <a href="http://dribbble.com/daleanthony" title="Dale-Anthony on Dribbble">
-        <i class='icon icon-social-dribbble'></i>
-        <span class="label">Dribbble</span>
+      <a href="https://github.com/plexus" title="@plexus on Github">
+      <i class='icon icon-social-github'></i>
+      <span class="label">Github</span>
       </a>
     </li>
 
     <!-- Email -->
     <li class="navigation__item">
-      <a href="mailto:hello@daleanthony.com" title="Email hello@daleanthony.com">
+      <a href="mailto:arne@arnebrasseur.net" title="Email arne@arnebrasseur.net">
         <i class='icon icon-mail'></i>
         <span class="label">Email</span>
       </a>
     </li>
 
+    <!-- RSS -->
+    <li class="navigation__item">
+      <a href="/feed.xml" title="RSS Feed">
+        <i class='icon icon-rss'></i>
+        <span class="label">RSS</span>
+      </a>
+    </li>
   </ul>
+
+  <br />
+
+  <nav class="cover-navigation cover-navigation--primary">
+    <ul class="navigation">
+      <li class="navigation__item"><a href="/" title="<%= title %>" class="blog-button">Blog</a></li>
+    </ul>
+  </nav>
+
+  <nav class="cover-navigation cover-navigation--primary">
+    <ul class="navigation">
+      <li class="navigation__item"><a href="/speaking.html" title="Public speaking" class="blog-button">Speaker</a></li>
+    </ul>
+  </nav>
+
 </nav>

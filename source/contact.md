@@ -1,15 +1,12 @@
 ---
 title: Contact
 ---
-I am often on the move, look here to find out ways to contact me.
 
 My main email is arne@arnebrasseur.net.
 
 You can find me on Twitter and Github as "plexus".
 
-I will be in Berlin until March 29, then in Belgium until April 13.
-
-April 17 I arrive in Taiwan to speak at the [Taiwanese Ruby Conference](http://rubyconf.tw), then stick around until June 6.
+I am raised in Belgium, but based in Berlin.
 
 My PGP key :
 

@@ -1,0 +1,32 @@
+<header class="panel-cover panel-cover--collapsed" <% if cover %>style="background-image: url(#{cover})"<% end %>>
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="<%= title %> - Home"><img src="<%= image_path(logo) %>" width="80" alt="<%= title %> logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="<%= home_url %>" title="link to <%= title %> - Home"><%= title %></a></h1>
+         <!-- <span class="panel-cover__subtitle panel-subtitle">Visual Designer</span> -->
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"><%= description %></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+
+          <!-- <nav class="cover-navigation cover-navigation--primary"> -->
+          <!--   <ul class="navigation"> -->
+          <!--     <li class="navigation__item"><a href="/#blog" title="link to <%= title %> blog" class="blog-button">Blog</a></li> -->
+          <!--   </ul> -->
+          <!-- </nav> -->
+
+          <%= partial 'social' %>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>

@@ -4,6 +4,14 @@
 
 # Time.zone = "UTC"
 
+helpers do
+  def logo ; 'avatar.jpg' end
+  def title ; 'Arne Brasseur' end
+  def home_url ; '/' end
+  def description ; 'Emergence for Developers' ; end
+  def cover ;  end
+end
+
 activate :blog do |blog|
   # This will add a prefix to all links, template references and source paths
   # blog.prefix = "blog"
@@ -26,8 +34,8 @@ activate :blog do |blog|
   blog.calendar_template = "calendar.html"
 
   # Enable pagination
-  # blog.paginate = true
-  # blog.per_page = 10
+  blog.paginate = true
+  blog.per_page = 10
   # blog.page_link = "page/{num}"
 end
 

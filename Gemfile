@@ -7,6 +7,10 @@ gem "middleman-blog", "~> 3.5.3"
 gem 'bourbon'
 gem 'tilt-handlebars'
 gem 'redcarpet'
+gem 'middleman-syntax'
+gem 'middleman-livereload'
+gem 'nokogiri'
+
 
 # For feed.xml.builder
 gem "builder", "~> 3.0"

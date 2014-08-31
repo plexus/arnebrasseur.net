@@ -20,6 +20,8 @@
 
   </article>
 
-  {{!-- {{> comments}} --}}
+  <% if is_blog_article? %>
+    <%= partial 'disqus' %>
+  <% end %>
 
 <% end %>

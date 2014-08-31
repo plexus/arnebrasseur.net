@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <title><%= ' - ' + current_article.title unless current_article.nil? %> ☯ plexus devblog</title>
+    <title><%= current_article.title + ' ☯ ' unless current_article.nil? %>plexus devblog</title>
 
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -40,7 +40,7 @@
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
             <%= yield %>
-            <%# partial 'footer' %>
+            <%= partial 'footer' %>
         </div>
     </div>
 
