@@ -9,8 +9,6 @@ I've recently stated that within the next five years half of Vim users will swit
 
 Editor flame wars have been around for decades. Let me do my share to fan the flames by saying this: of all modern editors, Vim has the superior editing model. The modal text-object style of editing, where few if any modifier keys are used, but instead commands are composed of keys typed in sequence is better for reasons of economy, ergonomics, and sheer expressive power.
 
-For everything else, Emacs rules supreme.
-
 Compare this with Emacs's keybindings that will never improve, and its exclusionary culture. Let's pick on the culture first.
 
 Emacs is rooted in old-school hacker narrative. Some of the developers have been around for over three decades, and they like things just the way they are, making Emacs possibly the most closed open source project.
