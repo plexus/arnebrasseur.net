@@ -86,6 +86,12 @@ set :images_dir, 'images'
 set :partials_dir, 'partials'
 set :fonts_dir, 'fonts'
 
+activate :syntax
+set :markdown_engine, :redcarpet
+set :markdown, :fenced_code_blocks => true, :smartypants => true
+
+activate :livereload
+
 # Build-specific configuration
 configure :build do
   # For example, change the Compass output style for deployment
