@@ -9,7 +9,7 @@ helpers do
   def title       ; 'Arne Brasseur' end
   def home_url    ; '/' end
   def description ; 'Emergence for Developers' ; end
-  def cover       ; 'background_iguazu.jpg' end
+  def cover       ; 'background_iguazu_smaller.jpg' end
 end
 
 activate :blog do |blog|
