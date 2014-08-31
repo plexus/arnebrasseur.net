@@ -5,11 +5,11 @@
 # Time.zone = "UTC"
 
 helpers do
-  def logo ; 'avatar.jpg' end
-  def title ; 'Arne Brasseur' end
-  def home_url ; '/' end
+  def logo        ; 'avatar.jpg' end
+  def title       ; 'Arne Brasseur' end
+  def home_url    ; '/' end
   def description ; 'Emergence for Developers' ; end
-  def cover ;  end
+  def cover       ; 'background_iguazu.jpg' end
 end
 
 activate :blog do |blog|
