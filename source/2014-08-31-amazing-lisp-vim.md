@@ -5,7 +5,7 @@ date: 2014-08-31
 
 Why Vim users will switch to Emacs in the coming years.
 
-I've recently stated that within the next five years half of Vim users will switch to Emacs. And while the exact number of years or percentage are debatable, I stand by that statement. I think a number of factors are coming together that will make switching very appealing.
+I've recently stated that within the next five years half of Vim users will switch to Emacs. And while the exact time span and percentage are debatable, I stand by that statement. I think a number of factors are coming together that will make switching very appealing.
 
 Editor flame wars have been around for decades. Let me do my share to fan the flames by saying this: of all modern editors, Vim has the superior editing model. The modal text-object style of editing, where few if any modifier keys are used, but instead commands are composed of keys typed in sequence is better for reasons of economy, ergonomics, and sheer expressive power.
 
@@ -39,7 +39,7 @@ Only recently has Emacs spawned a package manager. Before people would manually 
 
 ### Clojure
 
-With Clojure, for the first time in ages we have a Lisp that is actually gaining popularity, and for good reason: it sits on top of the most advanced VM around, it has a compelling story around concurrency and parallelism, it benefits from the huge Java/JVM ecosystem. Long story short: we are gaining Lisp developers again.
+With Clojure, for the first time in ages we have a Lisp that is actually gaining in popularity, and for good reason: it sits on top of the most advanced VM around, it has a compelling story around concurrency and parallelism, it benefits from the huge Java/JVM ecosystem. Long story short: we are gaining Lisp developers again.
 
 This is great news for Emacs. Instead of having people that know just enough Lisp to solve their immediate problems, we have a new generation of developers that is capable of developing high-quality Emacs extensions. They are challenging old ways of doing things.
 
@@ -76,6 +76,12 @@ editable-dired, expand region, multiple cursors, REPL driven development, artist
 ## Getting started
 
 There doesn't seem to be a go-to Emacs+Evil starter kit available yet, but you don't need much to get started.
+
+You'll need Emacs, preferably the "real" GNU Emacs, so no Aquamacs, XEmacs or NTEmacs. Try `emacs --version` to see if it's already available on your system. You want to have at least version 24.
+
+Note that pre-installed versions might not have GUI extensions compiled. This is fine for running from a terminal, but does limit things somewhat, so you might want to get a fuller version later on.
+
+For Mac users a `brew install emacs` should do the trick. Debian-based systems such as Ubuntu can do an `apt-get install emacs`.
 
 Put this in `~/.emacs.d/init.el` (you're allowed to use Vim for this).
 
