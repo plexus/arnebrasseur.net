@@ -81,7 +81,7 @@ You'll need Emacs, preferably the "real" GNU Emacs, so no Aquamacs, XEmacs or NT
 
 Note that pre-installed versions might not have GUI extensions compiled. This is fine for running from a terminal, but does limit things somewhat, so you might want to get a fuller version later on.
 
-For Mac users a `brew install emacs` should do the trick. Debian-based systems such as Ubuntu can do an `apt-get install emacs`.
+For Mac users, `brew install emacs` should do the trick. Debian-based systems such as Ubuntu can do `apt-get install emacs`.
 
 Put this in `~/.emacs.d/init.el` (you're allowed to use Vim for this).
 
