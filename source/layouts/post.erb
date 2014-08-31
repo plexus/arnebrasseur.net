@@ -1,0 +1,25 @@
+<% wrap_layout :layout do %>
+
+<% date  = current_article.date %>
+<% title = current_article.title %>
+
+  <article class="post-container post-container--single">
+
+    <header class="post-header">
+      <div class="post-meta">
+        <time datetime="<%= date.strftime('%Y-%m-%d') %>"><%= I18n.l date.to_date, format: :long %></time>
+
+        <!--<span class="post-meta__author author"><img src="{{author.image}}" alt="profile image for {{author.name}}" class="avatar post-meta__avatar" /> by {{author.name}}</span>-->
+      </div>
+      <h1 class="post-title"><%= title %></h1>
+    </header>
+
+    <section class="{{post_class}}">
+      <%= yield %>
+    </section>
+
+  </article>
+
+  {{!-- {{> comments}} --}}
+
+<% end %>

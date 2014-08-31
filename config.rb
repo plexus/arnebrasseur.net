@@ -8,6 +8,8 @@ activate :blog do |blog|
   # This will add a prefix to all links, template references and source paths
   # blog.prefix = "blog"
 
+  blog.layout = "post"
+
   # blog.permalink = "{year}/{month}/{day}/{title}.html"
   # Matcher for blog source files
   # blog.sources = "{year}-{month}-{day}-{title}.html"
@@ -79,10 +81,10 @@ page "/feed.xml", layout: false
 # end
 
 set :css_dir, 'stylesheets'
-
 set :js_dir, 'javascripts'
-
 set :images_dir, 'images'
+set :partials_dir, 'partials'
+set :fonts_dir, 'fonts'
 
 # Build-specific configuration
 configure :build do
