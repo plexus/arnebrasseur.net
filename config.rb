@@ -18,6 +18,8 @@ activate :blog do |blog|
 
   blog.layout = "post"
 
+  blog.permalink = ":year-:month-:title"
+
   # blog.permalink = "{year}/{month}/{day}/{title}.html"
   # Matcher for blog source files
   # blog.sources = "{year}-{month}-{day}-{title}.html"

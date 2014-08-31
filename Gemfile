@@ -10,6 +10,7 @@ gem 'redcarpet'
 gem 'middleman-syntax'
 gem 'middleman-livereload'
 gem 'nokogiri'
+gem 'rake'
 
 
 # For feed.xml.builder
