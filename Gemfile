@@ -11,6 +11,7 @@ gem 'middleman-syntax'
 gem 'middleman-livereload'
 gem 'nokogiri'
 gem 'rake'
+gem 'sanitize'
 
 
 # For feed.xml.builder

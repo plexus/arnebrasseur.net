@@ -4,12 +4,19 @@
 
 # Time.zone = "UTC"
 
+require "sanitize"
+
 helpers do
   def logo        ; 'avatar.jpg' end
   def title       ; 'Arne Brasseur' end
   def home_url    ; '/' end
   def description ; 'Emergence for Developers' ; end
   def cover       ; 'background_iguazu_smaller.jpg' end
+
+  # Strip all HTML tags from string
+  def strip_tags(html)
+    Sanitize.clean(html.strip).strip
+  end
 end
 
 activate :blog do |blog|

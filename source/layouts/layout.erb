@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <title><%= current_article.title + ' ☯ ' unless current_article.nil? %>plexus devblog</title>
+    <title><%= current_article.title + ' ☯ ' unless current_article.nil? %>Plexus Devblog</title>
 
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -12,18 +12,34 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="{{meta_description}}">
+    <meta name="description" content="Emergence for Developers">
 
+    <% if current_article %>
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="{{meta_title}}">
-    <meta name="twitter:description" content="{{meta_description}}">
+    <meta name="twitter:title" content="<%= current_article.title %>">
+    <meta name="twitter:description" content="<%= strip_tags current_article.summary %>">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="{{meta_title}}">
-    <meta property="og:description" content="{{meta_description}}">
+    <meta property="og:title" content="<%= current_article.title %>">
+    <meta property="og:description" content="<%= strip_tags current_article.summary %>">
+    <% end %>
 
     <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <link href="/apple-touch-icon-precomposed.png" rel="apple-touch-icon">
+
+    <link href="http://devblog.arnebrasseur.net/feed.xml" rel="alternate" title="Plexus Devblog" type="application/atom+xml">
+    <link rel="author" href="https://plus.google.com/u/0/112268398775525141261">
+	  <script type="text/javascript">
+	    var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', 'UA-16178122-1']);
+	    _gaq.push(['_trackPageview']);
+
+	    (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	    })();
+	  </script>
 
     <%= stylesheet_link_tag 'uno' %>
     <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
@@ -46,13 +62,5 @@
 
     <%= javascript_include_tag 'https://code.jquery.com/jquery-2.1.1.min.js' %>
     <%= javascript_include_tag 'main' %>
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-     var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-     s.parentNode.insertBefore(g,s)}(document,'script'));
-    </script>
 </body>
 </html>
