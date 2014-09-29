@@ -65,4 +65,4 @@ and though I have staggered and swayed it never led me astray
 I live by this way, and when I die
 tell my friends it was only the road that led me away.
 
-© 2001-2014 Arne Brasseur
+© 2011-2014 Arne Brasseur

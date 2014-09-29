@@ -104,8 +104,8 @@ set :partials_dir, 'partials'
 set :fonts_dir, 'fonts'
 
 activate :syntax
-set :markdown_engine, :redcarpet
-set :markdown, :fenced_code_blocks => true, :smartypants => true
+set :markdown_engine, :kramdown
+set :markdown, input: 'GFM', format: 'GFM', parser: 'GFM'
 
 activate :livereload
 
