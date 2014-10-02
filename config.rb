@@ -105,7 +105,7 @@ set :fonts_dir, 'fonts'
 
 activate :syntax
 set :markdown_engine, :kramdown
-set :markdown, input: 'GFM', format: 'GFM', parser: 'GFM'
+set :markdown, input: 'GFM'
 
 activate :livereload
 

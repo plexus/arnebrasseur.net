@@ -85,7 +85,7 @@ For Mac users, `brew install emacs` should do the trick. Debian-based systems su
 
 Put this in `~/.emacs.d/init.el` (you're allowed to use Vim for this).
 
-~~~~ emacs-lisp
+``` elisp
 (require 'package)
 
 (setq package-archives
@@ -99,7 +99,7 @@ Put this in `~/.emacs.d/init.el` (you're allowed to use Vim for this).
   (package-install 'evil))
 
 (evil-mode)
-~~~~
+```
 
 Now simply launch `emacs`. It will install Evil on its first run, and enable it in all buffers. Use Ctrl-Z to switch back to Emacs mode if necessary.
 
