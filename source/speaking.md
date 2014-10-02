@@ -6,21 +6,28 @@ Tech talks (full-length and lightning talks) I've given in public, in reverse ch
 
 If you're not sure how to make the slides work, try hitting the space bar.
 
-## Upcoming
+## 2014
 
 ### ArrrrCamp: Functional Programming in Ruby
 
 _1/2-10-2014, Ghent, Belgium_
 
+[slides](http://arnebrasseur.net/talks/arrrrcamp2014)
+[event website](http://2014.arrrrcamp.be/)
+video not available yet
+
 ### Frozen Rails: Functional Programming in Ruby
 
 _11/12-09-2014, Helsinki, Finland_
 
-### Lightning.io: Topic TBA
+[slides](http://arnebrasseur.net/talks/frozenrails2014)
+[event website](http://2014.frozenrails.eu/)
+
+### Lightning.io: How to Draw an Owl With Overtone
 
 _16-08-2014, Świnoujście, Poland_
 
-## 2014
+A live demo making music with Clojure and Overtone.
 
 <a id="rugb-yaks"></a>
 ### Rug-B: Building Hypermedia APIs with Yaks
