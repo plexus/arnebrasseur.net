@@ -16,18 +16,20 @@
 
     <% if current_article %>
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="<%= current_article.title %>">
-    <meta name="twitter:description" content="<%= strip_tags current_article.summary %>">
+    <meta name="twitter:site" content="@plexus">
+    <meta name="twitter:title" content="<%= escape_attr(current_article.title) %>">
+    <meta name="twitter:description" content="<%= escape_attr(strip_tags current_article.summary) %>">
+    <meta name="twitter:image" content="<%= url_prefix('/images/avatar.jpg') %>">
+    <meta name="twitter:url" content="<%= url_prefix(current_article.url) %>">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="<%= current_article.title %>">
-    <meta property="og:description" content="<%= strip_tags current_article.summary %>">
+    <meta property="og:title" content="<%= escape_attr(current_article.title) %>">
+    <meta property="og:description" content="<%= escape_attr(strip_tags current_article.summary) %>">
     <% end %>
-
     <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <link href="/apple-touch-icon-precomposed.png" rel="apple-touch-icon">
 
-    <link href="http://devblog.arnebrasseur.net/feed.xml" rel="alternate" title="Plexus Devblog" type="application/atom+xml">
+    <link href="<%= url_prefix('/feed.xml')%>" rel="alternate" title="Plexus Devblog" type="application/atom+xml">
     <link rel="author" href="https://plus.google.com/u/0/112268398775525141261">
 	  <script type="text/javascript">
 	    var _gaq = _gaq || [];

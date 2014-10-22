@@ -142,6 +142,7 @@ _16-08-2013 - 18-08-2013, Berlin, Germany_
 
 A rewrite of the talk I did at Rulu, trying to make it more concrete and entertaining.
 
+* [video](http://media.eurucamp.org/#talk-2013-plexus)
 * [slides](http://arnebrasseur.net/talks/eurucamp2013/)
 * [conference website](http://2013.eurucamp.org/)
 

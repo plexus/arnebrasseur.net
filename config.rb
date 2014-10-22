@@ -12,10 +12,48 @@ helpers do
   def home_url    ; '/' end
   def description ; 'Emergence for Developers' ; end
   def cover       ; 'background_iguazu_smaller.jpg' end
+  def url_prefix(str='')  ; 'http://devblog.arnebrasseur.net' + str ; end
 
   # Strip all HTML tags from string
   def strip_tags(html)
     Sanitize.clean(html.strip).strip
+  end
+
+  APOS   = ?'.freeze
+  QUOT   = ?".freeze
+  LT     = '<'.freeze
+  GT     = '>'.freeze
+  SPACE  = ' '.freeze
+  EQ     = '='.freeze
+  AMP    = '&'.freeze
+  FSLASH = '/'.freeze
+
+  E_AMP  = '&amp;'.freeze
+  E_APOS = '&#x27;'.freeze
+  E_QUOT = '&quot;'.freeze
+  E_LT   = '&lt;'.freeze
+  E_GT   = '&gt;'.freeze
+
+  ESCAPE_ATTR_APOS = {AMP => E_AMP, APOS => E_APOS}
+  ESCAPE_ATTR_QUOT = {AMP => E_AMP, QUOT => E_QUOT}
+  ESCAPE_ATTR      = {AMP => E_AMP, QUOT => E_QUOT, APOS => E_APOS}
+  ESCAPE_TEXT      = {AMP => E_AMP, APOS => E_APOS, QUOT => E_QUOT, LT => E_LT, GT => E_GT}
+
+  ESCAPE_ATTR_APOS_REGEX = Regexp.new("[#{ESCAPE_ATTR_APOS.keys.join}]")
+  ESCAPE_ATTR_QUOT_REGEX = Regexp.new("[#{ESCAPE_ATTR_QUOT.keys.join}]")
+  ESCAPE_ATTR_REGEX      = Regexp.new("[#{ESCAPE_ATTR.keys.join}]")
+  ESCAPE_TEXT_REGEX      = Regexp.new("[#{ESCAPE_TEXT.keys.join}]")
+
+  def escape_attr(string)
+    string.gsub(ESCAPE_ATTR_REGEX, ESCAPE_ATTR)
+  rescue => e
+    e.to_s
+  end
+
+  def escape_text(string)
+    string.gsub(ESCAPE_TEXT_REGEX, ESCAPE_TEXT)
+  rescue => e
+    e.to_s
   end
 end
 
