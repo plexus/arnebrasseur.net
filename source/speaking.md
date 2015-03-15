@@ -6,6 +6,23 @@ Tech talks (full-length and lightning talks) I've given in public, in reverse ch
 
 If you're not sure how to make the slides work, try hitting the space bar.
 
+## 2015
+
+### upcoming
+
+* RubyConf Lithuania, 21 March, Hypermedia in Practice
+* RubyConf Belarus, 22 March, Hypermedia in Practice
+* ROSS Conf Vienna, 26 April, Yaks and Open Source
+
+{:#rubyfuza}
+### RubyFuza: Hypermedia, a Success Story (lightning talk)
+
+_5/6-02-2015, Cape Town, South Africa_
+
+I did this talk in Emacs. It's mostly images and code examples. The source files [are here](https://github.com/plexus/conf-talks/tree/master/2015-rubyfuza/sly)
+
+* [event website](http://www.rubyfuza.org/)
+
 ## 2014
 
 {:#arrrcamp-2014}
