@@ -10,9 +10,18 @@ If you're not sure how to make the slides work, try hitting the space bar.
 
 ### upcoming
 
-* RubyConf Lithuania, 21 March, Hypermedia in Practice
-* RubyConf Belarus, 22 March, Hypermedia in Practice
 * ROSS Conf Vienna, 26 April, Yaks and Open Source
+
+### RubyConf Lithuania / RubyConf Belarus, 22 March, Hypermedia in Practice
+
+_21-03-2015, Vilnius, Lithuania / 22-03-2015 Minsk, Belarus_
+
+A mirror event, I did the same talk at both places
+
+* [slides](http://arnebrasseur.net/talks/2015-rubyconf-lt-by/)
+* [RubyConf Lithuania](http://rubyconf.lt/)
+* [RubyConf Belarus](http://rubyconference.by/)
+
 
 {:#rubyfuza}
 ### RubyFuza: Hypermedia, a Success Story (lightning talk)
