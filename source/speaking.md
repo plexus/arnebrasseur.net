@@ -8,9 +8,17 @@ If you're not sure how to make the slides work, try hitting the space bar.
 
 ## 2015
 
-### upcoming
 
-* ROSS Conf Vienna, 26 April, Yaks and Open Source
+### ROSS Conf Vienna, Yaks
+
+_26-04-2015, Vienna, Austria_
+
+A conference-slash-hackaton where I presented Yaks, and then worked
+with a small group of people on several features.
+
+* [slides](http://arnebrasseur.net/talks/2015-rossconf/)
+* [event website](http://rossconf.io/)
+
 
 ### RubyConf Lithuania / RubyConf Belarus, 22 March, Hypermedia in Practice
 
