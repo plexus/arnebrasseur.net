@@ -8,7 +8,28 @@ If you're not sure how to make the slides work, try hitting the space bar.
 
 ## 2015
 
+{:#rugb-lisp}
+### Rug-B: Growing a LISP
 
+_04-06-2015, Berlin, Germany_
+
+The idea for this talk had been floating in my mind for a little
+while, and when another speaker canceled it seemed the perfect
+opportunity to try it out.
+
+In the spirit of Guy Steele's
+[Growing a Language](https://www.youtube.com/watch?v=_ahvzDzKdB0), I
+"grow" a LISP by step by step defining concepts, starting from the
+absolute basics. The talk has a bit of a performance vibe to it, with
+minimal slides and a particular rhythm. Something I might push a bit
+more in future versions :)
+
+* [slides](http://arnebrasseur.net/talks/2015-rugb-06-lisp)
+* [speaker notes](http://arnebrasseur.net/talks/2015-rugb-06-lisp/notes.txt)
+* [Growing a Language - Guy Steele](https://www.youtube.com/watch?v=_ahvzDzKdB0)
+* [event website](http://www.rug-b.de/events/june-meetup-2015)
+
+{:#rossconf-vienna-2015}
 ### ROSS Conf Vienna, Yaks
 
 _26-04-2015, Vienna, Austria_
@@ -20,6 +41,7 @@ with a small group of people on several features.
 * [event website](http://rossconf.io/)
 
 
+{:#rubyconf-lt-2015}
 ### RubyConf Lithuania / RubyConf Belarus, 22 March, Hypermedia in Practice
 
 _21-03-2015, Vilnius, Lithuania / 22-03-2015 Minsk, Belarus_
@@ -29,6 +51,10 @@ A mirror event, I did the same talk at both places
 * [slides](http://arnebrasseur.net/talks/2015-rubyconf-lt-by/)
 * [RubyConf Lithuania](http://rubyconf.lt/)
 * [RubyConf Belarus](http://rubyconference.by/)
+
+I also did a lightning talk in Belarus about Slippery, the tool I built and use to make slides.
+
+* [slides](http://arnebrasseur.net/talks/2015-rubyconf-by-lightning/)
 
 
 {:#rubyfuza}
