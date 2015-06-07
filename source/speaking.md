@@ -24,6 +24,7 @@ absolute basics. The talk has a bit of a performance vibe to it, with
 minimal slides and a particular rhythm. Something I might push a bit
 more in future versions :)
 
+* [video](http://www.ustream.tv/recorded/63092858?utm_campaign=t.co&utm_source=ustre.am/:4gJkK&utm_medium=social&utm_content=20150607015702)
 * [slides](http://arnebrasseur.net/talks/2015-rugb-06-lisp)
 * [speaker notes](http://arnebrasseur.net/talks/2015-rugb-06-lisp/notes.txt)
 * [Growing a Language - Guy Steele](https://www.youtube.com/watch?v=_ahvzDzKdB0)
