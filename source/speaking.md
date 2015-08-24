@@ -38,6 +38,7 @@ _26-04-2015, Vienna, Austria_
 A conference-slash-hackaton where I presented Yaks, and then worked
 with a small group of people on several features.
 
+* [video](https://www.youtube.com/watch?v=CqUYO1WgOVc)
 * [slides](http://arnebrasseur.net/talks/2015-rossconf/)
 * [event website](http://rossconf.io/)
 
@@ -49,6 +50,7 @@ _21-03-2015, Vilnius, Lithuania / 22-03-2015 Minsk, Belarus_
 
 A mirror event, I did the same talk at both places
 
+* [video](https://www.youtube.com/watch?v=ZWPrGXL47sY&t=3m35s)
 * [slides](http://arnebrasseur.net/talks/2015-rubyconf-lt-by/)
 * [RubyConf Lithuania](http://rubyconf.lt/)
 * [RubyConf Belarus](http://rubyconference.by/)
