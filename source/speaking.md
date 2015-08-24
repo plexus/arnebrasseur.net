@@ -78,7 +78,7 @@ _1/2-10-2014, Ghent, Belgium_
 
 * [slides](http://arnebrasseur.net/talks/arrrrcamp2014)
 * [event website](http://2014.arrrrcamp.be/)
-* video not available yet
+* [video](https://www.youtube.com/watch?v=JcFmnF3BDIM)
 
 {:#frozenrails-2014}
 ### Frozen Rails: Functional Programming in Ruby
