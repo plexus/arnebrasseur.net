@@ -3,14 +3,9 @@ title: Exploring Ruby Macros
 date: 2015-10-19
 ---
 
-Macros are one of those language features that divide programmer communities.
-Some swear by their stupendous power, others reject them with a ferocity as if
-they are the breed of Satan.
+Macros are one of those language features that divide programmer communities. Some swear by their stupendous power, others reject them with a ferocity as if they are the breed of Satan.
 
-When asked Matz has always made his position clear: there is no place in Ruby
-for macros. I think he's right, the Ruby language has very little to gain by
-adding them. It would only clutter up a language with an already massive syntax,
-and encourage people to make a huge cryptic mess.
+When asked Matz has always made his position clear: there is no place in Ruby for macros. I think he's right, the Ruby language has very little to gain by adding them. It would only clutter up a language with an already massive syntax, and encourage people to make a huge cryptic mess.
 
 But that doesn't mean we can't try it out anyway :D, so during the Euruko conference I coded up a proof of concept of the (https://github.com/plexus/macros)["macros" gem.]
 
