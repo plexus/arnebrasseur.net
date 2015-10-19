@@ -9,7 +9,7 @@ When asked Matz has always made his position clear: there is no place in Ruby fo
 
 But that doesn't mean we can't try it out anyway :D, so during the Euruko conference I coded up a proof of concept of the (https://github.com/plexus/macros)["macros" gem.]
 
-Macros are syntax tree transformations that are applied before code is evaluated. Ruby doesn't expose its parse tree directly, but we can parse the code ourselves with the (https://github.com/whitequark/parser)[Parser] gem, apply macros, then turn the result into Ruby code again with (https://github.com/mbj/unparser)[Unparser], which is exactly what the (https://github.com/plexus/macros){Macros} gem does.
+Macros are syntax tree transformations that are applied before code is evaluated. Ruby doesn't expose its parse tree directly, but we can parse the code ourselves with the [Parser](https://github.com/whitequark/parser) gem, apply macros, then turn the result into Ruby code again with [Unparser](https://github.com/mbj/unparser), which is exactly what the [Macros](https://github.com/plexus/macros) gem does.
 
 Macros are most common in homoiconic languages (i.e. LISPs), where the source code directly corresponds with the parsed syntax tree. If you know how to program in such a language, you also know how to write or manipulate syntax trees. This is not the case in Ruby. Knowing how code constructs map to AST nodes is a skill in itself.
 
