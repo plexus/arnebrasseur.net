@@ -42,7 +42,7 @@ Macros have several use cases. Let's see how these could apply to Ruby.
 
 This is one of the main reasons people reach for macros, they allow you to extend a language in a way that blends in seamlessly with the existing language constructs.
 
-For example, most lisps have three conditional constructs, `if`, `when`, and `cond`. Often `if` and `when` are macros that rely on `cond`, but it's impossible to tell. They all look like regular language features.
+For example, most LISPs have three conditional constructs, `if`, `when`, and `cond`. Often `if` and `when` are macros that rely on `cond`, but it's impossible to tell. They all look like regular language features.
 
 ``` lisp
 (if x
@@ -57,9 +57,9 @@ For example, most lisps have three conditional constructs, `if`, `when`, and `co
   y b)
 ```
 
-Because lisp has macros, it is possible to add languages features in 3rd party code, features that would have to be provided by the language implementor otherise. There are lisp libraries that add object orientation, CSP channels, or logic programming, introducing new forms like defclass, defmethod, or go loops.
+Because LISP has macros, it is possible to add languages features in 3rd party code, features that would have to be provided by the language implementor otherwise. There are LISP libraries that add object orientation, CSP channels, or logic programming, introducing new forms like `defmethod`, `defclass`, or Go loops.
 
-We can do similar things with Ruby macros, but because we are bound by the existing parser we can't introduce new forms. So our macro calls will resemble method calls, rather than built-in keywords. The issue here is that the parser is aware of keywords like class or def, but not of the ones our macros introduce.
+We can do similar things with Ruby macros, but because we are bound by the existing parser we can't introduce new forms. So our macro calls will resemble method calls, rather than built-in keywords. The issue here is that the parser is aware of keywords like `class` or `def`, but it doesn't know about the keywords our macros try to introduce.
 
 As an illustration, originally I thought of having macros look like this:
 
@@ -101,7 +101,7 @@ There are certain problems that can perfectly be solved without macros, but some
 
 This is probably the most contentious case to discuss. Your macro based solution may seem pure genius, but will you still be able to follow it in a few weeks or months? How about your colleagues?
 
-It wouldn't be the first lisp programmer to throw away their tangled mess of macros and start over with good old reliable functions. With great power comes a great ability to screw up.
+It wouldn't be the first LISP programmer to throw away their tangled mess of macros and start over with good old reliable functions. With great power comes a great ability to screw up.
 
 ## Conclusion
 
