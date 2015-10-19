@@ -1,5 +1,5 @@
 ---
-title: Exploring Ruby: Macros
+title: Exploring Ruby Macros
 date: 2015-10-19
 ---
 
