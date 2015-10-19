@@ -7,7 +7,7 @@ Macros are one of those language features that divide programmer communities. So
 
 When asked Matz has always made his position clear: there is no place in Ruby for macros. I think he's right, the Ruby language has very little to gain by adding them. It would only clutter up a language with an already massive syntax, and encourage people to make a huge cryptic mess.
 
-But that doesn't mean we can't try it out anyway :D, so during the Euruko conference I coded up a proof of concept of the (https://github.com/plexus/macros)["macros" gem.]
+But that doesn't mean we can't try it out anyway :D, so during the Euruko conference I coded up a proof of concept of the ["macros" gem.](https://github.com/plexus/macros)
 
 Macros are syntax tree transformations that are applied before code is evaluated. Ruby doesn't expose its parse tree directly, but we can parse the code ourselves with the [Parser](https://github.com/whitequark/parser) gem, apply macros, then turn the result into Ruby code again with [Unparser](https://github.com/mbj/unparser), which is exactly what the [Macros](https://github.com/plexus/macros) gem does.
 
@@ -79,7 +79,7 @@ end
 
 But the `do` makes this look inconsistent, and exposes it as the hack it is, since the parser will consider this two function calls.
 
-This all felt a bit too hodgepodgey to me, so I settled on using regular def, but inside a `Macros do ; end` block.
+This all felt a bit too hodgepodgey to me, so I settled on using regular `def`, but inside a `Macros do ; end` block.
 
 ``` ruby
 Macros do
