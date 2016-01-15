@@ -6,6 +6,28 @@ Tech talks (full-length and lightning talks) I've given in public, in reverse ch
 
 If you're not sure how to make the slides work, try hitting the space bar.
 
+## 2016
+
+### Clojure Berlin: A Demo of the New Chestnut
+
+_13-01-2016, Berlin, Germany_
+
+A demonstration of the new version of [Chestnut](https://github.com/plexus/chestnut).
+
+* [Screen recording](https://www.youtube.com/watch?v=GcdAIVOWBUQ)
+
+{:#rugb-idiomatic}
+### Rug-B: Burn Your Idiomatic Ruby
+
+_07-01-2016, Berlin, Germany_
+
+An exploration of the concept of idiomatic code, what it means, and what it
+implies. This was a showcase for RubyConf Australia.
+
+* [Screen recording](https://www.youtube.com/watch?v=zdWvMLL4Vu0)
+* [Slides](http://arnebrasseur.net/talks/2016-rugb-idiomatic/#/1)
+
+
 ## 2015
 
 {:#rugb-lisp}
@@ -112,7 +134,7 @@ _25-04-2014 - 26-04-204, Taipei, Taiwan_
 
 My first chance to do a full length talk on this exciting topic:
 
-* [video](https://www.youtube.com/watch?v=L8PNydBAsGo)
+* [video](https://www.youtube.com/watch?v=YbKKhBzSIQQ)
 * [slides](http://arnebrasseur.net/talks/rubyconftw2014/fp_in_ruby.html)
 * [conference website](http://rubyconf.tw/2014/)
 
