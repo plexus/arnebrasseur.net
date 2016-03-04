@@ -77,4 +77,6 @@ Based in London, UK.
 
 Stylefruits is a german social shopping community, where you can easily create own outfits and trends.
 
+For more info you can contact [Jan Stępień](https://twitter.com/janstepien)
+
 Based in Munich.
