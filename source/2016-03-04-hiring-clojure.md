@@ -5,6 +5,8 @@ date: 2016-03-04
 
 I recently got an email of a friend of a friend looking for Clojure opportunities. I asked around on Twitter to find out who's currently hiring, and got a lot of responses. If you were thinking of making the jump to doing Clojure professionally there's no better time than now.
 
+Here's the [original tweet and replies](https://twitter.com/plexus/status/704842358534242304).
+
 Here are some of the companies that responded or got mentioned:
 
 * Zalando ([@ZalandoTech](https://twitter.com/ZalandoTech)) [wikipedia](https://en.wikipedia.org/wiki/Zalando)
@@ -70,3 +72,9 @@ Custom software development for web, mobile, desktop, and devices. Atomic is an 
 [Job ad](https://www.linkedin.com/jobs2/view/104820684?trk=biz-overview-job-post)
 
 Based in London, UK.
+
+* Stylefruits
+
+Stylefruits is a german social shopping community, where you can easily create own outfits and trends.
+
+Based in Munich.
