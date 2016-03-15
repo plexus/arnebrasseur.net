@@ -80,3 +80,11 @@ Stylefruits is a german social shopping community, where you can easily create o
 For more info you can contact [Jan Stępień](https://twitter.com/janstepien)
 
 Based in Munich.
+
+**Update 2015-03-15**
+
+[Signal](http://signal.uk.com/) In London, UK is doing a "big hiring sprint".
+
+Signal is a platform built for analysing text and discovering market intelligence.
+
+[Job ad](https://signal.workable.com/jobs/201996)
