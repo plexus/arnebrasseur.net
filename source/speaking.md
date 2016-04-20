@@ -6,7 +6,33 @@ Tech talks (full-length and lightning talks) I've given in public, in reverse ch
 
 If you're not sure how to make the slides work, try hitting the space bar.
 
+
 ## 2016
+
+### Burn Your Idiomatic Ruby
+
+An exploration of the concept of idiomatic code, what it means, and what it
+implies.
+
+_07-01-2016, Berlin, Germany_
+
+A try-out at Rug::B in preparation of RubyConf Australia
+
+* [Screen recording](https://www.youtube.com/watch?v=zdWvMLL4Vu0)
+* [Slides](http://arnebrasseur.net/talks/2016-rugb-idiomatic/)
+* [Event page](http://www.rug-b.de/events/january-meetup-2016)
+
+_10/11/12-02-2016, Gold Coast, Australia_
+
+* [Video](https://rubyconf.eventer.com/rubyconf-australia-2016-1489/burn-your-idiomatic-ruby-by-arne-brasseur-1936)
+* [Slides](http://arnebrasseur.net/talks/2016-rubyconfau-idiomatic/)
+* [Event site](http://rubyconf.org.au/2016)
+
+_19-04-2016, Brussels, Belgium_
+
+* [Slides](http://arnebrasseur.net/talks/2016-brug-idiomatic/)
+* [Event page](http://www.meetup.com/ruby_belgium/events/228240658/)
+
 
 ### Clojure Berlin: A Demo of the New Chestnut
 
@@ -23,9 +49,6 @@ _07-01-2016, Berlin, Germany_
 
 An exploration of the concept of idiomatic code, what it means, and what it
 implies. This was a showcase for RubyConf Australia.
-
-* [Screen recording](https://www.youtube.com/watch?v=zdWvMLL4Vu0)
-* [Slides](http://arnebrasseur.net/talks/2016-rugb-idiomatic/#/1)
 
 
 ## 2015
