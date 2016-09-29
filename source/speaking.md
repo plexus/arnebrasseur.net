@@ -9,12 +9,25 @@ If you're not sure how to make the slides work, try hitting the space bar.
 
 ## 2016
 
+### Treating Markdown As org-mode
+
+_29-09-206, Berlin_
+
+A lightning talk for Emacs Berlin
+
+* [Slides](http://arnebrasseur.net/talks/2016-emacs-berlin-md-org/#)
+
 ### Introducing core.spec
 
 _30-06-206, Poznan, Poland_
+_10-09-206, Tampere, Finland_
 
-I gave an early version of this talk for the Clojure meetup in Berlin, and then a more polished version for a broader audience at Polyconf 2016.
+I gave an early version of this talk for the Clojure meetup in Berlin, and then
+a more polished version for a broader audience at Polyconf 2016. Finally I did a
+version adapted for a Clojure programmer audience at ClojuTRE.
 
+* [Video from PolyConf](https://www.youtube.com/watch?v=CVO0M8CTV78)
+* [Video from ClojuTRE](https://www.youtube.com/watch?v=-MeOPF94LhI)
 * [Slides](http://arnebrasseur.net/talks/2016-clojure-spec/#cover)
 * [Event site](http://polyconf.com/)
 
