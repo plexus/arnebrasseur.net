@@ -9,9 +9,17 @@ If you're not sure how to make the slides work, try hitting the space bar.
 
 ## 2016
 
+### Why React and re-frame are fast: 7 performance hacks
+
+_11-10-2016, Berlin_
+
+Did this talk at the Clojure meetup in Berlin.
+
+* [Slides](http://arnebrasseur.net/talks/2016-react-fast/#)
+
 ### Treating Markdown As org-mode
 
-_29-09-206, Berlin_
+_29-09-2016, Berlin_
 
 A lightning talk for Emacs Berlin
 
