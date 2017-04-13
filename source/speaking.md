@@ -6,6 +6,21 @@ Tech talks (full-length and lightning talks) I've given in public, in reverse ch
 
 If you're not sure how to make the slides work, try hitting the space bar.
 
+## 2017
+
+### Clojure vs Emacs Lisp
+
+_13-04-2017, Clojure meetup, Berlin_
+
+_29-03-2017, Emacs meetup, Berlin_
+
+* [Slides](http://arnebrasseur.net/talks/2017-emacs-vs-clojure/)
+
+### ClojureScript and React
+
+_20-03-2017, Berlin_
+
+* [Slides](http://arnebrasseur.net/talks/2017-berlin-reactjs)
 
 ## 2016
 
@@ -15,6 +30,7 @@ _11-10-2016, Berlin_
 
 Did this talk at the Clojure meetup in Berlin.
 
+* [Video](https://lambdaisland.com/p/why-react-reagent-fast-7-performance-hacks)
 * [Slides](http://arnebrasseur.net/talks/2016-react-fast/#)
 
 ### Treating Markdown As org-mode
