@@ -20,7 +20,20 @@ _29-03-2017, Emacs meetup, Berlin_
 
 _20-03-2017, Berlin_
 
+Presented at the Berlin React.js meetup
+
+* [Video](https://www.youtube.com/watch?v=Sbej4OYTwjg)
 * [Slides](http://arnebrasseur.net/talks/2017-berlin-reactjs)
+
+
+### Emacs and Clojure, a Lispy <3 Affair
+
+_22-02-2017, Berlin_
+
+Presented at the Emacs Berlin user group
+
+* [Video](https://www.youtube.com/watch?v=O6g5C4jUCUc)
+* [Slides](http://arnebrasseur.net/talks/2017-lispy-love-affair)
 
 ## 2016
 
