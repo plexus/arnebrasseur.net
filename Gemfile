@@ -8,7 +8,6 @@ source 'http://rubygems.org'
 gem "middleman"
 gem "middleman-blog", "~> 3.5.3"
 gem 'bourbon'
-gem 'tilt-handlebars'
 gem 'redcarpet'
 gem 'middleman-syntax'
 gem 'middleman-livereload'

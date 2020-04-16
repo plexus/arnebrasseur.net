@@ -3,7 +3,6 @@
 ###
 
 # Time.zone = "UTC"
-
 require "sanitize"
 
 helpers do
@@ -164,3 +163,11 @@ configure :build do
   # Or use a different image path
   # set :http_prefix, "/Content/images/"
 end
+
+module NotSoObsolete
+  def warn *_
+    # ignore these kind of warnings
+  end
+end
+
+URI.singleton_class.prepend NotSoObsolete

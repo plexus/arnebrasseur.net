@@ -6,6 +6,38 @@ Tech talks (full-length and lightning talks) I've given in public, in reverse ch
 
 If you're not sure how to make the slides work, try hitting the space bar.
 
+## 2020
+
+### Regal Expressions (lightning talk)
+
+_29-02-2020, ClojureD, Berlin_
+
+## 2019
+
+### Kaocha, a functional test runner
+
+_10-10-2019, Clojure Meetup, Singapore_
+
+* [Slides](http://arnebrasseur.net/talks/2019-kaocha/)
+* [Meetup page](https://www.meetup.com/Singapore-Clojure-Meetup/events/265175045/)
+
+## 2018
+
+### Clojure REPLs, closing the loop
+
+_25-02-2018, Clojure meetup, Taipei_
+
+* [Slides](http://arnebrasseur.net/talks/2018-clojure-repl/)
+* [Meetup page](https://www.meetup.com/Clojure-tw/events/247467501/)
+
+### The Art of Tree Shaping with Zippers
+
+_18-10-2018, Clojure Meetup, Denver, Colorado_
+
+* [Video + Transcript](https://lambdaisland.com/blog/2018-11-26-art-tree-shaping-clojure-zip)
+* [Slides](http://arnebrasseur.net/talks/2018-clojure-zip-denver/#)
+* [Meetup page](https://www.meetup.com/denofclojure/events/254617694/)
+
 ## 2017
 
 ### Clojure vs Emacs Lisp
@@ -56,8 +88,8 @@ A lightning talk for Emacs Berlin
 
 ### Introducing core.spec
 
-_30-06-206, Poznan, Poland_
-_10-09-206, Tampere, Finland_
+_30-06-2016, Poznan, Poland_
+_10-09-2016, Tampere, Finland_
 
 I gave an early version of this talk for the Clojure meetup in Berlin, and then
 a more polished version for a broader audience at Polyconf 2016. Finally I did a
