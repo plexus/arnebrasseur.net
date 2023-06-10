@@ -1,0 +1,58 @@
+<!DOCTYPE>
+<html><head><meta charset="UTF-8"><meta content="width=device-width, initial-scale=1" name="viewport"><link href=" https://cdn.jsdelivr.net/npm/@picocss/pico@1.5.10/css/pico.min.css " rel="stylesheet"><link href="http://devblog.arnebrasseur.net/feed.xml" rel="alternate" title="Plexus Devblog" type="application/atom+xml"><title>The Devil in Plain Text</title></head><body><header><nav><a href="/"><strong>Arne's Personal Blog</strong></a></nav></header><main><article><header><h1>The Devil in Plain Text</h1>Posted by Arne on 15/04/2013, 02:00:00</header><p>When developing for the web, one inevitably deals with lots of strings. When a browser talks to your killer web app they converse in plain text. String manipulation seems to be a web developer's core business.</p>
+<p>A language like Ruby is a natural fit for this kind of job, since it inherits the exquisite text manipulation features from Perl. Here's a partial list of the languages you might be dealing with in a modern day web project :</p>
+<ul>
+<li>HTML, CSS, Javascript</li>
+<li>HAML, SASS/SCSS, Coffeescript</li>
+<li>JSON, XML, YAML</li>
+<li>SQL, Ruby, Regex</li>
+<li>URL, HTTP request/response, Mbox/MIME</li>
+</ul>
+<h2>Precious Plain Text</h2>
+<p>These are all formal languages, with specific rules of what constitutes a well formed string, and with specific semantics. Yet a lot of the time we deal with them in our programs as mere strings of characters, generating them on the fly with string interpolation and templating systems, parsing them ad-hoc with regexp matching.</p>
+<p>This is in itself an amazing accomplishment, a consequence of the Unix history of writing simple but composable tools with plain text interfaces. Plain text is The Universal Data Type, the One to Rule Them All. There is something profoundly pragmatic about reducing all problems to text manipulation. But like the One Ring, one should consider carefully when to wield its power.</p>
+<h2>What we (still haven't) learned from SQL injection attacks</h2>
+<p>No self respecting web dev would dare to commit this code :</p>
+<pre><code class="language-ruby">User.where("age &gt; #{params[:min_age]}")
+</code></pre>
+<p>Several decades of SQL injection attacks, and little <a href="http://xkcd.com/327/">Bobby Tables</a>, have taught us that escaping values in queries is not optional, so instead we write :</p>
+<pre><code class="language-ruby">User.where("age &gt; ?", params[:min_age])
+</code></pre>
+<p>Now the database driver will 'escape' the value before inserting it into the SQL statement, making sure that in its target context it is still just a single value.</p>
+<p>Sadly SQL seems to be the only case where this mechanism has become standardized, automated, and commonly used. We still manually <code>CGI.escape</code>, <code>Regexp.escape</code>, <code>json_escape</code>, <code>Shellwords.escape</code>, and just as often, we forget.</p>
+<h2>Semantics, semantics, semantics!</h2>
+<p>The obvious problem is that we are dealing with "dumb" strings containing "smart" data. You, the programmer, know what is in them, but your program has no clue.</p>
+<p>The case above is common : we move a primitive value like an integer or a string into a new context. Its meaning is supposed to stay the same (e.g integer:4, string:'foo'), but because it ends up in a context with different laws, it needs to be encoded in a particular way. Here is the literal string <code>"Foo&amp;Bar, just 4U!"</code> in a few different contexts:</p>
+<pre><code class="language-html">&lt;p&gt;Foo&amp;amp;Bar, just 4U!&lt;/p&gt;
+</code></pre>
+<pre><code>http://example.com/Foo%26Bar%2C+just+4U%21
+</code></pre>
+<pre><code class="language-bash">echo Foo\\&amp;Bar,\\ just\\ 4U\\!
+</code></pre>
+<p>If only Ruby Strings were a little bit smarter! But wait, they have already smartened up. Ruby 1.9 strings contain characters rather than bytes. They are aware of their own encoding, adding a level of interpretation on top of the underlying array of bytes. It would be an interesting exercise to make strings content-type aware. Here's how it could work.</p>
+<pre><code class="language-ruby">p1, p2 = String.html('&lt;p&gt;'), String.html('&lt;/p&gt;')
+foo = 'foo&amp;&lt;bar&gt;'
+p1.type
+# =&gt; 'html'
+foo.type
+# =&gt; 'raw'
+html = p1 + foo + p2
+# =&gt; '&lt;p&gt;foo&amp;amp;&amp;gt;bar&amp;lt;&lt;/p&gt;'
+</code></pre>
+<p>This is a step in the right direction. It is a trivial example however, and I don't want to dwell on it too long in this post. My main point is that we could use a unified API for constructing and composing 'strings with meaning'. But it would be no more than a compromise, an iterative step up from where we are.</p>
+<p><strong>Update: <a href="https://github.com/jcoglan/coping">Coping by James Coglan</a> is an implementation of this idea.</strong></p>
+<h2>The Universal Data Type, Revisited</h2>
+<p>Properly encoding strings matters, it is something we should always keep in mind, but there is an iceberg of other potential issues lurking underneath the water when we treat structured data as merely textual strings. We are playing doctor Frankenstein, tinkering with characters to create monstrosities of ill-formed strings with dubious semantics.</p>
+<p>The reason we do this seems to be that our tools are so well suited for textual manipulation. We are wielding Maslow's Regexp and treating every problem as a textual nail. Surely we can do better.</p>
+<p>Ruby has more than one parent, and while it has the powerful string processing of Perl, it is also inspired by the elegant list processing of LISP.</p>
+<p>Long before the plain text hegemony of Unix, there was already the world of LISP in which everything is a list. Strings are lists, as are nil, true, functions, lambdas, and (surprise) lists. LISP pioneered the idea of having a unifying data type, and providing powerful tools to manipulate it. And half a century later we are still dealing with data in a representation that's several levels of abstraction removed from that.</p>
+<p>We could be dealing with lists of tokens, or abstract syntax trees, and yet we aren't. We are concatenating strings because we need to "get shit done".</p>
+<p>Here's an exercise : go back to the list of languages at the top and for each of them ask yourself :</p>
+<ul>
+<li>do you know a parser library for that language?</li>
+<li>do you know how to use it?</li>
+<li>can you manipulate the parsed data structure, adding, removing and changing nodes?</li>
+<li>can you turn the result back into its textual representation?</li>
+</ul>
+<p>There is a gap in our tooling waiting to be filled. We need an elegant API contract that all parser/generator libraries can implement. Learn once, use everywhere. My hope is that you will look at all this string wizardry with different eyes. You might find it hard to unsee a pattern, it may even start to itch. And when it does, scratch.</p>
+</article></main><footer></footer></body></html>
