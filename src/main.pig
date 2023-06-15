@@ -42,6 +42,22 @@
            :slug (.replace path ".md" ""))
          (html->fragment (parse-md (.substring text (count preamble))))]))))
 
+(defn ->pig [o]
+  (cond
+    (object? o)
+    (reify
+      DictLike
+      Associative
+      (-assoc [_ k v]
+        (let [o (js:Object.assign #js {} o)]
+          (oset o k v)
+          (->pig o)))
+
+      )))
+
+(let [k "bra"]
+  #js {k "hello"})
+
 (defn template [opts]
   (let [title (.-title opts)
         date (.toTemporalInstant (.-date opts))]
@@ -66,8 +82,28 @@
          "Posted by Arne on " (.toLocaleString date "en-GB")]]]
       [:footer]]]))
 
+(defn atom-feed [posts]
+  (let [date (max )])
+  (str
+    "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+    (dom:outer-html
+      (dom:dom
+        [:feed {:xmlns "http://www.w3.org/2005/Atom"}
+         [:title "Arne Brassseur"]
+         [:link {:href "http://arnebrasseur.net"}]
+         [:updated "2003-12-13T18:30:02Z"]
+         [:author [:name "John Doe"]]
+         [:id "urn:uuid:60a76c80-d399-11d9-b93C-0003939e0af6"]
+         [:entry
+          [:title "Atom-Powered Robots Run Amok"]
+          [:link {:href "http://example.org/2003/12/13/atom03"}]
+          [:id "urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a"]
+          [:updated "2003-12-13T18:30:02Z"]
+          [:summary "Some text."]]])))
+  )
+
+
 (doseq [[opts fragment] posts]
-  (def xxx opts)
   (let [tmpl-dom (dom:dom (new-document) (template opts))]
     (dom:append-child (dom:query tmpl-dom "article")
       (.cloneNode fragment true))
