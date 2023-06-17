@@ -25,7 +25,7 @@
       Associative
       (-assoc [_ k v]
         (if (or (string? k) (keyword? k))
-          (->pig (ossoc o k v))
+          (->pig (oassoc o k v))
           (assoc
             (into {} (map (fn [[k v]] [k (->pig v)]))
               (js:Object.entries o))
@@ -146,8 +146,6 @@
      [:updated "2003-12-13T18:30:02Z"]
      [:summary "Some text."]]))
 
-(vector? (for [x (range 2)]
-           x))
 
 (doseq [[opts fragment] posts]
   (let [tmpl-dom (dom:dom (new-document) (template opts))]
