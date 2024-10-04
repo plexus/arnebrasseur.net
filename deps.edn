@@ -1,5 +1,13 @@
-{:deps {com.lambdaisland/reitit-jaatya {:mvn/version "0.2.40"}
+{:deps {org.clojure/clojure            {:mvn/version "1.12.0"}
+        com.lambdaisland/reitit-jaatya {:mvn/version "0.2.40"}
         com.lambdaisland/hiccup        {:mvn/version "0.10.51"}
-        com.lambdaisland/ornament      {:mvn/version "1.12.107"}
+
+        com.lambdaisland/ornament
+        {;; ornament-next with defprop/defrules/import-tokens
+         :git/sha "0af129132bfbfeba940705031f83b60250e71dcf"
+         :git/url "https://github.com/lambdaisland/ornament.git"}
+        #_{:mvn/version "1.12.107"}
         com.lambdaisland/webstuff      {:mvn/version "0.1.54"}
-        fi.metosin/reitit              {:mvn/version "0.7.0-alpha6"}}}
+        fi.metosin/reitit              {:mvn/version "0.7.0-alpha6"}}
+ :aliases
+ {:dev {:extra-paths ["dev"]}}}
