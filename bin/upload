@@ -1,0 +1,2 @@
+scp out/index.html arnebrasseur@arnebrasseur.net:subdomains/www
+scp -r assets arnebrasseur@arnebrasseur.net:subdomains/www
