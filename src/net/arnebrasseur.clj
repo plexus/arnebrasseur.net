@@ -38,18 +38,24 @@
 (o/defprop --mirage "#0c182e")
 (o/defprop --arapawa "#01095E")
 (o/defprop --emerald "#38D07B")
+(o/defprop --toast "#8B6253")
+(o/defprop --laser-lemon "#F3F976")
+(o/defprop --green-onion "#78ff94")
 
 (o/defprop --primary --arapawa)
-(o/defprop --secondary --emerald)
+(o/defprop --secondary --green-onion)
 
 (o/defrules styles
   [:html
-   {:font-size "22pt"}]
+   {:font-size "18pt"}
+   [:at-media {:min-width "60rem"}
+    {:font-size "22pt"}]]
   [:body
    {:background-color --secondary
     :color --primary
     :max-width "48em"
     :margin "0 auto"}]
+  [:main {:padding "0 1em"}]
   [#{:h1 :h2 :h3 :h4 :h5}
    {:font-family "'Ostrich Sans'"
     :font-weight "400"}]
@@ -64,7 +70,8 @@
     [:style (o/defined-styles)]
     [:link {:rel "stylesheet" :href "assets/fonts/ostrich-sans/ostrich-sans.css"}]]
    [:body
-    content]])
+    [:main
+     content]]])
 
 (defn render []
   (io/make-parents "out/index.html")

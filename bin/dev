@@ -1,26 +1,44 @@
 #!/usr/bin/env bb
 
-(require '[lambdaisland.cli :as cli])
+(require
+ '[lambdaisland.cli :as cli]
+ '[babashka.http-server :as bb-server]
+ '[lambdaisland.shellutils :as su])
 
 (def init {})
 
-(defn
- initialize-local-files
- "Create local files which are not checked in"
- [_]
- (spit "deps.local.edn" "{:launchpad/aliases [:dev]}"))
+(defn initialize-local-files
+  "Create local files which are not checked in"
+  [_]
+  (spit "deps.local.edn" "{:launchpad/aliases [:dev]}"))
 
-(def commands ["init" #'initialize-local-files])
+(defn serve
+  "Start local dev server"
+  [_]
+  (bb-server/serve {:port 3800 :dir "out"})
+  @(promise))
 
-(def
- flags
- ["-v, --verbose"
-  "Increase verbosity"
-  "-h, --help"
-  "Show help text for a (sub-)command"])
+(defn release
+  [_]
+  (su/spawn "clojure" "src/net/arnebrasseur.clj")
+  (su/spawn "scp" "-r" "out" "arnebrasseur@arnebrasseur.net:subdomains/www")
+  (su/spawn "scp" "-r" "assets" "arnebrasseur@arnebrasseur.net:subdomains/www")
+  )
+
+(def commands
+  ["serve" #'serve
+   "init" #'initialize-local-files
+   "release" #'release])
+
+(def flags
+  ["-v, --verbose" "Increase verbosity"
+   "-h, --help" "Show help text for a (sub-)command"])
 
 (cli/dispatch*
- {:name "bin/dev", :init init, :flags flags, :commands commands})
+ {:name "bin/dev"
+  :init init
+  :flags flags
+  :commands commands})
 
 ;; Local Variables:
 ;; mode:clojure
