@@ -1,10 +1,16 @@
-<!DOCTYPE>
-<html><head><meta charset="UTF-8"><meta content="width=device-width, initial-scale=1" name="viewport"><link href=" https://cdn.jsdelivr.net/npm/@picocss/pico@1.5.10/css/pico.min.css " rel="stylesheet"><link href="http://devblog.arnebrasseur.net/feed.xml" rel="alternate" title="Plexus Devblog" type="application/atom+xml"><title>Exploring Ruby Macros</title></head><body><header><nav><a href="/"><strong>Arne's Personal Blog</strong></a></nav></header><main><article><header><h1>Exploring Ruby Macros</h1>Posted by Arne on 19/10/2015, 02:00:00</header><p>Macros are one of those language features that divide programmer communities. Some swear by their stupendous power, others reject them with a ferocity as if they are the breed of Satan.</p>
-<p>When asked Matz has always made his position clear: there is no place in Ruby for macros. I think he's right, the Ruby language has very little to gain by adding them. It would only clutter up a language with an already massive syntax, and encourage people to make a huge cryptic mess.</p>
-<p>But that doesn't mean we can't try it out anyway :D, so during the Euruko conference I coded up a proof of concept of the <a href="https://github.com/plexus/macros">"macros" gem.</a></p>
-<p>Macros are syntax tree transformations that are applied before code is evaluated. Ruby doesn't expose its parse tree directly, but we can parse the code ourselves with the <a href="https://github.com/whitequark/parser">Parser</a> gem, apply macros, then turn the result into Ruby code again with <a href="https://github.com/mbj/unparser">Unparser</a>, which is exactly what the <a href="https://github.com/plexus/macros">Macros</a> gem does.</p>
+<!DOCTYPE html>
+<html><head><title>Arne Brasseur . net</title><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><style>:where(html){--net-arnebrasseur--primary:var(--net-arnebrasseur--arapawa);--net-arnebrasseur--red-violet:#b9077e;--net-arnebrasseur--emerald:#38d07b;--net-arnebrasseur--laser-lemon:#f3f976;--net-arnebrasseur--green-onion:#78ff94;--net-arnebrasseur--secondary:var(--net-arnebrasseur--green-onion);--net-arnebrasseur--chateau-green:#1ea34c;--net-arnebrasseur--arapawa:#01095e;--net-arnebrasseur--toast:#8b6253;--net-arnebrasseur--pink-lace:#fddef4;--net-arnebrasseur--mirage:#0c182e}html{font-size:18pt}@media(min-width:60rem){html{font-size:22pt}}body{background-color:var(--net-arnebrasseur--secondary);color:var(--net-arnebrasseur--primary);max-width:48em;margin:0 auto}main{padding:0 1em}h5,h4,h2,h1,h3{font-family:'Ostrich Sans';font-weight:400}h1{font-size:3rem}</style><link rel="stylesheet" href="assets/fonts/ostrich-sans/ostrich-sans.css" /></head><body><main><article><h1>Exploring Ruby Macros</h1><aside>Published 2015-10-19 by <a href="/">Arne Brasseur</a>. <a href="https://arnebrasseur.net/2015-10-19-Exploring-Ruby-Macros.html">(permalink)</a></aside><main><p>Macros are one of those language features that divide programmer communities. Some swear by their stupendous power, others reject them with a ferocity as if they are the breed of Satan.</p>
+
+<p>When asked Matz has always made his position clear: there is no place in Ruby for macros. I think he’s right, the Ruby language has very little to gain by adding them. It would only clutter up a language with an already massive syntax, and encourage people to make a huge cryptic mess.</p>
+
+<p>But that doesn’t mean we can’t try it out anyway :D, so during the Euruko conference I coded up a proof of concept of the <a href="https://github.com/plexus/macros">“macros” gem.</a></p>
+
+<p>Macros are syntax tree transformations that are applied before code is evaluated. Ruby doesn’t expose its parse tree directly, but we can parse the code ourselves with the <a href="https://github.com/whitequark/parser">Parser</a> gem, apply macros, then turn the result into Ruby code again with <a href="https://github.com/mbj/unparser">Unparser</a>, which is exactly what the <a href="https://github.com/plexus/macros">Macros</a> gem does.</p>
+
 <p>Macros are most common in homoiconic languages (i.e. LISPs), where the source code directly corresponds with the parsed syntax tree. If you know how to program in such a language, you also know how to write or manipulate syntax trees. This is not the case in Ruby. Knowing how code constructs map to AST nodes is a skill in itself.</p>
+
 <p>For example:</p>
+
 <pre><code class="language-ruby">Macros.parse('collection.inject({}) {|acc, el| acc.merge(el.name =&gt; el) }')
 # =&gt;
 s(:block,
@@ -22,11 +28,17 @@ s(:block,
           s(:lvar, :el), :name),
         s(:lvar, :el)))))
 </code></pre>
-<h2>Why macros</h2>
-<p>Macros have several use cases. Let's see how these could apply to Ruby.</p>
-<h3>Introducing custom syntax</h3>
+
+<h2 id="why-macros">Why macros</h2>
+
+<p>Macros have several use cases. Let’s see how these could apply to Ruby.</p>
+
+<h3 id="introducing-custom-syntax">Introducing custom syntax</h3>
+
 <p>This is one of the main reasons people reach for macros, they allow you to extend a language in a way that blends in seamlessly with the existing language constructs.</p>
-<p>For example, most LISPs have three conditional constructs, <code>if</code>, <code>when</code>, and <code>cond</code>. Often <code>if</code> and <code>when</code> are macros that rely on <code>cond</code>, but it's impossible to tell. They all look like regular language features.</p>
+
+<p>For example, most LISPs have three conditional constructs, <code>if</code>, <code>when</code>, and <code>cond</code>. Often <code>if</code> and <code>when</code> are macros that rely on <code>cond</code>, but it’s impossible to tell. They all look like regular language features.</p>
+
 <pre><code class="language-lisp">(if x
   a
   b)
@@ -38,34 +50,53 @@ s(:block,
   x a
   y b)
 </code></pre>
+
 <p>Because LISP has macros, it is possible to add languages features in 3rd party code, features that would have to be provided by the language implementor otherwise. There are LISP libraries that add object orientation, CSP channels, or logic programming, introducing new forms like <code>defmethod</code>, <code>defclass</code>, or Go loops.</p>
-<p>We can do similar things with Ruby macros, but because we are bound by the existing parser we can't introduce new forms. So our macro calls will resemble method calls, rather than built-in keywords. The issue here is that the parser is aware of keywords like <code>class</code> or <code>def</code>, but it doesn't know about the keywords our macros try to introduce.</p>
+
+<p>We can do similar things with Ruby macros, but because we are bound by the existing parser we can’t introduce new forms. So our macro calls will resemble method calls, rather than built-in keywords. The issue here is that the parser is aware of keywords like <code>class</code> or <code>def</code>, but it doesn’t know about the keywords our macros try to introduce.</p>
+
 <p>As an illustration, originally I thought of having macros look like this:</p>
+
 <pre><code class="language-ruby">defmacro foo(x)
   #...
 end
 </code></pre>
-<p>This is not syntactically valid because the parser doesn't know that defmacro starts a block, so the trailing end causes it to blow up. This would have worked</p>
+
+<p>This is not syntactically valid because the parser doesn’t know that defmacro starts a block, so the trailing end causes it to blow up. This would have worked</p>
+
 <pre><code class="language-ruby">defmacro foo(x) do
   # ...
 end
 </code></pre>
+
 <p>But the <code>do</code> makes this look inconsistent, and exposes it as the hack it is, since the parser will consider this two function calls.</p>
+
 <p>This all felt a bit too hodgepodgey to me, so I settled on using regular <code>def</code>, but inside a <code>Macros do ; end</code> block.</p>
+
 <pre><code class="language-ruby">Macros do
   def foo(ast)
 
   end
 end
 </code></pre>
-<h3>Performance</h3>
+
+<h3 id="performance">Performance</h3>
+
 <p>Macros are expanded at load time, the running system is no longer aware of them. This makes it possible to apply optimizations. One example would be stripping out debug calls.</p>
-<p>Ruby has elaborate support for introspection and meta programming, but it introduces an extra layer of interpretation that takes up CPU cycles. Because of this some existing, popular Ruby projects prefer mashing strings together and eval'ing the result, instead of using existing tools like define_method, thus using a half assed, informally specified, bug ridden implementation of macros. In this case they probably should just use actual macros.</p>
-<h3>Meta programming</h3>
-<p>There are certain problems that can perfectly be solved without macros, but somehow the level of "programming programs" makes their solution so much more elegant and concise.</p>
+
+<p>Ruby has elaborate support for introspection and meta programming, but it introduces an extra layer of interpretation that takes up CPU cycles. Because of this some existing, popular Ruby projects prefer mashing strings together and eval’ing the result, instead of using existing tools like define_method, thus using a half assed, informally specified, bug ridden implementation of macros. In this case they probably should just use actual macros.</p>
+
+<h3 id="meta-programming">Meta programming</h3>
+
+<p>There are certain problems that can perfectly be solved without macros, but somehow the level of “programming programs” makes their solution so much more elegant and concise.</p>
+
 <p>This is probably the most contentious case to discuss. Your macro based solution may seem pure genius, but will you still be able to follow it in a few weeks or months? How about your colleagues?</p>
-<p>It wouldn't be the first LISP programmer to throw away their tangled mess of macros and start over with good old reliable functions. With great power comes a great ability to screw up.</p>
-<h2>Conclusion</h2>
-<p>Bringing macros to Ruby has been a great thought exercise, and has really made it clear to me why the two aren't a good match. Then again, maybe there are genuinely defendable use cases. Clojure's <code>core.async</code> hinges on the <code>go</code> macro, which rewrites code using async channels into a state machine. Could we port that to ruby? How about logic programming?</p>
+
+<p>It wouldn’t be the first LISP programmer to throw away their tangled mess of macros and start over with good old reliable functions. With great power comes a great ability to screw up.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Bringing macros to Ruby has been a great thought exercise, and has really made it clear to me why the two aren’t a good match. Then again, maybe there are genuinely defendable use cases. Clojure’s <code>core.async</code> hinges on the <code>go</code> macro, which rewrites code using async channels into a state machine. Could we port that to ruby? How about logic programming?</p>
+
 <p>So maybe they will become just another tool in my toolbox. One I should never, ever need. Except when I do.</p>
-</article></main><footer></footer></body></html>
+</main></article></main></body></html>

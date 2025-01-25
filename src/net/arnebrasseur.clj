@@ -1,12 +1,19 @@
 (ns net.arnebrasseur
   (:require
+   [clj-yaml.core :as yaml]
    [clojure.java.io :as io]
+   [clojure.string :as str]
    [lambdaisland.hiccup :as hiccup]
    [lambdaisland.kramdown :as kramdown]
    [lambdaisland.ornament :as o]
    [net.cgrand.enlive-html :as enlive])
   (:import
    (java.io StringReader)))
+
+(def site-origin "https://arnebrasseur.net")
+
+(defn iso-date [jud]
+  (subs (str (.toInstant jud)) 0 10))
 
 (defn xml->hiccup [node]
   (cond
@@ -31,6 +38,15 @@
       first
       :content
       xml->hiccup))
+
+(defn slurp-md-with-preamble [file]
+  (let [text (slurp file)
+        preamble (re-find #"^---\n[\s\S]*?\n---\n" text)]
+    (merge
+     {:content (parse-markdown (subs text (count preamble)))
+      :slug (str/replace (.getName (io/file file)) #".md$" "")}
+     (yaml/parse-string (str/replace preamble "---\n" ""))
+     )))
 
 (o/defprop --red-violet "#b9077e")
 (o/defprop --pink-lace "#fddef4")
@@ -73,8 +89,38 @@
     [:main
      content]]])
 
+(defn blog-post [{:keys [title date slug content]}]
+  [:<>
+   [:article
+    [:h1 title]
+    [:aside "Published " (iso-date date) " by " [:a {:href "/"} "Arne Brasseur"] ". " [:a {:href (str site-origin "/" slug ".html")} "(permalink)"]]
+    [:main content]]])
+
+(defn read-posts []
+  (->> "site/posts"
+       io/file
+       file-seq
+       (filter #(.isFile (io/file %)))
+       (map slurp-md-with-preamble)
+       (sort-by :date)
+       reverse))
+
+(defn index [posts]
+  [:<>
+   (parse-markdown (slurp "site/index.md"))
+   [:h2 "Posts"]
+   [:ul
+    (for [{:keys [title slug date]} posts]
+      [:li [:a {:href (str "/" slug ".html")} (iso-date date) " — " title ]])]
+   ])
+
 (defn render []
-  (io/make-parents "out/index.html")
-  (spit "out/index.html" (hiccup/render [layout (parse-markdown (slurp "index.md"))])))
+  (let [posts (read-posts)]
+    (io/make-parents "out/index.html")
+    (spit "out/index.html" (hiccup/render [layout [index posts]]))
+    (doseq [post posts]
+      (spit (str "out/" (:slug post) ".html") (hiccup/render [layout [blog-post post]]))
+      ))
+  )
 
 (render)
