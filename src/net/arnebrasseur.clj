@@ -110,7 +110,8 @@
    (parse-markdown (slurp "site/index.md"))
    [:h2 "Posts"]
    [:ul
-    (for [{:keys [title slug date]} posts]
+    (for [{:keys [title draft slug date]} posts
+          :when (not draft)]
       [:li [:a {:href (str "/" slug ".html")} (iso-date date) " — " title ]])]
    ])
 

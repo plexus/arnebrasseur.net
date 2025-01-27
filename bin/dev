@@ -20,7 +20,7 @@
 
 (defn release
   [_]
-  ;; (su/spawn "clojure" "src/net/arnebrasseur.clj")
+  (su/spawn "clojure" "src/net/arnebrasseur.clj")
   (su/spawn "rsync" "-ravz" "out/" "arnebrasseur@arnebrasseur.net:subdomains/www")
   (su/spawn "rsync" "-ravz" "assets" "arnebrasseur@arnebrasseur.net:subdomains/www")
   )
