@@ -51,6 +51,19 @@ More news on Makina later, as it's still very alpha as I sort out what the ideal
 API should look like, but in the meanwhile this has led to some productive yak
 shaving.
 
+[lambdaisland/deep-diff2](https://github.com/lambdaisland/deep-diff2) is now
+smarter about diffing records. Before records were just treated like maps, and
+if you compared a record to a map with the same keys and values, it would
+consider them equal. This is now different, we only diff records when comparing
+them against records of the same type. If you compare them to anything else, the
+entire value will be marked as a mismatch.
+
+When we do diff records, it will now preserve the record type in the output, so
+if you have data printers set up for those types, you'll see what the type
+originally was. This is breaking change, but hopefully people find it makes
+sense. If anyone comes forward with a good reason to prefer the old behavior,
+then we can add a way to opt in to that.
+
 [lambdaisland/data-printers](https://github.com/lambdaisland/data-printers) has
 seen its first releaes since 2021. data-printers makes it easy to register print
 handlers for tagged literals, kind of the inverse of
