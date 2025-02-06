@@ -70,8 +70,10 @@
    {:background-color --secondary
     :color --primary
     :max-width "48em"
-    :margin "0 auto"}]
-  [:main {:padding "0 1em"}]
+    :margin "0 auto"
+    :font-family "sans-serif"}]
+  [:aside {:font-size "80%"}]
+  [:article {:padding "0 0.5em"}]
   [#{:h1 :h2 :h3 :h4 :h5}
    {:font-family "'Ostrich Sans'"
     :font-weight "400"}]
