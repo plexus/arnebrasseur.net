@@ -1,7 +1,7 @@
 ---
-title: Open Source Diary C.V.4
+title: Open Source Diary C.VI.1
 draft: true
-date: 2025-02-06
+date: 2025-02-10
 ---
 
 Sometimes when I want to relax I just start hacking on whatever I feel like
@@ -20,6 +20,8 @@ line, it's a much more enjoyable process.
 This is also why I build and use many of my own tools. It allows me to create a
 happy space where things just work the way I like them to. And if they don't I
 have greater power to do something about it.
+
+### `bin/launchpad --no-namespace-maps`
 
 One such long time annoyance that I finally sat down to fix is
 `*print-namespace-maps*`. This var was introduced in clojure 1.9. If it's set to
@@ -77,8 +79,10 @@ in `deps.local.edn`.
 And do you want it to be always off, you can set this globally in
 `~/.clojure/deps.edn`.
 
-Note that these sensibly override one another. CLI flag overrides local
-overrides global overrides per-project.
+### lambdaisland/cli improvements
+
+Note that these settings/flags sensibly override one another. CLI flag overrides
+local overrides global overrides per-project.
 
 This made me think that this should really be the case for all of launchpad's
 boolean flags. For instance, if you have `{:launchpad/options {:go true}}`, so
@@ -114,7 +118,7 @@ middleware for flags, and middleware for subcommands runs after ("inside")
 middleware for parent commands. That way parents and flags can provide context
 (through `opts` or through dynamic vars) to child commands.
 
-----
+## Makina update
 
 [Makina](https://github.com/lambdaisland/makina) is coming along nicely, see my
 [last post](https://arnebrasseur.net/2025-02-06-open-source-diary.html) for
@@ -266,3 +270,93 @@ that point. The component in question will be in an `:error` state, with the
 exception under `:makina/error` (it also gets rethrown by `start!`). At this
 point you can use your REPL to fix things, and rerun `(start!)`, starting the
 remaining components.
+
+# lambdaisland/open-source tooling
+
+We have a lot of projects under the lambdaisland banner at this point, around
+two dozen I believe. You can find [an overview here](https://github.com/lambdaisland/open-source)
+although it's a bit out of date.
+
+To manage this we've settled years ago [on our own
+tooling](https://github.com/lambdaisland/open-source), standardized across
+projects. The goal was to have minimal boilerplate in the individual projects,
+to really avoid having things like release scripts that get copied between
+projects, and then get out of date and out of sync. Instead each project has one
+dependency in `bb.edn`, and one bb script: `bin/proj`
+
+```clj
+;; bb.edn
+{:deps
+ {lambdaisland/open-source {:git/url "https://github.com/lambdaisland/open-source"
+                            :git/sha "6cb675d2adae284021f8cd94dcfbd078986b39bd"}}}
+```
+
+```clj
+#!/usr/bin/env bb
+;; bin/proj
+
+(ns proj (:require [lioss.main :as lioss]))
+
+(lioss/main
+ {:license                  :mpl
+  :inception-year           2021
+  :description              "Quickly define print handlers for tagged literals across print/pprint implementations."
+  :group-id                 "lambdaisland"
+  :aliases-as-optional-deps [:dev]})
+```
+
+This does a bunch of things
+
+```
+$ bin/proj --help
+NAME
+  bin/proj 
+
+SYNOPSIS
+  bin/proj [release | pom | relocation-pom | install | print-versions | gh_actions_changelog_output | inspect | gen-readme | update-readme | bump-version | launchpad | ingest-docs] [<args>...]
+
+SUBCOMMANDS
+  release                       Release a new version to clojars                                              
+  pom                           Generate pom files                                                            
+  relocation-pom                Generate pom files to relocate artifacts to a new groupId                     
+  install                       Build and install jar(s) locally                                              
+  print-versions                Print deps.edn / lein coordinates                                             
+  gh_actions_changelog_output   Print the last stanza of the changelog in a format that GH actions understands
+  inspect                       Show expanded opts and exit                                                   
+  gen-readme                    Generate README based on a template and fill in project variables             
+  update-readme                 Update sections in README.md                                                  
+  bump-version                  Bump minor version                                                            
+  launchpad                     Launch a REPL with Launchpad                                                  
+  ingest-docs                   Run cljdoc in Docker to ingest the current version of this project.   
+```
+
+The most important command here is `bin/proj release`, this
+
+- checks if the repo is clean
+- runs the tests
+- bumps the version
+- adds the version/date/sha to the CHANGELOG
+- updates any version identifiers in the README's install section
+- generates pom.xml
+- commits
+- creates a git tag
+- pushes
+- builds the jar and deploys to clojars
+- adds a comment to any merged PRs that went out in this release, saying which version they were released in
+- create a new github "Release" entry, which includes the changelog
+- triggers a cljdoc build
+
+It's really a pretty neat system which conveniently lets us do lots of small
+releases.
+
+A few other things it does is handle projects with submodules (we used this for
+[Chui](https://github.com/lambdaisland/chui)), and for projects where the
+group-id changed (we moved a few from `lambdaisland` to `com.lambdaisland`), it
+builds two jars, one for each group, with one being empty but with a dependency
+on the other one.
+
+[lambdaisland/cli](https://github.com/lambdaisland/cli) is largely based on the
+command line argument handling that we originally built into this lioss tooling.
+This weekend I finally got around to migrating lioss.main itself over. It was
+quite painless, and now we get even better help text handling, and a slightly
+cleaner code base.

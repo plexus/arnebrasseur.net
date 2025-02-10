@@ -117,6 +117,8 @@
       [:li [:a {:href (str "/" slug ".html")} (iso-date date) " — " title ]])]
    ])
 
+(defn pages [])
+
 (defn render []
   (let [posts (read-posts)]
     (io/make-parents "out/index.html")
