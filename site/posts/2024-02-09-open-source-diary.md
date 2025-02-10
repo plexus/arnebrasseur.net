@@ -1,6 +1,5 @@
 ---
 title: Open Source Diary C.VI.1
-draft: true
 date: 2025-02-10
 ---
 
