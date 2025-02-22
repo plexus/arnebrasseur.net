@@ -27,3 +27,10 @@ I occasionally post pictures on [PixelFed](https://pixelfed.social/plexus).
 I am one of the main organizers of the [Heart of Clojure](https://heartofclojure.eu) conference, which took place in 2019 and 2024.
 
 I help maintain the [Overtone](https://overtone.github.io/) live music coding environment for Clojure.
+
+----
+
+## Pages
+
+- [CoderDojo Pingpong Project (Dutch)](/coderdojo_pingpong.html)
+- [My Calendar System](/calendar.html)

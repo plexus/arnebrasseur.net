@@ -107,6 +107,16 @@
        (sort-by :date)
        reverse))
 
+(defn read-pages []
+  (->> "site"
+       io/file
+       .listFiles
+       (filter #(.isFile (io/file %)))
+       (filter #(.endsWith (str %) ".md"))
+       (remove #(= "index.md" (.getName %)))
+       (map slurp-md-with-preamble)
+       reverse))
+
 (defn index [posts]
   [:<>
    (parse-markdown (slurp "site/index.md"))
@@ -117,15 +127,20 @@
       [:li [:a {:href (str "/" slug ".html")} (iso-date date) " — " title ]])]
    ])
 
-(defn pages [])
+(defn page [{:keys [title date slug content]}]
+  [:<>
+   [:article
+    [:h1 title]
+    [:main content]]])
 
 (defn render []
-  (let [posts (read-posts)]
+  (let [posts (read-posts)
+        pages (read-pages)]
     (io/make-parents "out/index.html")
     (spit "out/index.html" (hiccup/render [layout [index posts]]))
     (doseq [post posts]
-      (spit (str "out/" (:slug post) ".html") (hiccup/render [layout [blog-post post]]))
-      ))
-  )
+      (spit (str "out/" (:slug post) ".html") (hiccup/render [layout [blog-post post]])))
+    (doseq [p pages]
+      (spit (str "out/" (:slug p) ".html") (hiccup/render [layout [page p]])))))
 
 (render)

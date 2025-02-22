@@ -1,3 +1,7 @@
+---
+title: My Calendar System
+---
+
 You might come across cryptic identifiers on this site, like C.VI.3 or
 2025.G.IX.7. These are date formats based on a five-season calendar system. This
 calendar system makes particular sense where I live (Western Europe).
