@@ -314,6 +314,202 @@ def update():
         pad2_x = pad2_x + pad_v
 ```
 
-## De bal doen botsen
+## De bal doen vallen
 
+Wanneer je een bal laat vallen, dan neemt de snelheid van de bal almaar toe, tot
+de bal de grond raakt. Dit komt door de zwaartekracht, die de bal naar beneden
+toe doet versnellen.
 
+Na het botsen, wanneer de bal naar boven gaat, zal de zwaartekracht ervoor
+zorgen dat de bal vertraagt. Hij gaat dus trager en trager naar boven, en begint
+uiteindelijk terug naar beneden te gaan.
+
+De zwaartekracht noemen we `g`. Dit is het symbool dat ook in de fysica gebruikt
+wordt (van het Engels, "gravity").
+
+Elke cyclus (dus 60 keer per seconde) gebruiken we deze `g` om de verticale
+snelheid van de bal (`bal_vy`) ietsje te verhogen. Maak `bal_vx` en `bal_vy` 0,
+zodat bij het begin van het spel de bal stil staat, en dan begint recht naar
+beneden te vallen.
+
+```python
+bal_vx = 0         # pas dit aan
+bal_vy = 0         # pas dit aan
+
+g=0.1
+
+def update():
+    global ... , bal_vy     # voeg bal_vy toe aan de lijst van variabelen die we wijzigen in update
+    # ...
+    bal_vy = bal_vy + g
+```
+
+## Botsen!
+
+De bal en de paddles bewegen nu, wat al heel wat is. Maar er is nog geen
+interactie tussen de twee. Om dat de doen moeten we eerst weten of de bal de
+paddle raakt.
+
+We moeten met andere woorden kunnen testen of een cirkel en een rechthoek elkaar
+raken of niet. Dat doe je door de afstand tussen de rechthoek en het middelpunt
+van de cirkel te vergelijken met de straal.
+
+Om de afstand te kennen moeten we het punt op de rechthoek vinden dat het
+dichtst bij de cirkel gelegen is. Omdat de bal altijd van boven komt kunnen we
+het ons gemakkelijk maken en alleen de bovenkant van de paddle testen.
+
+We schrijven eerst een functie die de afstand tussen twee punten kan bereken.
+
+> Heb je op school al de stelling van Pythogoras geleerd? Dit is een rechtstreekse
+> toepassing daarvan.
+
+Deze functie is iets anders dan de andere functies die we al geschreven hebben.
+`return` zorgt er voor dat deze een waarde berekent die je ergens anders in je
+programma kan gebruiken.
+
+```python
+from math import sqrt
+
+def afstand(x1, x2, y1, y2):
+    return sqrt((x1-y1)**2 + (x2-y2)**2)
+```
+
+Vervolgens kunnen we testen of de bal en één van de paddles botst. Omdat we
+dezelfde functie willen kunnen gebruiken voor zowel de linkske als de rechtse
+paddle geven we de x-waard mee als argument.
+
+Deze x-waarde geeft aan waar de linkerkant van de paddle zich bevindt, als we er
+de breedte aan toevoegen, dan weten we de x-waarde voor de rechterzijde van de
+paddle.
+
+Om het punt te vinden op de paddle dat het dichts bij de bal is gebruiken we de
+functies `min` (minimum) en `max` (maximum).
+
+```python
+def botst_bal(pad_x_links):
+    pad_x_rechts = pad_x_links + pad_breedte
+    pad_x_test = min(max(bal_x, pad_x_links), pad_x_rechts)
+    return bal_straal > afstand(bal_x, bal_y, pad_x_test, pad_y)
+```
+
+> ## Opdracht
+>
+> Hoe werkt `min(max(bal_x, pad_x_links), pad_x_rechts)`? Maak een tekeningetje.
+> Wat als de bal links, rechts, of boven de paddle is?
+
+Nu kunnen we de bal ook effectief doen botsen!
+
+```python
+def update():
+    global ... , ball_vx
+    
+    if botst_bal(pad1_x):
+        bal_vx = 2
+        bal_vy = -bal_vy
+    if botst_bal(pad2_x):
+        bal_vx = -2
+        bal_vy = -bal_vy
+```
+
+> ## Opdrachten 
+> 
+> - Nu gaat de bal altijd even snel naar links of rechts (`ball_vx`). Wat als je
+>   dit willekeurig maakt met `math.uniform(min, max)`? (Let op: `import random`!)
+> - Je kan de horizontale snelheid ook laten afhangen van waar op de paddle de bal botsts.
+
+## Bal binnen het speelveld houden
+
+Ons spel werkt nu! We kunnen met twee spelers ping pong spelen. Voor even toch.
+Eens de bal uit gaat is het spel voorbij. De volgende stap is de bal telkens
+terug in het speelveld brengen.
+
+```python
+def update():
+    # ....
+    if bal_y + bal_straal > HEIGHT:
+        bal_x = 200
+        bal_y = 100
+        bal_vx = 0
+        bal_vy = 0
+```
+
+## Verdere uitbreidingen
+
+Van hier uit kan je zelf aan de slag. Hier zijn enkele ideeën:
+
+### De paddles op hun eigen speelveld houden
+
+Momenteel kunnen beide paddles vrij over het volledig speelveld bewegen, en
+zelfs er buiten gaan. Je kan er ook voor zorgen dat ze niet voorbij de middelijn
+kunnen. De eenvoudigste manier om dit op te lossen is met `min` en `max`. Vul
+`______` zelf in.
+
+Tip: hoe rekening met de breedte van de middelijn!
+
+```python
+def update():
+    pad1_x = min(______, ______ - ______ - ______)
+    pad2_x = max(______, ______ + ______)
+```
+
+Deze puzzelstukjes krijg je mee:
+
+- `WIDTH/2`
+- `middelijn_breedte/2`
+- `pad_breedte`
+- `pad1_x`
+- `pad2_x`
+
+Je kan dit ook nog op een andere manier oplossen. Deze code komt op hetzelfde
+neer, maar mischien vind je deze manier eenvoudiger:
+
+```python
+def update():
+    if pad1_x > ______:
+       pad1_x = ______
+    if pad2_x < ______:
+       pad2_x = ______
+```
+
+### Punten tellen
+
+Om het spel helemaal af te maken kan je punten tellen. Wanneer een speler de bal
+mist en hij gaat buiten, dan krijgt de andere speler een punt. Maar wanneer je
+de bal over het veld speelt zodat je tegenspeler er niet meer aan kan, dan is
+het een punt voor de tegenstander.
+
+Om dit te doen ga je enkele nieuwe variabelen nodig hebben, bijvoorbeeld
+`punten1` en `punten2`. Je kan deze dan links en rechts op het scherm tonen, dat
+doe je in de `draw` functie met `screen.draw.text`. Hier zie je enkele
+voorbeelden van hoe dat werkt:
+
+```python
+screen.draw.text("Tekst in het oranje", (50, 30), color="orange")
+screen.draw.text("Kies font en grootte", (20, 100), fontname="Boogaloo", fontsize=60)
+screen.draw.text("Bepaal de rechter in plaats van linker bovenhoek", topright=(840, 20))
+screen.draw.text("Tekst met een gekleurde rand", (400, 70), owidth=1.5, ocolor=(255,255,0), color=(0,0,0))
+screen.draw.text("Tekst met schaduw", (640, 110), shadow=(2,2), scolor="#202020")
+screen.draw.text("Color gradient", (540, 170), color="red", gcolor="purple")
+screen.draw.text("Transparantie", (700, 240), alpha=0.1)
+screen.draw.text("Tekst 90 graden draaien (verticaal)", midleft=(40, 440), angle=90)
+```
+
+In `update` moet je dan testen of de bal buiten gaat, en bepalen wie het punt
+krijgt.
+
+### Game Over
+
+Gaat het spel eeuwig door? Of speel je tot een bepaald aantal punten? Maak een
+variabele `game_over = False`. Wanneer een speler 10 punten haalt zet je
+`game_over = False`. Gebruik deze variabele dan in `draw` om de tekst "Game
+Over" op het scherm te zetten, en in `update` om het spel te stoppen.
+
+In beide gevallen kan je zo iets doen:
+
+```python
+def draw():
+    if game_over:
+        # Teken "Game over" op het scherm
+    else:
+        # Teken het spelbord, bal, en paddles
+```
