@@ -4,10 +4,9 @@ title: Ping-pong spel in Python
 
 Voor dit projectje gaan we [Pygame
 Zero](https://pygame-zero.readthedocs.io/en/stable/) gebruiken. Werk stap voor
-stap, en lees goed wat er staat. Typ code niet blind over zoder te begrijpen wat
-ze doet!
+stap, en test je code na iedere wijziging.
 
-Maak een nieuw bestand, `pingpong.py`
+Maak een nieuw bestandje, `pingpong.py`
 
 ```python
 WIDTH = 800
