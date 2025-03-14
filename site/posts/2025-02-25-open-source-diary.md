@@ -1,5 +1,5 @@
 ---
-title: Open Source Diary C.IX.3
+title: Open Source Diary C.X.5
 date: 2025-03-14
 ---
 
