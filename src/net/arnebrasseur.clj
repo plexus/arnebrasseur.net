@@ -141,7 +141,7 @@
     (io/make-parents "out/index.html")
     (spit "out/index.html" (hiccup/render [layout {} [index posts]]))
     (doseq [post posts]
-      (spit (str "out/" (:slug post) ".html") (hiccup/render [layout [blog-post post]])))
+      (spit (str "out/" (:slug post) ".html") (hiccup/render [layout post [blog-post post]])))
     (doseq [p pages]
       (spit (str "out/" (:slug p) ".html") (hiccup/render [layout p [page p]])))))
 
