@@ -79,10 +79,12 @@
     :font-weight "400"}]
   [:h1 {:font-size "3rem"}])
 
-(defn layout [content]
+(defn layout [{:keys [title]} content]
   [:html
    [:head
-    [:title "Arne Brasseur . net"]
+    [:title
+     (when title (str title " | "))
+     "Arne Brasseur . net"]
     [:meta {:charset "UTF-8"}]
     [:meta {:name "viewport" :content "width=device-width, initial-scale=1"}]
     [:style (o/defined-styles)]
@@ -137,10 +139,10 @@
   (let [posts (read-posts)
         pages (read-pages)]
     (io/make-parents "out/index.html")
-    (spit "out/index.html" (hiccup/render [layout [index posts]]))
+    (spit "out/index.html" (hiccup/render [layout {} [index posts]]))
     (doseq [post posts]
       (spit (str "out/" (:slug post) ".html") (hiccup/render [layout [blog-post post]])))
     (doseq [p pages]
-      (spit (str "out/" (:slug p) ".html") (hiccup/render [layout [page p]])))))
+      (spit (str "out/" (:slug p) ".html") (hiccup/render [layout p [page p]])))))
 
 (render)
