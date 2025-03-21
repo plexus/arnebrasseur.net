@@ -3,6 +3,7 @@
    [clj-yaml.core :as yaml]
    [clojure.java.io :as io]
    [clojure.string :as str]
+   [clojure.walk :as walk]
    [lambdaisland.hiccup :as hiccup]
    [lambdaisland.kramdown :as kramdown]
    [lambdaisland.ornament :as o]
@@ -77,7 +78,70 @@
   [#{:h1 :h2 :h3 :h4 :h5}
    {:font-family "'Ostrich Sans'"
     :font-weight "400"}]
-  [:h1 {:font-size "3rem"}])
+  [:h1 {:font-size "3rem"}]
+
+  [:pre
+   {#_#_:border "2px solid #ccc"
+    :color "#222"
+    :background-color "#eee"
+    :padding "1rem"
+    :margin "1rem 0"
+    :border-radius "0.1rem"
+    :box-shadow "rgba(0, 0, 0, 0.16) 0px 1px 4px"}]
+
+  [:blockquote
+   {:border "1px solid black"
+    :border-left "3px solid black"
+    :border-top "3px solid black"
+    :padding "0 1rem"
+    :margin "1rem 0"
+    :border-radius "0.2rem"}
+   [:h2 {:margin-bottom 0}]
+   ]
+
+  [:.invisible-whitespace
+   {:display "inline-block"
+    :width 0}]
+
+  [:.visible-whitespace
+   {:opacity "0.2"
+    ;;:user-select "none"
+    }]
+  [".visible-whitespace::before"
+   {:content "attr(data-content)"}]
+  )
+
+(defn python-visible-whitespace [hiccup]
+  (walk/postwalk
+   (fn [o]
+     (if (and (vector? o)
+              (= :code (first o))
+              (= "language-python" (:class (second o))))
+       (into (vec (take 2 o))
+             (comp
+              (mapcat #(str/split % #"\R"))
+              (map (fn [line]
+                     (if-let [ws (re-find #"^ +" line)]
+                       [:<>
+                        [:span.visible-whitespace {:data-content
+                                                   (apply str (repeat (Math/floor (/ (count ws) 4)) "»   "))}]
+                        [:span.invisible-whitespace ws]
+                        (str/replace line #"^ +" "") "\n"]
+                       (str line "\n")))))
+             (drop 2 o))
+       o
+       ))
+   hiccup))
+
+(defn inline-content [hiccup]
+  (walk/postwalk
+   (fn [o]
+     (if-let [f (and (vector? o)
+                     (= :div (first o))
+                     (:inline (second o)))]
+       [::hiccup/unsafe-html (slurp (io/file "site" f))]
+       o))
+   hiccup))
 
 (defn layout [{:keys [title]} content]
   [:html
@@ -117,6 +181,8 @@
        (filter #(.endsWith (str %) ".md"))
        (remove #(= "index.md" (.getName %)))
        (map slurp-md-with-preamble)
+       (map python-visible-whitespace)
+       (map inline-content)
        reverse))
 
 (defn index [posts]
@@ -146,3 +212,9 @@
       (spit (str "out/" (:slug p) ".html") (hiccup/render [layout p [page p]])))))
 
 (render)
+
+(comment
+  (let [p (inline-content (slurp-md-with-preamble "/home/arne/repos/arnebrasseur.net/site/coderdojo_pingpong.md"))]
+    (hiccup/render     (layout p   (page p))))
+
+  )

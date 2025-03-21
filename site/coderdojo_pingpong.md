@@ -2,6 +2,9 @@
 title: Ping-pong spel in Python
 ---
 
+<div inline="pingpong_overzicht_plain.svg">
+</div>
+
 Voor dit projectje gaan we [Pygame
 Zero](https://pygame-zero.readthedocs.io/en/stable/) gebruiken. Werk stap voor
 stap, en test je code na iedere wijziging.
@@ -224,7 +227,7 @@ middelijn_breedte = 10
 
 def draw():
     # ...
-    teken_rechthoek(WIDTH/2, 0, middelijn_breedte, HEIGHT)
+    teken_rechthoek(WIDTH/2, 0, middelijn_breedte, HEIGHT, "beige")
 ```
 
 Als je goed kijkt zie je echter dat er een probleem is, de lijn bevindt zich
