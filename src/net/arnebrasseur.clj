@@ -152,6 +152,8 @@
     [:meta {:charset "UTF-8"}]
     [:meta {:name "viewport" :content "width=device-width, initial-scale=1"}]
     [:style (o/defined-styles)]
+    [:style {:media "print"}
+     ]
     [:link {:rel "stylesheet" :href "assets/fonts/ostrich-sans/ostrich-sans.css"}]]
    [:body
     [:main

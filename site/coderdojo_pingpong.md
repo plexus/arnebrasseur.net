@@ -77,8 +77,8 @@ optie "Pygam Zero modus"
 
 ## De Bal Tekenen
 
-Ons spel bestaat uit vier element: één bal, twee paddles, en een middelijn. De
-bal is een cirkel, de paddles en middelijn zijn rechthoeken.
+Ons spel bestaat uit vier element: één bal, twee paddles, en een middellijn. De
+bal is een cirkel, de paddles en middellijn zijn rechthoeken.
 
 Een cirkel tekenen doe je met `screen.draw.filled_circle`. Zo ziet deze functie
 er uit:
@@ -141,7 +141,7 @@ In iedere update verplaatsen we de bal een klein beetje, afhankelijk van de
 snelheid.
 
 > `v` komt van het Engels, "velocity". Dit is ook het symbool dat we in de
-> physica gebruiken voor snelheid.
+> fysica gebruiken voor snelheid.
 
 ```python
 bal_vx = 1
@@ -152,13 +152,13 @@ Voeg deze variabelen toe bovenaan je programma, onder `bal_straal = ...`.
 
 Vervolgens voegen we een `update` functie toe. Dit is een speciale functie zoals
 `draw` die door Pygame Zero opgeroepen zal worden, zo'n 60 keer per seconde.
-Hier kunnen we de variabelen `bal_x` en `bal_y` wijzigen, zodat deze op een
+Hier kunnen we de variabelen `bal_x` en `bal_y` wijzigen, zodat de bal op een
 andere plaats getekend wordt.
 
 > ## Global
 >
 > `bal_x` en `bal_y` zijn "globale" variabelen, ze staan aan het begin van een
-> lijn zonder spaties ervoor, en behoren dus niet to één enkele functie, maar
+> lijn zonder spaties ervoor, en behoren dus niet tot één enkele functie, maar
 > wel tot het gehele programma. Zulke globale variabelen kunnen we zonder meer
 > in elke functie raadplegen, maar als we ze willen wijzigen, dan moeten we dat
 > eerst duidelijk maken aan python. Dat doen we met `global`.
@@ -172,12 +172,12 @@ def update():
 
 > ## Opdracht 
 > 
-> Verander de waarden van `ball_vx` en `ball_vy`, wat is het effect? Probeer ook
+> Verander de waarden van `bal_vx` en `bal_vy`, wat is het effect? Probeer ook
 > negatieve getallen, zoals `-1` of `-2. Wanneer gaat de bal naar links of
 > rechts, boven of onder? Wat gebeurt er als vx 0 is? Wat als vy 0 is? Wat als
 > ze allebei nul zijn?
 
-## De Middelijn tekenen
+## De Middellijn tekenen
 
 Een rechthoek tekenen doe je met `screen.draw.filled_rect`. Deze functie neemt
 twee parameters, een "Rect" object dat de plaats en grootte van de rechthoek
@@ -197,7 +197,7 @@ overeen met de _linker bovehoek_ van de figuur.
 - `afmeting = (breedte, hoogte)`
 
 We kunnen dit alles te samen combineren in een functie die we `teken_rechthoek`
-noemen. Deze kunnen we nadien gebruiken voor zowel de paddles als de middelijn
+noemen. Deze kunnen we nadien gebruiken voor zowel de paddles als de middellijn
 te tekenen.
 
 ```python
@@ -209,7 +209,7 @@ def teken_rechthoek(x, y, breedte, hoogte, kleur):
 ```
 
 
-Nu hebben we alle ingredienten om de middelijn te tekenen. We tekenen een smalle
+Nu hebben we alle ingrediënten om de middellijn te tekenen. We tekenen een smalle
 rechthoek over de volledige hoogte van het scherm.
 
 De `x` positie is in het midden van het venster, op de helft van de volledige
@@ -218,16 +218,16 @@ breedte: `WIDTH/2`.
 De `y` positie is helemaal bovenaan, met andere woorden `0`.
 
 De breedte kunnen we zelf kiezen, we introduceren hiervoor een extra variabele,
-`middelijn_breedte`.
+`middellijn_breedte`.
 
 De hoogte is de hoogte van het volledige venster, oftewel `HEIGHT`.
 
 ```python
-middelijn_breedte = 10
+middellijn_breedte = 10
 
 def draw():
     # ...
-    teken_rechthoek(WIDTH/2, 0, middelijn_breedte, HEIGHT, "beige")
+    teken_rechthoek(WIDTH/2, 0, middellijn_breedte, HEIGHT, "beige")
 ```
 
 Als je goed kijkt zie je echter dat er een probleem is, de lijn bevindt zich
@@ -241,7 +241,7 @@ helft van de breedte van de lijn naar links op te schuiven.
 > 
 > - Verander de breedte van de lijn naar `20`, `30`, `50`, enz. Kijk wat er
 >   gebeurt.
-> - Verander `WIDTH/2` in `WIDTH/2 - middelijn_breedte/2`. Lost dit
+> - Verander `WIDTH/2` in `WIDTH/2 - middellijn_breedte/2`. Lost dit
 >   het probleem op? Waarom?
 
 ## De paddles tekenen
@@ -310,6 +310,7 @@ def update():
         pad1_x = pad1_x - pad_v
     if keyboard[keys.C]:
         pad1_x = pad1_x + pad_v
+
     if keyboard[keys.LEFT]:
         pad2_x = pad2_x - pad_v
     if keyboard[keys.RIGHT]:
@@ -372,8 +373,8 @@ programma kan gebruiken.
 ```python
 from math import sqrt
 
-def afstand(x1, x2, y1, y2):
-    return sqrt((x1-y1)**2 + (x2-y2)**2)
+def afstand(x1, y1, x2, y2):
+    return sqrt((x1 - x2)**2 + (y1 - y2)**2)
 ```
 
 Vervolgens kunnen we testen of de bal en één van de paddles botst. Omdat we
@@ -442,11 +443,11 @@ Van hier uit kan je zelf aan de slag. Hier zijn enkele ideeën:
 ### De paddles op hun eigen speelveld houden
 
 Momenteel kunnen beide paddles vrij over het volledig speelveld bewegen, en
-zelfs er buiten gaan. Je kan er ook voor zorgen dat ze niet voorbij de middelijn
+zelfs er buiten gaan. Je kan er ook voor zorgen dat ze niet voorbij de middellijn
 kunnen. De eenvoudigste manier om dit op te lossen is met `min` en `max`. Vul
 `______` zelf in.
 
-Tip: hoe rekening met de breedte van de middelijn!
+Tip: hoe rekening met de breedte van de middellijn!
 
 ```python
 def update():
@@ -457,7 +458,7 @@ def update():
 Deze puzzelstukjes krijg je mee:
 
 - `WIDTH/2`
-- `middelijn_breedte/2`
+- `middellijn_breedte/2`
 - `pad_breedte`
 - `pad1_x`
 - `pad2_x`
