@@ -1,5 +1,19 @@
-draft: true
 ---
+draft: true
+date: 2025-06-04
+title: The Piglet Story - Part 1
+---
+
+```inline-html
+<script type="importmap">
+{"imports":{"astring":"https://cdn.jsdelivr.net/npm/astring@1.9.0/dist/astring.mjs"}}
+</script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/piglet-lang@0.1.42/lib/piglet/browser/main.mjs"></script>
+<script type="piglet">
+(await (load-package "https://cdn.jsdelivr.net/npm/piglet-interactive-snippet@0.2.0"))
+(await (import 'https://arnebrasseur.net/piglet-interactive-snippet:main))
+</script>
+```
 
 # Piglet
 
@@ -8,6 +22,10 @@ LISP, written in modern JavaScript. It would lean into the capabilities of the
 web platform, while providing the rich mix of features that have made LISP stand
 out for decades: interactive (REPL based) programming, a dynamic environment
 with rich introspection, and metaprogramming at multiple levels.
+
+```piglet-interactive
+(println "hello world")
+```
 
 I wanted the language to be cute and approachable, and first called it Bunny.
 But after noticing someone name-squatting "bunny-lang" the bunny became a
@@ -37,7 +55,9 @@ with built-in help, and excellent support for interactive programming?
 
 I did develop Piglet in the open from the start, pushing the code to a public
 repository on github, but I didn't announce it yet, and left the README
-intentionally blank.
+intentionally blank. And the longer I put off showing Piglet to the world, the
+more I wanted it be perfect before I showed it. There was just always one more
+thing that should really work first...
 
 I was wary of prematurely announcing the project. I wanted to first demonstrate
 that it could be more than a toy, to have it in a state where someone could
@@ -68,6 +88,10 @@ runtime environment, and keeping a separate compiler state that tracks the state
 of the code loaded in the JS runtime, it can offer interactive programming
 features, but the additional complexity needed to make this work is significant,
 and this is the reason ClojureScript tooling is often frustrating to work with.
+
+```piglet-interactive
+(await (eval (read-string "(* 7 3 2)")))
+```
 
 Piglet, like Clojure, only has a single runtime environment, containing both
 your program, and the compiler and other language tooling. Code gets loaded from

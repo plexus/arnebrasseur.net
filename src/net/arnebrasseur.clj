@@ -13,7 +13,7 @@
 
 (def site-origin "https://arnebrasseur.net")
 
-(defn iso-date [jud]
+(defn iso-date [^java.util.Date jud]
   (subs (str (.toInstant jud)) 0 10))
 
 (defn xml->hiccup [node]
@@ -44,7 +44,8 @@
   (let [text (slurp file)
         preamble (re-find #"^---\n[\s\S]*?\n---\n" text)]
     (merge
-     {:content (parse-markdown (subs text (count preamble)))
+     {:md  (subs text (count preamble))
+      :content (parse-markdown (subs text (count preamble)))
       :slug (str/replace (.getName (io/file file)) #".md$" "")}
      (yaml/parse-string (str/replace preamble "---\n" ""))
      )))
@@ -111,26 +112,45 @@
    {:content "attr(data-content)"}]
   )
 
-(defn python-visible-whitespace [hiccup]
+(def language-filters
+  {"inline-html"
+   (fn [[_ o]]
+     (into [::hiccup/unsafe-html] (drop 2 o)))
+   "piglet-interactive"
+   (fn [[_ o]]
+     (into [:piglet-interactive-snippet] (drop 2 o)))
+   "python"
+   (fn [[_ o]]
+     [:pre
+      (into (vec (take 2 o))
+            (comp
+             (mapcat #(str/split % #"\R"))
+             (map (fn [line]
+                    (if-let [ws (re-find #"^ +" line)]
+                      [:<>
+                       [:span.visible-whitespace {:data-content
+                                                  (apply str (repeat (Math/floor (/ (count ws) 4)) "»   "))}]
+                       [:span.invisible-whitespace ws]
+                       (str/replace line #"^ +" "") "\n"]
+                      (str line "\n")))))
+            (drop 2 o))])})
+
+(defn handle-language-filters [hiccup]
   (walk/postwalk
    (fn [o]
      (if (and (vector? o)
-              (= :code (first o))
-              (= "language-python" (:class (second o))))
-       (into (vec (take 2 o))
-             (comp
-              (mapcat #(str/split % #"\R"))
-              (map (fn [line]
-                     (if-let [ws (re-find #"^ +" line)]
-                       [:<>
-                        [:span.visible-whitespace {:data-content
-                                                   (apply str (repeat (Math/floor (/ (count ws) 4)) "»   "))}]
-                        [:span.invisible-whitespace ws]
-                        (str/replace line #"^ +" "") "\n"]
-                       (str line "\n")))))
-             (drop 2 o))
-       o
-       ))
+              (= :pre (first o))
+              (vector? (second o))
+              (= :code (first (second o)))
+              (:class (second (second o))))
+       (if-let [[_ lang] (re-find #"language-(.*)" (:class (second (second o))))]
+         (if-let [f (get language-filters lang)]
+           (do
+             (println "Processing" lang)
+             (f o))
+           o)
+         o)
+       o))
    hiccup))
 
 (defn inline-content [hiccup]
@@ -172,6 +192,7 @@
        file-seq
        (filter #(.isFile (io/file %)))
        (map slurp-md-with-preamble)
+       (map handle-language-filters)
        (sort-by :date)
        reverse))
 
@@ -183,7 +204,7 @@
        (filter #(.endsWith (str %) ".md"))
        (remove #(= "index.md" (.getName %)))
        (map slurp-md-with-preamble)
-       (map python-visible-whitespace)
+       (map handle-language-filters)
        (map inline-content)
        reverse))
 
