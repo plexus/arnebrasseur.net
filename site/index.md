@@ -28,6 +28,10 @@ I am one of the main organizers of the [Heart of Clojure](https://heartofclojure
 
 I help maintain the [Overtone](https://overtone.github.io/) live music coding environment for Clojure.
 
+I am the creator of the [Piglet](https://github.com/piglet-lang/piglet)
+programming language. [Pigrot](/pigrot.html) is a work-in-progress roguelike
+game written in Piglet.
+
 ----
 
 ## Pages

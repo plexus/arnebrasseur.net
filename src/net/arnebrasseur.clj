@@ -145,9 +145,7 @@
               (:class (second (second o))))
        (if-let [[_ lang] (re-find #"language-(.*)" (:class (second (second o))))]
          (if-let [f (get language-filters lang)]
-           (do
-             (println "Processing" lang)
-             (f o))
+           (f o)
            o)
          o)
        o))
