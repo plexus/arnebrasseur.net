@@ -10,9 +10,17 @@ title: The Piglet Story - Part 1
 </script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/piglet-lang@0.1.42/lib/piglet/browser/main.mjs"></script>
 <script type="piglet">
-(await (load-package "https://cdn.jsdelivr.net/npm/piglet-interactive-snippet@0.2.0"))
+(await (load-package "https://cdn.jsdelivr.net/npm/piglet-interactive-snippet@0.3.0"))
 (await (import 'https://arnebrasseur.net/piglet-interactive-snippet:main))
 </script>
+<style>
+.techy {
+  font-weight: 300;
+  border-left: 4px solid #390;
+  padding-left: 1em;
+  line-height: 1.5em;
+}
+</style>
 ```
 
 # Piglet
@@ -25,6 +33,16 @@ with rich introspection, and metaprogramming at multiple levels.
 
 ```piglet-interactive
 (println "hello world")
+```
+
+{:.techy} 
+The code snippets in this article are Piglet code that is executed in your
+browser. You can edit them and press the "Run" button to play around with
+Piglet. To get a Piglet REPL in your terminal, you can:
+
+{:.techy} 
+```
+npx -p piglet-lang@latest pig repl
 ```
 
 I wanted the language to be cute and approachable, and first called it Bunny.
@@ -76,6 +94,7 @@ implementation, while running a consultancy, as well as consulting as a tech
 lead and architect, turned out to be a bit too much, and Piglet started
 gathering dust.
 
+{:.techy}
 So what makes Piglet different from for instance ClojureScript? There are a
 number of differences, but lets start with the high level architecture.
 ClojureScript, like Piglet, compiles to JavaScript. But the ClojureScript
@@ -119,3 +138,29 @@ project that was a joy to hack on, one that inspired and motivated me, was
 starting to feel like a snowball of obligations. Given how busy we were with
 client work at Gaiwan, the sensible thing was to put the project on ice for a
 while.
+
+The last commits before the hiatus are from October 2023. Some of the last
+things I worked on were a built-in library providing reactive primitives,
+intended as a basis for declarative UIs, a "dev server" which made it easier to
+develop Piglet programs intended for the browser, by providing resolution and
+files from npm and piglet packages, and auto-generating the index.html that ties
+it all together. I also added a build setup for compiling and bundling Piglet
+itself using Rollup.
+
+I had initially shunned build tools a Rollup, Esbuild, or Vite. For the longest
+time JavaScript did not have a "native" module format, making these bundlers
+essentials. In the process they could provide additional optimizations, and even
+support upcoming language features by desugaring them more basic code understood
+by all browsers. But it was 2023, ESM had been supported by evergreen browsers
+for some time, and JavaScript itself had significantly matured over the years. I
+wanted to see how far I could writing code that browsers could readily
+understand. Not necessating a specific build tool was compelling because it
+meant a significant piece of complexity and potential friction was eliminated.
+
+Still, I realized that for Piglet to be taken seriously we had to eventually be
+able to generate compact, optimized, single-file builds. Both of the Piglet
+runtime itself, and of the code the Piglet compiler generates. Adding Rollup
+took care of the runtime. While full Ahead-of-Time compilation of `.pig` sources
+is still a work in progress, earlier this year the groundwork for AOT was laid,
+ensuring that Piglet can spit out ESM modules that are amenable to tree-shaking
+(also known as dead code eliminiation).
