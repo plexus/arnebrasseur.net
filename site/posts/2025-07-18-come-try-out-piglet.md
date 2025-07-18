@@ -10,7 +10,7 @@ scrutiny.
 
 But today I want to come out and say, "hey, Piglet is actually really cool, and
 we'd love to find some curious folks who want to give it a spin!" (that "we" is
-my and my colleagues at Gaiwan, who similarly think it's actually a pretty neat
+me and my colleagues at Gaiwan, who similarly think it's actually a pretty neat
 project).
 
 Does that mean Piglet is "ready" now? No, clearly not. But can you build real
