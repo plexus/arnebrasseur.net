@@ -1,10 +1,9 @@
 ---
-title: My Position on AI, LLMs, and (shudders) "vibe coding" 
+title: My Position on AI, LLMs, and "vibe coding" 
 date: 2025-09-15
-draft: true
 ---
 
-I've been a strong AI sceptic since the current hype wave started. I've seen a
+I've been a strong AI skeptic since the current hype wave started. I've seen a
 few of these hype waves come and go in my twenty-odd years as a software
 engineer. I understand that climate change is the single biggest existential
 crisis facing humanity, and the current GPU-farm landrush is _not_ helping with
@@ -31,9 +30,10 @@ It's also a scary time in the industry. We've noticed first hand how budgets
 have dried up, how the mass layoffs over the last few years have altered the
 landscape. And yet there's still as much capital as before looking for good
 investments. There's ample funding available, _if_ your company does _something
-AI_. Gaiwan is a small company, but including dependents there are a dozen
-people who depend on my business decisions for their daily income. I owe it to
-them to think about these things, and to make sure that we stay relevant.
+AI_. [Gaiwan](https://gaiwan.co) is a small company, but including dependents
+there are a dozen people who depend on my business decisions for their daily
+income. I owe it to them to think about these things, and to make sure that we
+stay relevant.
 
 Perhaps this bubble will pop dramatically, but I'm getting the sense it's going
 to have a lot of staying power. People are throwing anything and everything AI

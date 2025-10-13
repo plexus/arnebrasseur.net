@@ -59,9 +59,10 @@
 (o/defprop --toast "#8B6253")
 (o/defprop --laser-lemon "#F3F976")
 (o/defprop --green-onion "#78ff94")
+(o/defprop --sandstorm "#f5f7c8")
 
 (o/defprop --primary --arapawa)
-(o/defprop --secondary --green-onion)
+(o/defprop --secondary --sandstorm)
 
 (o/defrules styles
   [:html
@@ -71,15 +72,31 @@
   [:body
    {:background-color --secondary
     :color --primary
-    :max-width "48em"
-    :margin "0 auto"
+    :margin 0
     :font-family "sans-serif"}]
+  [:main {:max-width "48em"
+          :margin "0 auto"
+          }]
   [:aside {:font-size "80%"}]
-  [:article {:padding "0 0.5em"}]
+  [:article {:padding "0 0.5em"
+             }]
   [#{:h1 :h2 :h3 :h4 :h5}
    {:font-family "'Ostrich Sans'"
     :font-weight "400"}]
   [:h1 {:font-size "3rem"}]
+
+  [:footer
+   {:background-color --laser-lemon
+    :font-style "italic"
+    :color "#555"
+    }
+   [:>*
+    {:max-width "48em"
+     :margin "0 auto"
+     :padding-top "2em"
+     :padding-bottom "2em"
+     }
+    ]]
 
   [:pre
    {#_#_:border "2px solid #ccc"
@@ -161,7 +178,7 @@
        o))
    hiccup))
 
-(defn layout [{:keys [title]} content]
+(defn layout [{:keys [title]} content & [footer]]
   [:html
    [:head
     [:title
@@ -175,14 +192,18 @@
     [:link {:rel "stylesheet" :href "assets/fonts/ostrich-sans/ostrich-sans.css"}]]
    [:body
     [:main
-     content]]])
+     content]
+    (when footer
+      [:footer [:div footer]])]])
 
 (defn blog-post [{:keys [title date slug content]}]
   [:<>
    [:article
     [:h1 title]
     [:aside "Published " (iso-date date) " by " [:a {:href "/"} "Arne Brasseur"] ". " [:a {:href (str site-origin "/" slug ".html")} "(permalink)"]]
-    [:main content]]])
+    [:main content]]
+   [:footer
+    ]])
 
 (defn read-posts []
   (->> "site/posts"
@@ -222,13 +243,20 @@
     [:h1 title]
     [:main content]]])
 
+(def blog-footer
+  [:<>
+   [:a {:href "/"} "Arne"]
+   " is a software developer and technical leader, public speaker, author, and digital creative, who founded and runs the " [:a {:href "https://gaiwan.co"} "Gaiwan"] " software consultancy. You can connect with him " [:a {:href "https://toot.cat/@plexus"} "on the fediverse"] ", or on " [:a {:href "https://www.linkedin.com/in/arnebrasseur/"} "LinkedIn"] "."])
+
 (defn render []
   (let [posts (read-posts)
         pages (read-pages)]
     (io/make-parents "out/index.html")
     (spit "out/index.html" (hiccup/render [layout {} [index posts]]))
     (doseq [post posts]
-      (spit (str "out/" (:slug post) ".html") (hiccup/render [layout post [blog-post post]])))
+      (spit (str "out/" (:slug post) ".html") (hiccup/render [layout post
+                                                              [blog-post post]
+                                                              blog-footer])))
     (doseq [p pages]
       (spit (str "out/" (:slug p) ".html") (hiccup/render [layout p [page p]])))))
 
