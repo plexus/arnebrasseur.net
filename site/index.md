@@ -37,4 +37,5 @@ game written in Piglet.
 ## Pages
 
 - [CoderDojo Pingpong Project (Dutch)](/coderdojo_pingpong.html)
+- [CoderDojo Breakout Project (Dutch)](/coderdojo_breakout.html)
 - [My Calendar System](/calendar.html)
