@@ -5,17 +5,16 @@ date: 2026-07-16
 
 Here's a neat little macro
 
-```clj
+```clojure
 (defmacro nest
   "Nesting macro, puts every form as the last of the previous one.
 
-  This has the effect of flattening if, when, let, etc. by putting the else (for
-  if) or the last (and often single) expression of the body (for when, let, loop
-  etc.) out and after the form.
+  This has the effect of flattening if, when, let, etc. by putting the else 
+  (for if) or the last (and often single) expression of the body (for when, 
+  let, loop etc.) out and after the form.
 
-  This keeps the main code path vertical, while special cases branching out of
-  the main path. This is known as vertical programming.
-  "
+  This keeps the main code path vertical, while special cases branch out 
+  of the main path."
   [& forms]
   `(->> ~@(reverse forms)))
 ```
@@ -28,7 +27,7 @@ have come to appreciate the simple utility of this humble little macro.
 While documenting our latest project, I realised that this macro does not yet
 have a forever home on the web, a place that people can easily point their
 friends (or foes) and coworkers at, that explains the what and why in clear
-terms. So here it is, I hope it makes itself comfortable.
+terms. So here it is, I hope it makes itself at home.
 
 To be fair ([♫](https://www.youtube.com/watch?v=G19B7lTgwCE)), Christophe did write about it
 in [Extensible Macros](https://buttondown.com/tensegritics-curiosities/archive/extensible-macros/),
@@ -119,21 +118,22 @@ from the form in tail position that handles the recursion. And that form in turn
 consists of a few special case checks, and the default recursion clause.
 
 Finally, for something entirely different, let's look at generating some HTML
-with a Hiccup syntax ("Hiccup" is Clojure's convention for expression HTML
-structure as literal data, originating with the Hiccup library, and since
-implemented by a dozen others)
+with a hypothetical HTML generation library (note: the first version of this
+blog post used Hiccup, i.e. vectors, but that doesn't work with `nest` or `->>`,
+since they are treated as if wrapped with an implicit `()`. You'd need a custom
+nesting macro if you want it to work with Hiccup.)
 
 ```clj
 (nest
-  [:html {:lang "en"}
-   [:head [:title "My cool page"]]]
-  [:body
-   [:header "header stuff"]]
-  [:main]
-  [:article
-   [:header "article header"]
-   [:section "..."]
-   [:section "..."]])
+  (h/html {:lang "en"}
+   (h/head (h/title "My cool page")))
+  (h/body
+   (h/header "header stuff"))
+  (h/main)
+  (h/article
+   (h/header "article header")
+   (h/section "...")
+   (h/section "...")))
 ```
 
 This pattern also applies to a lot of UI toolkits, where various frames and
@@ -159,3 +159,7 @@ too clever!
 What do you think, would you use it? Or maybe you do already. What name do you
 prefer? Come yell at me [on the fediverse](https://toot.cat/@plexus) or [the
 atmosphere](https://bsky.app/profile/plexus.eurosky.social).
+
+_Update:_ Ben Lieberman pointed out that there is a Scheme "Request for Implementation", [SRFI 197: Pipeline Operators](https://srfi.schemers.org/srfi-197/srfi-197.html), which among other proposes a `nest` macro. Very similar in intent, but with an explicit placeholder to indicate where the nested form gets inserted in the previous form. Seems this is available either built-in or as a package in several (most?) Scheme implementations.
+
+To match Clojure's existing macro conventions, perhaps this could be adopted as `nest-as`.

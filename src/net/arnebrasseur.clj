@@ -43,12 +43,15 @@
 (defn slurp-md-with-preamble [file]
   (let [text (slurp file)
         preamble (re-find #"^---\n[\s\S]*?\n---\n" text)]
-    (merge
-     {:md  (subs text (count preamble))
-      :content (parse-markdown (subs text (count preamble)))
-      :slug (str/replace (.getName (io/file file)) #".md$" "")}
-     (yaml/parse-string (str/replace preamble "---\n" ""))
-     )))
+    (when-not preamble
+      (println "WARN: no valid preamble in" (str file)))
+    (when preamble
+      (merge
+       {:md  (subs text (count preamble))
+        :content (parse-markdown (subs text (count preamble)))
+        :slug (str/replace (.getName (io/file file)) #".md$" "")}
+       (yaml/parse-string (str/replace preamble "---\n" ""))
+       ))))
 
 (o/defprop --red-violet "#b9077e")
 (o/defprop --pink-lace "#fddef4")
@@ -63,63 +66,53 @@
 
 (o/defprop --primary --arapawa)
 (o/defprop --secondary --sandstorm)
+(o/defprop --copy-line-height 1.5)
 
 (o/defrules styles
+  [:* {:box-sizing "border-box"}]
   [:html
-   {:font-size "18pt"}
+   {:font-size "14pt"}
    [:at-media {:min-width "60rem"}
-    {:font-size "22pt"}]]
+    {:font-size "18pt"}]]
   [:body
    {:background-color --secondary
-    :color --primary
-    :margin 0
-    :font-family "sans-serif"}]
+    :color            --primary
+    :margin           0
+    :font-family      "sans-serif"}]
   [:main {:max-width "48em"
-          :margin "0 auto"
-          }]
+          :margin    "0 auto"}]
   [:aside {:font-size "80%"}]
-  [:article {:padding "0 0.5em"
-             }]
+  [:article {:padding "0 0.5em"}]
+
+  [:h1 {:font-size "3rem"}]
   [#{:h1 :h2 :h3 :h4 :h5}
    {:font-family "'Ostrich Sans'"
     :font-weight "400"}]
-  [:h1 {:font-size "3rem"}]
-
-  [:footer
-   {:background-color --laser-lemon
-    :font-style "italic"
-    :color "#555"
-    }
-   [:>*
-    {:max-width "48em"
-     :margin "0 auto"
-     :padding-top "2em"
-     :padding-bottom "2em"
-     }
-    ]]
+  [:p {:line-height --copy-line-height}]
 
   [:pre
-   {#_#_:border "2px solid #ccc"
-    :color "#222"
+   {#_#_:border       "2px solid #ccc"
+    :color            "#222"
     :background-color "#eee"
-    :padding "1rem"
-    :margin "1rem 0"
-    :border-radius "0.1rem"
-    :box-shadow "rgba(0, 0, 0, 0.16) 0px 1px 4px"}]
+    :padding          "1rem"
+    :margin           "1rem 0"
+    :border-radius    "0.1rem"
+    :box-shadow       "rgba(0, 0, 0, 0.16) 0px 1px 4px"
+    :line-height      --copy-line-height}]
 
   [:blockquote
-   {:border "1px solid black"
-    :border-left "3px solid black"
-    :border-top "3px solid black"
-    :padding "0 1rem"
-    :margin "1rem 0"
+   {:border        "1px solid black"
+    :border-left   "3px solid black"
+    :border-top    "3px solid black"
+    :padding       "0 1rem"
+    :margin        "1rem 0"
     :border-radius "0.2rem"}
    [:h2 {:margin-bottom 0}]
    ]
 
   [:.invisible-whitespace
    {:display "inline-block"
-    :width 0}]
+    :width   0}]
 
   [:.visible-whitespace
    {:opacity "0.2"
@@ -127,6 +120,19 @@
     }]
   [".visible-whitespace::before"
    {:content "attr(data-content)"}]
+
+  [:footer
+   {:background-color --laser-lemon
+    :font-style       "italic"
+    :color            "#555"}
+   [:>*
+    {:max-width      "48em"
+     :margin         "0 auto"
+     :padding-left   ".5em"
+     :padding-right  ".5em"
+     :padding-top    "2em"
+     :padding-bottom "2em"}]]
+
   )
 
 (def language-filters
@@ -210,7 +216,7 @@
        io/file
        file-seq
        (filter #(.isFile (io/file %)))
-       (map slurp-md-with-preamble)
+       (keep slurp-md-with-preamble)
        (map handle-language-filters)
        (sort-by :date)
        reverse))
@@ -222,7 +228,7 @@
        (filter #(.isFile (io/file %)))
        (filter #(.endsWith (str %) ".md"))
        (remove #(= "index.md" (.getName %)))
-       (map slurp-md-with-preamble)
+       (keep slurp-md-with-preamble)
        (map handle-language-filters)
        (map inline-content)
        reverse))
@@ -246,7 +252,10 @@
 (def blog-footer
   [:<>
    [:a {:href "/"} "Arne"]
-   " is a software developer and technical leader, public speaker, author, and digital creative, who founded and runs the " [:a {:href "https://gaiwan.co"} "Gaiwan"] " software consultancy. You can connect with him " [:a {:href "https://toot.cat/@plexus"} "on the fediverse"] ", or on " [:a {:href "https://www.linkedin.com/in/arnebrasseur/"} "LinkedIn"] "."])
+   " is a software developer and technical leader, public speaker, author, conference organiser, and digital creative. "
+   "You can connect with him " [:a {:href "https://toot.cat/@plexus"} "on the fediverse"]
+   ", on " [:a {:href "https://bsky.app/profile/plexus.eurosky.social"} "Bluesky"]
+   ", or on " [:a {:href "https://www.linkedin.com/in/arnebrasseur/"} "LinkedIn"] "."])
 
 (defn render []
   (let [posts (read-posts)
