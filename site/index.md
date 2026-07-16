@@ -5,7 +5,7 @@ Hello!
 Arne is a Belgian software developer and technical leader, public speaker,
 author, and digital creative.
 
-I founded and run the [Gaiwan](https://gaiwan.co) consultancy.
+I founded the erstwhile [Gaiwan](https://gaiwan.co) (site defunct) consultancy in Germany. I now operate as [Magpie](https://magpie.software) (site coming) in Belgium.
 
 I created a large number of popular libraries, in particular for Clojure, under the [lambdaisland](https://github.com/lambdaisland) monniker, including the de facto test runner for Clojure, Kaocha.
 
