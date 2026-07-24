@@ -1,5 +1,6 @@
 (ns net.arnebrasseur
   (:require
+   [babashka.http-server :as bb-server]
    [clj-yaml.core :as yaml]
    [clojure.java.io :as io]
    [clojure.string :as str]
@@ -7,7 +8,8 @@
    [lambdaisland.hiccup :as hiccup]
    [lambdaisland.kramdown :as kramdown]
    [lambdaisland.ornament :as o]
-   [net.cgrand.enlive-html :as enlive])
+   [net.cgrand.enlive-html :as enlive]
+   [org.httpkit.server :as server])
   (:import
    (java.io StringReader)))
 
@@ -52,92 +54,6 @@
         :slug (str/replace (.getName (io/file file)) #".md$" "")}
        (yaml/parse-string (str/replace preamble "---\n" ""))
        ))))
-
-(o/defprop --red-violet "#b9077e")
-(o/defprop --pink-lace "#fddef4")
-(o/defprop --chateau-green "#1ea34c")
-(o/defprop --mirage "#0c182e")
-(o/defprop --arapawa "#01095E")
-(o/defprop --emerald "#38D07B")
-(o/defprop --toast "#8B6253")
-(o/defprop --laser-lemon "#F3F976")
-(o/defprop --green-onion "#78ff94")
-(o/defprop --sandstorm "#f5f7c8")
-
-(o/defprop --primary --arapawa)
-(o/defprop --secondary --sandstorm)
-(o/defprop --copy-line-height 1.5)
-
-(o/defrules styles
-  [:* {:box-sizing "border-box"}]
-  [:html
-   {:font-size "14pt"}
-   [:at-media {:min-width "60rem"}
-    {:font-size "18pt"}]]
-  [:body
-   {:background-color --secondary
-    :color            --primary
-    :margin           0
-    :font-family      "sans-serif"}]
-  [:main {:max-width "48em"
-          :margin    "0 auto"}]
-  [:aside {:font-size "80%"}]
-  [:article {:padding "0 0.5em"}]
-
-  [:h1 {:font-size "3rem"}]
-  [#{:h1 :h2 :h3 :h4 :h5}
-   {:font-family "'Ostrich Sans'"
-    :font-weight "400"}]
-  [:p {:line-height --copy-line-height}]
-
-  [:pre
-   {#_#_:border       "2px solid #ccc"
-    :color            "#222"
-    :background-color "#eee"
-    :padding          "1rem"
-    :margin           "1rem 0"
-    :border-radius    "0.1rem"
-    :box-shadow       "rgba(0, 0, 0, 0.16) 0px 1px 4px"
-    :line-height      --copy-line-height
-    :overflow         "scroll"}]
-
-
-  [:blockquote
-   {:border        "1px solid black"
-    :border-left   "3px solid black"
-    :border-top    "3px solid black"
-    :padding       "0 1rem"
-    :margin        "1rem 0"
-    :border-radius "0.2rem"}
-   [:h2 {:margin-bottom 0}]
-   ]
-
-  [:.fleuron {:text-align "center"
-              :font-size  "1.5rem"
-              :margin     "1.5rem 0"}]
-
-  [:.invisible-whitespace
-   {:display "inline-block"
-    :width   0}]
-
-  [:.visible-whitespace
-   {:opacity "0.2"
-    ;;:user-select "none"
-    }]
-  [".visible-whitespace::before"
-   {:content "attr(data-content)"}]
-
-  [:footer
-   {:background-color --laser-lemon
-    :color            "#555"}
-   [:h2 [:a {:text-decoration "none"}]]
-   [:p {:font-style "italic"}]
-   [:>:first-child {:padding-top "1.5rem"}]
-   [:>:last-child {:padding-bottom "1.5rem"}]
-   [:>* {:max-width     "48em"
-         :margin        "0 auto"
-         :padding-left  ".5em"
-         :padding-right ".5em"}]])
 
 (def language-filters
   {"inline-html"
@@ -196,23 +112,21 @@
      "Arne Brasseur . net"]
     [:meta {:charset "UTF-8"}]
     [:meta {:name "viewport" :content "width=device-width, initial-scale=1"}]
-    [:style (o/defined-styles)]
-    [:style {:media "print"}
-     ]
+    [:link {:rel "stylesheet" :href "/styles.css"}]
     [:link {:rel "stylesheet" :href "assets/fonts/ostrich-sans/ostrich-sans.css"}]]
    [:body
     [:main
-     content
-     [:div.fleuron "❦"]]
+     content]
     (when footer
       footer)]])
 
 (defn blog-post [{:keys [title date slug content]}]
   [:<>
    [:article
-    [:h1 title]
-    [:aside "Published " (iso-date date) " by " [:a {:href "/"} "Arne Brasseur"] ". " [:a {:href (str site-origin "/" slug ".html")} "(permalink)"]]
-    [:main content]]])
+    [:header
+     [:h1 title]
+     [:div.byline "Published " (iso-date date) " by " [:a {:href "/"} "Arne Brasseur"] ". " [:a {:href (str site-origin "/" slug ".html")} "(permalink)"]]]
+    [:<> content]]])
 
 (defn read-posts []
   (->> "site/posts"
@@ -249,8 +163,9 @@
 (defn page [{:keys [title date slug content]}]
   [:<>
    [:article
-    [:h1 title]
-    [:main content]]])
+    [:header
+     [:h1 title]]
+    [:<> content]]])
 
 (def footer
   [:footer
@@ -262,23 +177,67 @@
      ", on " [:a {:href "https://bsky.app/profile/plexus.eurosky.social"} "Bluesky"]
      ", or on " [:a {:href "https://www.linkedin.com/in/arnebrasseur/"} "LinkedIn"] "."]]])
 
-(defn render []
+(defn paths []
   (let [posts (read-posts)
         pages (read-pages)]
-    (io/make-parents "out/index.html")
-    (spit "out/index.html" (hiccup/render [layout {} [index posts]]))
-    (doseq [post posts]
-      (spit (str "out/" (:slug post) ".html") (hiccup/render [layout post
-                                                              [blog-post post]
-                                                              footer])))
-    (doseq [p pages]
-      (spit (str "out/" (:slug p) ".html") (hiccup/render [layout p
-                                                           [page p]
-                                                           footer])))))
+    (-> {"/index.html" [layout {} [index posts] footer]
+         "/styles.css" {:status 200
+                        :headers {"content-type" "text/css"}
+                        :body (o/defined-styles {:compress? false})}}
+        (into (map (fn [{:keys [slug] :as post}]
+                     [(str "/" (:slug post) ".html")
+                      [layout post
+                       [blog-post post]
+                       footer]]))
+              posts)
+        (into (map (fn [{:keys [slug] :as p}]
+                     [(str "/" (:slug p) ".html")
+                      [layout p
+                       [page p]
+                       footer]]))
+              pages))))
 
-(render)
+(defn response [o]
+  (cond
+    (map? o) o
+    (string? o) {:status 200, :body o}
+    (vector? o) {:status 200, :headers {"content-type" "text/html"} :body (hiccup/render o)}))
+
+(defn render []
+  (io/make-parents "out/index.html")
+  (doseq [[path res] (paths)]
+    (spit (str "out" path ) (:body (response res)))))
+
+
+(defn handler [opts]
+  (let [dirs (map #(#'bb-server/file-router % nil)
+                  ["./public"])]
+    (fn [{:keys [uri request-method] :as req}]
+      (println " " (str/upper-case (name request-method)) uri)
+      (let [paths (paths)
+            uri (if (= "/" uri) "/index.html" uri)]
+        (if-let [res (get paths uri)]
+          (response res)
+          (let [req (update req :headers dissoc "range")]
+            (some (fn [d]
+                    (let [res (d req)]
+                      (when (not= 404 (:status res))
+                        #_(let [uri (if (= "/" uri) "/index.html" uri)
+                                target  (io/file "out" (subs uri 1))]
+                            (.mkdirs (io/file (.getParent target)))
+                            (spit target (slurp (:body res))))
+                        res)))
+                  dirs)))))))
+
+(defn run-server [opts]
+  (let [port (:port opts 3800)]
+    (println "Starting server on port" port)
+    (server/run-server (fn [req] ((handler opts) req)) {:port port})))
 
 (comment
+  (run-server {})
+  (render)
+
   (let [p (inline-content (slurp-md-with-preamble "/home/arne/repos/arnebrasseur.net/site/coderdojo_pingpong.md"))]
     (hiccup/render     (layout p   (page p))))
 

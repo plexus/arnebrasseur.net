@@ -1,0 +1,130 @@
+org.clojure/clojure 1.12.5
+  . org.clojure/spec.alpha 0.5.238
+  . org.clojure/core.specs.alpha 0.4.74
+com.lambdaisland/hiccup 0.14.67
+  X enlive/enlive 1.1.6 :use-top
+  X com.lambdaisland/garden 1.6.585 :use-top
+com.lambdaisland/ornament 13b537c
+  X com.lambdaisland/garden 1.6.585 :use-top
+  . girouette/girouette 0.0.10
+    . instaparse/instaparse 1.4.12
+    . garden/garden 1.3.10
+      . com.yahoo.platform.yui/yuicompressor 2.4.8
+  . meta-merge/meta-merge 1.0.0
+com.lambdaisland/shellutils 0.3.20
+com.lambdaisland/kramdown 0.1.6
+  . org.jruby/jruby-core 9.4.10.0
+  . org.jruby/jruby-stdlib 9.4.10.0
+com.lambdaisland/garden 1.9.606
+  . org.primefaces.extensions/resources-optimizer-maven-plugin 2.7.5
+    . org.codehaus.plexus/plexus-utils 4.0.2
+    . com.google.javascript/closure-compiler v20250820
+    . com.google.guava/guava 33.5.0-jre
+      . org.jspecify/jspecify 1.0.0
+fi.metosin/reitit 0.7.0-alpha6
+  . fi.metosin/reitit-core 0.7.0-alpha6
+    . meta-merge/meta-merge 1.0.0
+  . fi.metosin/reitit-dev 0.7.0-alpha6
+    . fi.metosin/reitit-core 0.7.0-alpha6
+    . com.bhauman/spell-spec 0.1.2
+    . expound/expound 0.9.0
+    . fipp/fipp 0.6.26
+    X org.clojure/core.rrb-vector 0.0.14 :superseded
+    . mvxcvi/arrangement 2.1.0
+  . fi.metosin/reitit-spec 0.7.0-alpha6
+    . fi.metosin/reitit-core 0.7.0-alpha6
+    . metosin/spec-tools 0.10.5
+      X org.clojure/spec.alpha 0.2.187 :older-version
+  . fi.metosin/reitit-malli 0.7.0-alpha6
+    . fi.metosin/reitit-core 0.7.0-alpha6
+    . metosin/malli 0.12.0
+      . fipp/fipp 0.6.26
+        . org.clojure/core.rrb-vector 0.1.2 :newer-version
+      . mvxcvi/arrangement 2.1.0
+      . borkdude/dynaload 0.3.5
+      . borkdude/edamame 1.3.23
+        . org.clojure/tools.reader 1.3.4
+      . org.clojure/test.check 1.1.1
+  . fi.metosin/reitit-schema 0.7.0-alpha6
+    . fi.metosin/reitit-core 0.7.0-alpha6
+    . metosin/schema-tools 0.13.1
+      . prismatic/schema 1.1.12
+  . fi.metosin/reitit-ring 0.7.0-alpha6
+    . fi.metosin/reitit-core 0.7.0-alpha6
+    . ring/ring-core 1.10.0
+      . ring/ring-codec 1.2.0 :newer-version
+      . commons-io/commons-io 2.11.0
+      . commons-fileupload/commons-fileupload 1.5
+        . commons-io/commons-io 2.11.0
+      . crypto-random/crypto-random 1.2.1
+        . commons-codec/commons-codec 1.15
+      . crypto-equality/crypto-equality 1.0.1
+  . fi.metosin/reitit-middleware 0.7.0-alpha6
+    . fi.metosin/reitit-ring 0.7.0-alpha6
+    . lambdaisland/deep-diff 0.0-47
+      . mvxcvi/puget 1.1.2
+        X mvxcvi/arrangement 1.2.0 :older-version
+        X fipp/fipp 0.6.17 :older-version
+      X fipp/fipp 0.6.17 :older-version
+      . org.clojure/core.rrb-vector 0.0.14
+      . tech.droit/clj-diff 1.0.1
+      X mvxcvi/arrangement 1.2.0 :older-version
+    . metosin/muuntaja 0.6.8
+      X metosin/jsonista 0.3.1 :older-version
+      . com.cognitect/transit-clj 1.0.324
+        . com.cognitect/transit-java 1.0.343
+          X com.fasterxml.jackson.core/jackson-core 2.8.7 :older-version
+          . org.msgpack/msgpack 0.6.12
+            . com.googlecode.json-simple/json-simple 1.1.1
+            . org.javassist/javassist 3.18.1-GA
+          X commons-codec/commons-codec 1.10 :older-version
+          . javax.xml.bind/jaxb-api 2.3.0
+    . metosin/spec-tools 0.10.5
+  . fi.metosin/reitit-http 0.7.0-alpha6
+    . fi.metosin/reitit-core 0.7.0-alpha6
+    . fi.metosin/reitit-ring 0.7.0-alpha6
+  . fi.metosin/reitit-interceptors 0.7.0-alpha6
+    . fi.metosin/reitit-ring 0.7.0-alpha6
+    . lambdaisland/deep-diff 0.0-47
+    . metosin/muuntaja 0.6.8
+    . metosin/spec-tools 0.10.5
+  . fi.metosin/reitit-swagger 0.7.0-alpha6
+    . fi.metosin/reitit-core 0.7.0-alpha6
+  . fi.metosin/reitit-openapi 0.7.0-alpha6
+    . fi.metosin/reitit-core 0.7.0-alpha6
+  . fi.metosin/reitit-swagger-ui 0.7.0-alpha6
+    . fi.metosin/reitit-ring 0.7.0-alpha6
+    . metosin/jsonista 0.3.7
+      X com.fasterxml.jackson.core/jackson-core 2.14.1 :older-version
+      X com.fasterxml.jackson.core/jackson-databind 2.14.1 :older-version
+      . com.fasterxml.jackson.datatype/jackson-datatype-jsr310 2.14.1
+        X com.fasterxml.jackson.core/jackson-annotations 2.14.1 :older-version
+        X com.fasterxml.jackson.core/jackson-core 2.14.1 :older-version
+        X com.fasterxml.jackson.core/jackson-databind 2.14.1 :older-version
+    . metosin/ring-swagger-ui 4.18.1
+  . fi.metosin/reitit-frontend 0.7.0-alpha6
+    . fi.metosin/reitit-core 0.7.0-alpha6
+  . fi.metosin/reitit-sieppari 0.7.0-alpha6
+    . fi.metosin/reitit-core 0.7.0-alpha6
+    . metosin/sieppari 0.0.0-alpha13
+  . com.fasterxml.jackson.core/jackson-core 2.15.1
+  . com.fasterxml.jackson.core/jackson-databind 2.15.1
+    . com.fasterxml.jackson.core/jackson-annotations 2.15.1
+    . com.fasterxml.jackson.core/jackson-core 2.15.1
+enlive/enlive 1.1.6
+  . org.ccil.cowan.tagsoup/tagsoup 1.2.1
+  . org.jsoup/jsoup 1.7.2
+clj-commons/clj-yaml 1.0.29
+  . org.yaml/snakeyaml 2.3
+  . org.flatland/ordered 1.15.12
+com.lambdaisland/reitit-jaatya 0.2.40
+  . ring/ring-mock 0.4.0
+    . cheshire/cheshire 5.8.1
+      X com.fasterxml.jackson.core/jackson-core 2.9.6 :older-version
+      . com.fasterxml.jackson.dataformat/jackson-dataformat-smile 2.9.6
+        X com.fasterxml.jackson.core/jackson-core 2.9.6 :older-version
+      . com.fasterxml.jackson.dataformat/jackson-dataformat-cbor 2.9.6
+        X com.fasterxml.jackson.core/jackson-core 2.9.6 :older-version
+      . tigris/tigris 0.1.1
+    X ring/ring-codec 1.1.1 :superseded
+      X commons-codec/commons-codec 1.11 :parent-omitted

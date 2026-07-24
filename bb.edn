@@ -1,4 +1,4 @@
-{:deps {com.lambdaisland/cli {:mvn/version "0.19.78"}
-        com.lambdaisland/launchpad {:mvn/version "0.35.156-alpha"}
-        this/this {:local/root "."}
-        org.babashka/http-server {:mvn/version "0.1.13"}}}
+{:deps
+ {com.lambdaisland/cli       {:mvn/version "1.30.130"}
+  com.lambdaisland/launchpad {:mvn/version "0.54.242-alpha"}
+  this/this                  {:local/root "."}}}
