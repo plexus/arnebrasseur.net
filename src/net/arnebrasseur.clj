@@ -98,7 +98,9 @@
     :margin           "1rem 0"
     :border-radius    "0.1rem"
     :box-shadow       "rgba(0, 0, 0, 0.16) 0px 1px 4px"
-    :line-height      --copy-line-height}]
+    :line-height      --copy-line-height
+    :overflow         "scroll"}]
+
 
   [:blockquote
    {:border        "1px solid black"
@@ -109,6 +111,10 @@
     :border-radius "0.2rem"}
    [:h2 {:margin-bottom 0}]
    ]
+
+  [:.fleuron {:text-align "center"
+              :font-size  "1.5rem"
+              :margin     "1.5rem 0"}]
 
   [:.invisible-whitespace
    {:display "inline-block"
@@ -123,17 +129,15 @@
 
   [:footer
    {:background-color --laser-lemon
-    :font-style       "italic"
     :color            "#555"}
-   [:>*
-    {:max-width      "48em"
-     :margin         "0 auto"
-     :padding-left   ".5em"
-     :padding-right  ".5em"
-     :padding-top    "2em"
-     :padding-bottom "2em"}]]
-
-  )
+   [:h2 [:a {:text-decoration "none"}]]
+   [:p {:font-style "italic"}]
+   [:>:first-child {:padding-top "1.5rem"}]
+   [:>:last-child {:padding-bottom "1.5rem"}]
+   [:>* {:max-width     "48em"
+         :margin        "0 auto"
+         :padding-left  ".5em"
+         :padding-right ".5em"}]])
 
 (def language-filters
   {"inline-html"
@@ -198,18 +202,17 @@
     [:link {:rel "stylesheet" :href "assets/fonts/ostrich-sans/ostrich-sans.css"}]]
    [:body
     [:main
-     content]
+     content
+     [:div.fleuron "❦"]]
     (when footer
-      [:footer [:div footer]])]])
+      footer)]])
 
 (defn blog-post [{:keys [title date slug content]}]
   [:<>
    [:article
     [:h1 title]
     [:aside "Published " (iso-date date) " by " [:a {:href "/"} "Arne Brasseur"] ". " [:a {:href (str site-origin "/" slug ".html")} "(permalink)"]]
-    [:main content]]
-   [:footer
-    ]])
+    [:main content]]])
 
 (defn read-posts []
   (->> "site/posts"
@@ -249,13 +252,15 @@
     [:h1 title]
     [:main content]]])
 
-(def blog-footer
-  [:<>
-   [:a {:href "/"} "Arne"]
-   " is a software developer and technical leader, public speaker, author, conference organiser, and digital creative. "
-   "You can connect with him " [:a {:href "https://toot.cat/@plexus"} "on the fediverse"]
-   ", on " [:a {:href "https://bsky.app/profile/plexus.eurosky.social"} "Bluesky"]
-   ", or on " [:a {:href "https://www.linkedin.com/in/arnebrasseur/"} "LinkedIn"] "."])
+(def footer
+  [:footer
+   [:section
+    [:h2 [:a {:href "/"} "ArneBrasseur.net"]]
+    [:p
+     "Arne is a software developer and technical leader, public speaker, author, conference organiser, and digital creative. "
+     "You can connect with him " [:a {:href "https://toot.cat/@plexus"} "on the fediverse"]
+     ", on " [:a {:href "https://bsky.app/profile/plexus.eurosky.social"} "Bluesky"]
+     ", or on " [:a {:href "https://www.linkedin.com/in/arnebrasseur/"} "LinkedIn"] "."]]])
 
 (defn render []
   (let [posts (read-posts)
@@ -265,9 +270,11 @@
     (doseq [post posts]
       (spit (str "out/" (:slug post) ".html") (hiccup/render [layout post
                                                               [blog-post post]
-                                                              blog-footer])))
+                                                              footer])))
     (doseq [p pages]
-      (spit (str "out/" (:slug p) ".html") (hiccup/render [layout p [page p]])))))
+      (spit (str "out/" (:slug p) ".html") (hiccup/render [layout p
+                                                           [page p]
+                                                           footer])))))
 
 (render)
 
