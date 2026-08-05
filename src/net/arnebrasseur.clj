@@ -13,6 +13,8 @@
   (:import
    (java.io StringReader)))
 
+(require 'net.arnebrasseur.styles)
+
 (def site-origin "https://arnebrasseur.net")
 
 (defn iso-date [^java.util.Date jud]
@@ -157,8 +159,7 @@
    [:ul
     (for [{:keys [title draft slug date]} posts
           :when (not draft)]
-      [:li [:a {:href (str "/" slug ".html")} (iso-date date) " — " title ]])]
-   ])
+      [:li [:a {:href (str "/" slug ".html")} (iso-date date) " — " title ]])]])
 
 (defn page [{:keys [title date slug content]}]
   [:<>
@@ -234,9 +235,10 @@
     (println "Starting server on port" port)
     (server/run-server (fn [req] ((handler opts) req)) {:port port})))
 
+(render)
+
 (comment
   (run-server {})
-  (render)
 
   (let [p (inline-content (slurp-md-with-preamble "/home/arne/repos/arnebrasseur.net/site/coderdojo_pingpong.md"))]
     (hiccup/render     (layout p   (page p))))

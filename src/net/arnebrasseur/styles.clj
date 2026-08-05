@@ -76,9 +76,9 @@
 
 (o/defrules spacing
   [:main {:max-width "48em"
-          :margin    "0 auto"}]
-  [:article {:padding-left --space-0
-             :padding-right --space-0}]
+          :margin    "0 auto"
+          :padding-left --space-0
+          :padding-right --space-0}]
   [:footer
    [:>* {:max-width "48em"
          :margin    "0 auto"

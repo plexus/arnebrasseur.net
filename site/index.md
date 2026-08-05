@@ -34,9 +34,22 @@ game written in Piglet.
 
 ----
 
+## Sign up for my Newsletter
+
+<form method="post" action="https://hello.arnebrasseur.net/subscription/form" class="listmonk-form">
+<input type="hidden" name="nonce">
+<label for=name>Name: <input type="text" name="name" placeholder="Bobby Tables"></p>
+<label for=email>Email: <input type="email" name="email" required placeholder="name@domain.org"></label>
+<input id="cf449" type="hidden" name="l" checked value="cf4494d5-2b9a-4f2e-8d35-ad290697448f">
+<input type="submit" value="Subscribe ">
+</form>
+
+----
+
 ## Pages
 
 - [CoderDojo Pingpong Project (Dutch)](/coderdojo_pingpong.html)
 - [CoderDojo Breakout Project (Dutch)](/coderdojo_breakout.html)
 - [CoderDojo HTML en CSS](/coderdojo_html_css.html)
 - [My Calendar System](/calendar.html)
+
