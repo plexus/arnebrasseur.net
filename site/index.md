@@ -40,11 +40,13 @@ game written in Piglet.
 <input type="hidden" name="nonce">
 <p>
 <label for=name>Name: <input type="text" name="name" placeholder="Bobby Tables"></label><br>
-<label for=email>Email: <input type="email" name="email" required placeholder="name@domain.org"></label><br>
+<label for=email>Email: <input type="email" name="email" required placeholder="e.g. bobby@example.org"></label><br>
 <input id="cf449" type="hidden" name="l" checked value="cf4494d5-2b9a-4f2e-8d35-ad290697448f">
 <input type="submit" value="Subscribe ">
 </p>
 </form>
+
+It's 100% free and you can unsubscribe any time!
 
 ----
 
