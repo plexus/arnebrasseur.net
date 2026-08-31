@@ -1,0 +1,98 @@
+/* @font-face { */
+/*   font-display: swap; */
+/*   font-family: 'Playfair'; */
+/*   font-style: normal; */
+/*   font-weight: 300; */
+/*   src: url('Playfair-300.ttf') format('woff2'); */
+/* } */
+/* @font-face { */
+/*   font-display: swap; */
+/*   font-family: 'Playfair'; */
+/*   font-style: italic; */
+/*   font-weight: 300; */
+/*   src: url('Playfair-300italic.ttf') format('woff2'); */
+/* } */
+/* @font-face { */
+/*   font-display: swap; */
+/*   font-family: 'Playfair'; */
+/*   font-style: normal; */
+/*   font-weight: 500; */
+/*   src: url('Playfair-500.ttf') format('woff2'); */
+/* } */
+/* @font-face { */
+/*   font-display: swap; */
+/*   font-family: 'Playfair'; */
+/*   font-style: italic; */
+/*   font-weight: 500; */
+/*   src: url('Playfair-500italic.ttf') format('woff2'); */
+/* } */
+/* @font-face { */
+/*   font-display: swap; */
+/*   font-family: 'Playfair'; */
+/*   font-style: normal; */
+/*   font-weight: 600; */
+/*   src: url('Playfair-600.ttf') format('woff2'); */
+/* } */
+/* @font-face { */
+/*   font-display: swap; */
+/*   font-family: 'Playfair'; */
+/*   font-style: italic; */
+/*   font-weight: 600; */
+/*   src: url('Playfair-600italic.ttf') format('woff2'); */
+/* } */
+/* @font-face { */
+/*   font-display: swap; */
+/*   font-family: 'Playfair'; */
+/*   font-style: normal; */
+/*   font-weight: 700; */
+/*   src: url('Playfair-700.ttf') format('woff2'); */
+/* } */
+/* @font-face { */
+/*   font-display: swap; */
+/*   font-family: 'Playfair'; */
+/*   font-style: italic; */
+/*   font-weight: 700; */
+/*   src: url('Playfair-700italic.ttf') format('woff2'); */
+/* } */
+/* @font-face { */
+/*   font-display: swap; */
+/*   font-family: 'Playfair'; */
+/*   font-style: normal; */
+/*   font-weight: 800; */
+/*   src: url('Playfair-800.ttf') format('woff2'); */
+/* } */
+/* @font-face { */
+/*   font-display: swap; */
+/*   font-family: 'Playfair'; */
+/*   font-style: italic; */
+/*   font-weight: 800; */
+/*   src: url('Playfair-800italic.ttf') format('woff2'); */
+/* } */
+/* @font-face { */
+/*   font-display: swap; */
+/*   font-family: 'Playfair'; */
+/*   font-style: normal; */
+/*   font-weight: 900; */
+/*   src: url('Playfair-900.ttf') format('woff2'); */
+/* } */
+/* @font-face { */
+/*   font-display: swap; */
+/*   font-family: 'Playfair'; */
+/*   font-style: italic; */
+/*   font-weight: 900; */
+/*   src: url('Playfair-900italic.ttf') format('woff2'); */
+/* } */
+/* @font-face { */
+/*   font-display: swap; */
+/*   font-family: 'Playfair'; */
+/*   font-style: italic; */
+/*   font-weight: 400; */
+/*   src: url('Playfair-italic.ttf') format('woff2'); */
+/* } */
+@font-face {
+  font-display: swap;
+  font-family: 'Playfair';
+  font-style: normal;
+  font-weight: 400;
+  src: url('Playfair-regular.ttf') format('woff2');
+}

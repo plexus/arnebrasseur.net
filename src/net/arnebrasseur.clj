@@ -115,7 +115,8 @@
     [:meta {:charset "UTF-8"}]
     [:meta {:name "viewport" :content "width=device-width, initial-scale=1"}]
     [:link {:rel "stylesheet" :href "/styles.css"}]
-    [:link {:rel "stylesheet" :href "assets/fonts/ostrich-sans/ostrich-sans.css"}]]
+    [:link {:rel "stylesheet" :href "assets/fonts/playfair/playfair.css"}]
+    [:link {:rel "stylesheet" :href "assets/fonts/sourceserif4/sourceserif4.css"}]]
    [:body
     [:main
      content]
@@ -208,7 +209,6 @@
   (io/make-parents "out/index.html")
   (doseq [[path res] (paths)]
     (spit (str "out" path ) (:body (response res)))))
-
 
 (defn handler [opts]
   (let [dirs (map #(#'bb-server/file-router % nil)

@@ -35,7 +35,7 @@
   (let [min-vw 20
         max-vw 90
         min-base 1
-        max-base 1.25
+        max-base (* min-base 1.5)
         ratio 1.25
         space-min 0.5
         space-max 0.75
@@ -108,10 +108,12 @@
 
 (o/defrules typograhpy
   [:body
-   {:font-family "system, sans-serif"}]
+   {:font-family "'Source Serif 4', serif"
+    #_#_:font-weight 300}]
   [#{:h1 :h2 :h3 :h4 :h5}
-   {:font-family "'Ostrich Sans', sans-serif"
-    :font-weight "400"}]
+   {:font-family "'Playfair', sans-serif"
+    :font-weight "400"
+    :letter-spacing "-0.03em"}]
   ["main::after" {:display "block"
                   :text-align "center"
                   :font-size --text-fluid-3
