@@ -45,17 +45,23 @@
       xml->hiccup))
 
 (defn slurp-md-with-preamble [file]
-  (let [text (slurp file)
+  (let [text     (slurp file)
         preamble (re-find #"^---\n[\s\S]*?\n---\n" text)]
-    (when-not preamble
-      (println "WARN: no valid preamble in" (str file)))
-    (when preamble
-      (merge
-       {:md  (subs text (count preamble))
-        :content (parse-markdown (subs text (count preamble)))
-        :slug (str/replace (.getName (io/file file)) #".md$" "")}
-       (yaml/parse-string (str/replace preamble "---\n" ""))
-       ))))
+    (if-not preamble
+      (println "WARN: no valid preamble in" (str file))
+      (let [parsed (yaml/parse-string (str/replace preamble "---\n" ""))]
+        (update
+         (merge
+          {:md      (subs text (count preamble))
+           :content (parse-markdown (subs text (count preamble)))
+           :slug    (or (:slug parsed)
+                        (str/replace (.getName (io/file file)) #".md$" ""))}
+          parsed)
+         :date
+         (fn [d]
+           (if (string? d)
+             (clojure.instant/read-instant-date d)
+             d)))))))
 
 (def language-filters
   {"inline-html"

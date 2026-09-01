@@ -35,7 +35,7 @@
   (let [min-vw 20
         max-vw 90
         min-base 1
-        max-base (* min-base 1.5)
+        max-base 1.25
         ratio 1.25
         space-min 0.5
         space-max 0.75
