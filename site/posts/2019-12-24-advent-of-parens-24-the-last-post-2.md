@@ -1,6 +1,5 @@
 ---
 title: "Advent 2019 part 24, The Last Post"
-slug: "advent-of-parens-24-the-last-post-2"
 type: "post"
 status: "published"
 visibility: "public"

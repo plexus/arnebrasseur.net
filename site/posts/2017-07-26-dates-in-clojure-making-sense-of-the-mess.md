@@ -1,6 +1,5 @@
 ---
 title: "Dates in Clojure: Making Sense of the Mess"
-slug: "dates-in-clojure-making-sense-of-the-mess"
 type: "post"
 status: "published"
 visibility: "public"

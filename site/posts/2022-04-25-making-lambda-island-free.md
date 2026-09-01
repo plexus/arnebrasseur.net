@@ -1,6 +1,5 @@
 ---
 title: "Making Lambda Island Free"
-slug: "making-lambda-island-free"
 type: "post"
 status: "published"
 visibility: "public"

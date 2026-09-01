@@ -1,6 +1,5 @@
 ---
 title: "The Bare Minimum, or Making Mayonnaise with Clojure"
-slug: "the-bare-minimum-clojure-mayonnaise"
 type: "post"
 status: "published"
 visibility: "public"

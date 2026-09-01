@@ -1,6 +1,5 @@
 ---
 title: "Advent 2019 part 10, Hillcharts with Firebase and Shadow-cljs"
-slug: "advent-of-parens-10-hillchart-reagent-shadow-firebase"
 type: "post"
 status: "published"
 visibility: "public"

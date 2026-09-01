@@ -1,6 +1,5 @@
 ---
 title: "Clojure Gotchas: \"contains?\" and Associative Collections"
-slug: "clojure-gotchas-associative-contains"
 type: "post"
 status: "published"
 visibility: "public"

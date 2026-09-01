@@ -1,6 +1,5 @@
 ---
 title: "Advice to My Younger Self"
-slug: "advice-to-younger-self"
 type: "post"
 status: "published"
 visibility: "public"

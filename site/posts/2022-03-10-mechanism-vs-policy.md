@@ -1,6 +1,5 @@
 ---
 title: "Improve your code by separating mechanism from policy"
-slug: "mechanism-vs-policy"
 type: "post"
 status: "published"
 visibility: "public"

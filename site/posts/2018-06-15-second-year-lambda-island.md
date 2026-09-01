@@ -1,6 +1,5 @@
 ---
 title: "Two Years of Lambda Island, A Healthy Pace and Things to Come"
-slug: "second-year-lambda-island"
 type: "post"
 status: "published"
 visibility: "public"

@@ -1,6 +1,5 @@
 ---
 title: "The Art of Tree Shaping with Clojure Zippers"
-slug: "art-tree-shaping-clojure-zip"
 type: "post"
 status: "published"
 visibility: "public"

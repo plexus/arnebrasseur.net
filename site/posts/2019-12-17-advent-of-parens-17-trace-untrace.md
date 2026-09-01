@@ -1,6 +1,5 @@
 ---
 title: "Advent 2019 part 17, trace! and untrace!"
-slug: "advent-of-parens-17-trace-untrace"
 type: "post"
 status: "published"
 visibility: "public"

@@ -1,6 +1,5 @@
 ---
 title: "Advent 2019 part 8, Everything is (not) a pipe"
-slug: "advent-of-parens-8-everything-is-a-pipe"
 type: "post"
 status: "published"
 visibility: "public"

@@ -1,6 +1,5 @@
 ---
 title: "Advent 2019 part 16, Coffee Grinders"
-slug: "advent-of-parens-16-coffee-grinders"
 type: "post"
 status: "published"
 visibility: "public"

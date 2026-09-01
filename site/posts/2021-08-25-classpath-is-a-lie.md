@@ -1,6 +1,5 @@
 ---
 title: "The Classpath is a Lie"
-slug: "classpath-is-a-lie"
 type: "post"
 status: "published"
 visibility: "public"

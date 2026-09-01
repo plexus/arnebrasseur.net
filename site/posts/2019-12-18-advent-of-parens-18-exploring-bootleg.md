@@ -1,6 +1,5 @@
 ---
 title: "Advent 2019 part 18, Exploring Bootleg"
-slug: "advent-of-parens-18-exploring-bootleg"
 type: "post"
 status: "published"
 visibility: "public"

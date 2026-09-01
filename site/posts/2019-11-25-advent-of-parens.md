@@ -1,6 +1,5 @@
 ---
 title: "Advent of Parens 2019"
-slug: "advent-of-parens"
 type: "post"
 status: "published"
 visibility: "public"

@@ -1,6 +1,5 @@
 ---
 title: "Advent 2019 part 9, Dynamic Vars in ClojureScript"
-slug: "advent-of-parens-9-dynamic-vars-clojurescript"
 type: "post"
 status: "published"
 visibility: "public"

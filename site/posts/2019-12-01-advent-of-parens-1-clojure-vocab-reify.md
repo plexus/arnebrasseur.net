@@ -1,6 +1,5 @@
 ---
 title: "Advent 2019 part 1, Clojure Vocab: to Reify"
-slug: "advent-of-parens-1-clojure-vocab-reify"
 type: "post"
 status: "published"
 visibility: "public"

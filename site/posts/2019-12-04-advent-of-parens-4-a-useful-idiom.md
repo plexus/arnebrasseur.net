@@ -1,6 +1,5 @@
 ---
 title: "Advent 2019 part 4, A useful idiom"
-slug: "advent-of-parens-4-a-useful-idiom"
 type: "post"
 status: "published"
 visibility: "public"

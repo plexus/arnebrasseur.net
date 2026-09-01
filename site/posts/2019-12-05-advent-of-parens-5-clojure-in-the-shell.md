@@ -1,6 +1,5 @@
 ---
 title: "Advent 2019 part 5, Clojure in the shell"
-slug: "advent-of-parens-5-clojure-in-the-shell"
 type: "post"
 status: "published"
 visibility: "public"

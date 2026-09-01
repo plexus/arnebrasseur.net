@@ -1,6 +1,5 @@
 ---
 title: "Advent 2019 part 15, jcmd and jstack"
-slug: "advent-of-parens-15-jcmd-and-jstack"
 type: "post"
 status: "published"
 visibility: "public"

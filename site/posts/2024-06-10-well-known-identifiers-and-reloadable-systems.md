@@ -1,6 +1,5 @@
 ---
 title: "Well Known Identifiers and Reloadable Systems"
-slug: "well-known-identifiers-and-reloadable-systems"
 type: "post"
 status: "published"
 visibility: "public"

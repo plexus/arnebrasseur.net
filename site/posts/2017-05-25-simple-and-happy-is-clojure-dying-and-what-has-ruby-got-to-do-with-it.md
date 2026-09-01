@@ -1,6 +1,5 @@
 ---
 title: "Simple and Happy; is Clojure dying, and what has Ruby got to do with it?"
-slug: "simple-and-happy-is-clojure-dying-and-what-has-ruby-got-to-do-with-it"
 type: "post"
 status: "published"
 visibility: "public"

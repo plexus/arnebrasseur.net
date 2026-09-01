@@ -1,6 +1,5 @@
 ---
 title: "Test Wars: A New Hope"
-slug: "test-wars-new-hope"
 type: "post"
 status: "published"
 visibility: "public"

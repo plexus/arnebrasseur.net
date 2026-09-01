@@ -1,6 +1,5 @@
 ---
 title: "Reloading Woes"
-slug: "reloading-woes"
 type: "post"
 status: "published"
 visibility: "public"

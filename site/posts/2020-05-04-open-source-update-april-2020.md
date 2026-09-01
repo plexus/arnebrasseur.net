@@ -1,6 +1,5 @@
 ---
 title: "Lambda Island Open Source Update April 2020"
-slug: "open-source-update-april-2020"
 type: "post"
 status: "published"
 visibility: "public"

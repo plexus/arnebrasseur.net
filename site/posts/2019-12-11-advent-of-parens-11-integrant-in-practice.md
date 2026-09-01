@@ -1,6 +1,5 @@
 ---
 title: "Advent 2019 part 11, Integrant in Practice"
-slug: "advent-of-parens-11-integrant-in-practice"
 type: "post"
 status: "published"
 visibility: "public"

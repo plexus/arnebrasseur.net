@@ -1,6 +1,5 @@
 ---
 title: "Making nREPL and CIDER More Dynamic (part 2)"
-slug: "making-nrepl-cider-more-dynamic-2"
 type: "post"
 status: "published"
 visibility: "public"

@@ -1,6 +1,5 @@
 ---
 title: "Lambda Island is Changing"
-slug: "lambdaisland-is-changing"
 type: "post"
 status: "published"
 visibility: "public"

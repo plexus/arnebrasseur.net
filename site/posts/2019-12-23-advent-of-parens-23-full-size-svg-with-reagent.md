@@ -1,6 +1,5 @@
 ---
 title: "Advent 2019 part 23, Full size SVG with Reagent"
-slug: "advent-of-parens-23-full-size-svg-with-reagent"
 type: "post"
 status: "published"
 visibility: "public"

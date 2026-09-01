@@ -1,6 +1,5 @@
 ---
 title: "Well Behaved Command Line Tools"
-slug: "well-behaved-command-line-tools"
 type: "post"
 status: "published"
 visibility: "public"

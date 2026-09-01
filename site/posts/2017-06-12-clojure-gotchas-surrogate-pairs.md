@@ -1,6 +1,5 @@
 ---
 title: "Clojure Gotchas: Surrogate Pairs"
-slug: "clojure-gotchas-surrogate-pairs"
 type: "post"
 status: "published"
 visibility: "public"

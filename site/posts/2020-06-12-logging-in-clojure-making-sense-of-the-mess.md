@@ -1,6 +1,5 @@
 ---
 title: "Logging in Clojure: Making Sense of the Mess"
-slug: "logging-in-clojure-making-sense-of-the-mess"
 type: "post"
 status: "published"
 visibility: "public"

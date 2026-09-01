@@ -1,6 +1,5 @@
 ---
 title: "Why Clojure?"
-slug: "why-clojure"
 type: "post"
 status: "published"
 visibility: "public"

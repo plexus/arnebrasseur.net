@@ -1,6 +1,5 @@
 ---
 title: "Advent 2019 part 12, Pairing in the Cloud with Tmux"
-slug: "advent-of-parens-12-pairing-cloud-tmux"
 type: "post"
 status: "published"
 visibility: "public"

@@ -1,6 +1,5 @@
 ---
 title: "Advent 2019 part 19, Advent of Random Hacks"
-slug: "advent-of-parens-19-advent-of-random-hacks"
 type: "post"
 status: "published"
 visibility: "public"

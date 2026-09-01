@@ -1,6 +1,5 @@
 ---
 title: "Union Types with Clojure.Spec"
-slug: "union-types"
 type: "post"
 status: "published"
 visibility: "public"

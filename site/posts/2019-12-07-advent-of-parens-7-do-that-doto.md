@@ -1,6 +1,5 @@
 ---
 title: "Advent 2019 part 7, Do that doto"
-slug: "advent-of-parens-7-do-that-doto"
 type: "post"
 status: "published"
 visibility: "public"

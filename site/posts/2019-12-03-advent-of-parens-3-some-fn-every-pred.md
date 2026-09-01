@@ -1,6 +1,5 @@
 ---
 title: "Advent 2019 part 3, `every-pred` and `some-fn`"
-slug: "advent-of-parens-3-some-fn-every-pred"
 type: "post"
 status: "published"
 visibility: "public"

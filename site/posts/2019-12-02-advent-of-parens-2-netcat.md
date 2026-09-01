@@ -1,6 +1,5 @@
 ---
 title: "Advent 2019 part 2, Piping hot network sockets with Netcat"
-slug: "advent-of-parens-2-netcat"
 type: "post"
 status: "published"
 visibility: "public"

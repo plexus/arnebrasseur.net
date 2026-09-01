@@ -1,6 +1,5 @@
 ---
 title: "Advent 2019 part 21, Project level Emacs config with .dir-locals.el"
-slug: "advent-of-parens-21-project-config-dir-locals"
 type: "post"
 status: "published"
 visibility: "public"

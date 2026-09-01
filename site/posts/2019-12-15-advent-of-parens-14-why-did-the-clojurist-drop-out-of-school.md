@@ -1,6 +1,5 @@
 ---
 title: "Advent 2019 part 14, Why did the Clojurist drop out of school?"
-slug: "advent-of-parens-14-why-did-the-clojurist-drop-out-of-school"
 type: "post"
 status: "published"
 visibility: "public"

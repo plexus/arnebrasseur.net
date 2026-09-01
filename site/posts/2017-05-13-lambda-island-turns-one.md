@@ -1,6 +1,5 @@
 ---
 title: "Lambda Island Turns One, The Story of a Rocky Ride"
-slug: "lambda-island-turns-one"
 type: "post"
 status: "published"
 visibility: "public"

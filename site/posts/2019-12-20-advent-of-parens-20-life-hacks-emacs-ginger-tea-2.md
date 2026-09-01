@@ -1,6 +1,5 @@
 ---
 title: "Advent 2019 part 20, Life Hacks aka Emacs Ginger Tea"
-slug: "advent-of-parens-20-life-hacks-emacs-ginger-tea-2"
 type: "post"
 status: "published"
 visibility: "public"

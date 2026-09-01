@@ -1,6 +1,5 @@
 ---
 title: "Announcing lambdaisland/uri 1.0.0"
-slug: "announcing-lambdaisland-uri"
 type: "post"
 status: "published"
 visibility: "public"

@@ -1,6 +1,5 @@
 ---
 title: "In the Face of Tech Kaiju"
-slug: "in-the-face-of-tech-kaiju-2"
 type: "post"
 status: "published"
 visibility: "public"

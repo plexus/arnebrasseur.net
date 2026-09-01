@@ -1,6 +1,5 @@
 ---
 title: "Advent 2019 part 13, Datomic Test Factories"
-slug: "advent-of-parens-13-datomic-test-factories"
 type: "post"
 status: "published"
 visibility: "public"

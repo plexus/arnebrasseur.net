@@ -1,6 +1,5 @@
 ---
 title: "Logging in Practice with Glögi and Pedestal.log"
-slug: "logging-in-practice-glogi-pedestal"
 type: "post"
 status: "published"
 visibility: "public"

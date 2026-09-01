@@ -1,6 +1,5 @@
 ---
 title: "Coffee Grinders, part 2"
-slug: "coffee-grinders-2"
 type: "post"
 status: "published"
 visibility: "public"

@@ -1,6 +1,5 @@
 ---
 title: "Fork This Conference"
-slug: "fork-this-conference"
 type: "post"
 status: "published"
 visibility: "public"

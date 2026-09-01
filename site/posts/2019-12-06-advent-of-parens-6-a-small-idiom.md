@@ -1,6 +1,5 @@
 ---
 title: "Advent 2019 part 6, A small idiom"
-slug: "advent-of-parens-6-a-small-idiom"
 type: "post"
 status: "published"
 visibility: "public"
