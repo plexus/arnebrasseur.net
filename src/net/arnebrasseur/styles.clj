@@ -18,6 +18,11 @@
 (o/defprop --base-line-height 1.5)
 (o/defprop --heading-line-height 1.15)
 
+(o/defprop --body-font "'Atkinson Hyperlegible Next',sans-serif" #_"'Source Serif 4', serif")
+(o/defprop --mono-font "'Atkinson Hyperlegible Mono',monospace")
+
+(o/defprop --heading-font "'Playfair', sans-serif")
+
 (defn utopia-clamp
   "Fluid clamp() CSS value using the Utopia formula."
   [min-base max-base ratio i min-width max-width]
@@ -46,14 +51,16 @@
                                                        (apply str "0" (repeat (- i) "0"))
                                                        i)))
               ~(utopia-clamp min-base max-base ratio i min-vw max-vw)))
-       ~@(for [i (range -3 7)]
+       ~@(for [i (range -3 15)]
            `(o/defprop ~(symbol (str "--space-" (if (neg-int? i)
                                                   (apply str "0" (repeat (- i) "0"))
                                                   i)))
               ~(utopia-clamp space-min space-max space-ratio i min-vw max-vw))))))
 
+(macroexpand
+ '
+ (fluid-props))
 (fluid-props)
-
 (o/defrules reset
   [#{:* "*::before" "*::after"}
    {:box-sizing "border-box"
@@ -108,12 +115,14 @@
 
 (o/defrules typograhpy
   [:body
-   {:font-family "'Source Serif 4', serif"
+   {:font-family --body-font
     #_#_:font-weight 300}]
   [#{:h1 :h2 :h3 :h4 :h5}
-   {:font-family "'Playfair', sans-serif"
+   {:font-family --heading-font
     :font-weight "400"
     :letter-spacing "-0.03em"}]
+  [#{:pre :code}
+   {:font-family --mono-font}]
   ["main::after" {:display "block"
                   :text-align "center"
                   :font-size --text-fluid-3

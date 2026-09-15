@@ -122,7 +122,8 @@
     [:meta {:name "viewport" :content "width=device-width, initial-scale=1"}]
     [:link {:rel "stylesheet" :href "/styles.css"}]
     [:link {:rel "stylesheet" :href "assets/fonts/playfair/playfair.css"}]
-    [:link {:rel "stylesheet" :href "assets/fonts/sourceserif4/sourceserif4.css"}]]
+    ;; [:link {:rel "stylesheet" :href "assets/fonts/sourceserif4/sourceserif4.css"}]
+    [:link {:rel "stylesheet" :href "assets/fonts/atkinson/atkinson.css"}]]
    [:body
     [:main
      content]
@@ -137,6 +138,29 @@
      [:div.byline "Published " (iso-date date) " by " [:a {:href "/"} "Arne Brasseur"] ". " [:a {:href (str site-origin "/" slug ".html")} "(permalink)"]]]
     [:<> content]]])
 
+(defn hiccup-heading? [e]
+  (and (vector? e) (#{:h1 :h2 :h3 :h4 :h5} (first e))))
+
+(defn heading-level [e]
+  (parse-long (str (second (name (first e))))))
+
+(defn normalise-heading-levels
+  "Kramdown seems to have a weird issue where some h2 are being parsed as h4, and
+  our markdown (especially old imports) can be inconsistent. Make sure the
+  smallest heading level is h2, with h1 reserved for the title."
+  [content]
+  (let [min-heading
+        (min 
+         (keep (fn [e] (when (hiccup-heading? e)
+                         (heading-level e)))
+               content))
+        delta (- (or (first min-heading) 2) 2)]
+    (mapv (fn [e]
+            (if (hiccup-heading? e)
+              (assoc e 0 (keyword (str "h" (- (heading-level e) delta))))
+              e))
+          content)))
+
 (defn read-posts []
   (->> "site/posts"
        io/file
@@ -144,6 +168,7 @@
        (filter #(.isFile (io/file %)))
        (keep slurp-md-with-preamble)
        (map handle-language-filters)
+       (map #(update % :content normalise-heading-levels))
        (sort-by :date)
        reverse))
 
