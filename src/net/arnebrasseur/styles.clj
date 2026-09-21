@@ -68,6 +68,11 @@
     :padding 0}]
   [:body {:overflow-wrap "break-word"}])
 
+(o/defrules layout
+  [:body :flex :flex-col
+   {:min-height "100vh"}]
+  [:main {:flex 1}])
+
 (o/defrules text
   [:html {:font-size "100%"
           :line-height --base-line-height}]
@@ -82,7 +87,8 @@
    {:font-size --text-fluid-0}])
 
 (o/defrules spacing
-  [:main {:max-width "48em"
+  [:main {:width "100%"
+          :max-width "48em"
           :margin    "0 auto"
           :padding-left --space-0
           :padding-right --space-0}]
