@@ -43,6 +43,8 @@ game written in Piglet.
 <label for=email>Email: <input type="email" name="email" required placeholder="e.g. bobby@example.org"></label><br>
 <input id="cf449" type="hidden" name="l" checked value="cf4494d5-2b9a-4f2e-8d35-ad290697448f">
 <input type="submit" value="Subscribe ">
+<altcha-widget challengeurl="https://hello.arnebrasseur.net/api/public/captcha/altcha"></altcha-widget>
+<script type="module" src="https://hello.arnebrasseur.net/public/static/altcha.umd.js" async defer></script>
 </p>
 </form>
 
