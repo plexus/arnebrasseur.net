@@ -1,0 +1,4 @@
+source 'https://rubygems.org'
+
+gem 'slippery', path: '/home/arne/github/slippery'
+gem 'hexp', path: '/home/arne/github/hexp'

@@ -1,0 +1,16 @@
+body {
+  background: white;
+}
+
+h2 {
+  text-align: left;
+}
+
+body .reveal pre {
+  font-size: 200%;
+  box-shadow: 0px;
+}
+
+body .hljs {
+  background-color: white;
+}

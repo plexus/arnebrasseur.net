@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html><head><link href='assets/38b7430b5ca5b0ee5308d3cca6a8b055.css' rel='stylesheet'><title>Burn Your Idiomatic Ruby</title><link rel='stylesheet' href='assets/c1cd938f43002a217f591a8a4303a896.css'><script src='assets/8f16b5edb7f88bfec561d7749e3c2241.js'></script><script>hljs.initHighlightingOnLoad();</script><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><link rel='stylesheet' type='text/css' href='assets/5a0ca255fce9de83dde16a0f27d788fe.css'><link rel='stylesheet' type='text/css' href='assets/567c9a0c3222752a980daecd8c3a62e1.css'><link href='assets/5d4fe9d9aa9ba7c7410c8351c7aada20.css' rel='stylesheet' type='text/css'></head><body class='shower list'><section class='slide' name='1'>
+<p style='float:left; margin-right: 2em;'><img src='assets/78dc2dc1939027912198c4951420342f.jpg' alt=''></p>
+<p>Arne Brasseur</p>
+<p>Twitter/Github: @plexus</p>
+</section><section class='slide' name='2'>
+<p><img src='assets/c638cff29d3d01d370ed00660049412f.png' alt='' class='cover'></p>
+</section><section class='slide' name='3'>
+<p><img src='assets/48ad5d49ad4c677c8d0f3d28852bba77.jpg' alt='' class='cover'></p>
+</section><section class='slide' name='4'>
+<p><img src='assets/abfd4a35837e58df40b67f641efd0c5f.jpg' alt='' class='cover'></p>
+</section><section class='slide' name='5'>
+<p><img src='assets/40c3798236f8a9cf966e54c645d64604.png' alt='' class='cover'></p>
+</section><section class='slide' name='6'>
+<p><img src='assets/ee9ebee2da8d801882ae50e90ec8d457.png' alt='' class='cover'></p>
+</section><section class='slide' id='cover' name='7'>
+<h2>Burn Your Idiomatic Ruby</h2>
+<p><em>by <a href='http://arnebrasseur.net'><strong>Arne Brasseur</strong></a></em></p>
+<p><em>BRUG, Brussels, 19 April 2016</em></p>
+<p><img src='assets/f991b62d39c248d14407901afad3502a.jpg' alt='' class='cover'></p>
+<p class='attribution'>Image: <a href='https://www.flickr.com/photos/gbaku/3298229052'>Bomber in Flames</a> by John Atherton</p>
+
+
+
+
+</section><section class='slide chapter' name='8'>
+<h2>Chapter 1</h2>
+<p>idiom enters the stage</p>
+</section><section class='slide' name='9'>
+<h2>Idiom</h2>
+
+<p><strong>id·i·om</strong> \i-dē-əm\ <em>noun</em></p>
+<ol><li>a peculiar expression that is commonly understood; a colloquial metaphor</li><li>a way of speaking that is particular to a specific group</li></ol>
+</section><section class='slide' name='10'>
+<h2>Idiom¹</h2>
+<ol><li>a peculiar expression that is commonly understood; a colloquial metaphor</li></ol>
+<p><em>“you’re pulling my leg”</em><br>
+<em>“Dat is een ander paar mouwen”</em><br>
+<em>“Jouer avec les pieds de quelqu’un”</em></p>
+</section><section class='slide' name='11'>
+<p><em>“Avaler par le trou du dimanche”</em><br>
+<em>“c’est à Houte-si-plou les bains de pied”</em><br>
+<em>“les doigts dans le nez”</em><br>
+<em>“avoir un oeuf à peler avec quelqu’un”</em><br>
+<em>“affonner une biere”</em><br>
+<em>“raconter des carabistouilles”</em></p>
+</section><section class='slide' name='12'>
+<p><em>“avoir la tete dans le cul”</em><br>
+<em>“on boit un coup ou on s’encule”</em><br>
+<em>“couter la peau du cul”</em><br>
+<em>“se peler le cul”</em><br>
+<em>“avoir le feu au cul”</em></p>
+
+
+
+</section><section class='slide' name='13'>
+<h2>Ruby idioms¹</h2>
+<p>Think: “tiny design pattern”</p>
+</section><section class='slide' name='14'>
+<h2>Ruby idioms¹</h2>
+<p>A method that memoizes</p>
+<pre class='language-ruby'><code>def sum
+  @sum ||= @left + @right
+end
+</code></pre>
+</section><section class='slide' name='15'>
+<h2>Ruby idioms¹</h2>
+<p>Method pre-condition</p>
+<pre class='language-ruby'><code>def filter_negatives(list)
+  raise &quot;list can&#x27;t be empty&quot; if list.empty?
+
+  # ...
+end
+</code></pre>
+</section><section class='slide' name='16'>
+<h2>Idiom²</h2>
+<ol style='counter-reset: list 1;'><li>A way of speaking that is particular to a specific group</li></ol>
+<ul><li>“Eurospeak”</li><li>High school language</li></ul>
+</section><section class='slide' name='17'>
+<h2>Idiom²</h2>
+<p>Can change over two dimensions</p>
+<ul><li>From group to group</li><li>Over time: Early, middle, modern English</li></ul>
+</section><section class='slide' name='18'>
+<h2>Ruby idioms²</h2>
+<p>Differs from group to group</p>
+<ul><li>ruby-core Ruby</li><li>Rails Ruby</li><li>Seattle.rb Ruby</li><li>DataMapper/ROM Ruby</li></ul>
+</section><section class='slide' name='19'>
+<h2>Seattle.rb Ruby</h2>
+<pre><code class='ruby'>def self.filter_files files, ignore = DEFAULT_IGNORE
+</code><code class='ruby'>  ignore_paths = if ignore.respond_to? :read then
+</code><code class='ruby'>                   ignore.read
+</code><code class='ruby'>                 elsif File.exists? ignore then
+</code><code class='ruby'>                   File.read ignore
+</code><code class='ruby'>                 end
+</code><code class='ruby'>   # ...
+</code><code class='ruby'>end
+</code></pre>
+</section><section class='slide chapter' name='20'>
+<h2>Chapter 2</h2>
+<p>in which Ruby’s idiom evolves</p>
+</section><section class='slide' name='21'>
+<h2>Ruby anno 2004</h2>
+<pre class='language-ruby'><code>def create_method_obj(names, params)
+  o = Object.new
+  for idx in 0 ... params.length
+    o.instance_variable_set(&#x27;@&#x27; + names[idx],
+      params[idx])
+  end
+  o
+end
+</code></pre>
+</section><section class='slide' name='22'>
+<h2>Ruby anno 2004</h2>
+<pre class='language-ruby'><code>def create_method_obj(names, params)
+  o = Object.new
+  params.length.times do |idx|
+    o.instance_variable_set(&#x27;@&#x27; + names[idx],
+      params[idx])
+  end
+  o
+end
+</code></pre>
+</section><section class='slide' name='23'>
+<h2>Ruby anno 2004</h2>
+<pre class='language-ruby'><code>def create_method_obj(names, params)
+  o = Object.new
+  params.each.with_index do |param, idx|
+    o.instance_variable_set(&#x27;@&#x27; + names[idx],
+      param)
+  end
+  o
+end
+</code></pre>
+</section><section class='slide' name='24'>
+<h2>Ruby anno 2004</h2>
+<pre class='language-ruby'><code>def create_method_obj(names, params)
+  o = Object.new
+  params.zip(names).each do |param, name|
+    o.instance_variable_set(&#x27;@&#x27; + name, param)
+  end
+  o
+end
+</code></pre>
+</section><section class='slide' name='25'>
+<h2>Ruby anno 2004</h2>
+<pre class='language-ruby'><code>def create_method_obj(names, params)
+  returning Object.new do
+    params.zip(names).each do |param, name|
+      o.instance_variable_set(&#x27;@&#x27; + name, param)
+    end
+  end
+end
+</code></pre>
+</section><section class='slide' name='26'>
+<h2>Ruby anno 2016</h2>
+<pre class='language-ruby'><code>def create_method_obj(names, params)
+  Object.new.tap do |o|
+    params.zip(names).each do |param, name|
+      o.instance_variable_set(&quot;@#{name}&quot;, param)
+    end
+  end
+end
+</code></pre>
+</section><section class='slide' name='27'>
+<h2>Ruby anno 2004</h2>
+<pre><code class='ruby'>/Content-Disposition:.* filename=&quot;?([^\&quot;;]*)&quot;?/ni.match(h)
+</code><code class='ruby'>filename = ($1 or &quot;&quot;)
+</code><code class='ruby'>
+</code><code class='ruby'>if /Mozilla/ni.match(env_table[&#x27;HTTP_USER_AGENT&#x27;]) and
+</code><code class='ruby'>    (not /MSIE/ni.match(env_table[&#x27;HTTP_USER_AGENT&#x27;]))
+</code><code class='ruby'>  filename = CGI::unescape(filename)
+</code><code class='ruby'>end
+</code></pre>
+</section><section class='slide' name='28'>
+<h2>Ruby anno 2004</h2>
+<pre class='language-ruby'><code>class CGI
+  def CGI::escape(string)
+    # ...
+  end
+
+  def CGI::unescapeHTML(string)
+    # ...
+  end
+end
+</code></pre>
+</section><section class='slide' name='29'>
+<h2>Modern version</h2>
+<pre><code class='ruby'>filename = h
+</code><code class='ruby'>  .match /Content-Disposition:.* filename=&quot;?([^\&quot;;]*)&quot;?/ni
+</code><code class='ruby'>  &amp;.captures
+</code><code class='ruby'>  &amp;.fetch(0, &quot;&quot;)
+</code><code class='ruby'>
+</code><code class='ruby'>if env_table[&#x27;HTTP_USER_AGENT&#x27;] =~ /Mozilla/ni
+</code><code class='ruby'>    &amp;&amp; env_table[&#x27;HTTP_USER_AGENT&#x27;] !~ /MSIE/ni
+</code><code class='ruby'>  filename = CGI.unescape(filename)
+</code><code class='ruby'>end
+</code></pre>
+</section><section class='slide' name='30'>
+<h2>Evolution of Ruby idiom</h2>
+<p>Early, Middle, and Modern Ruby</p>
+</section><section class='slide' name='31'>
+<h2>Early Ruby: 1995-2005</h2>
+<p>“The primordial ooze”</p>
+<p>Ruby is still very niche<br>
+Early adopters from Perl, C, LISP, Smalltalk<br>
+Diversity of styles</p>
+</section><section class='slide' name='32'>
+<h2>Middle Ruby: 2005-2010</h2>
+<p>“Rails runaway train”</p>
+<p>Adoption booms through Rails<br>
+Idiom crystalizes around Rails<br>
+Still lots of flexibility and creativity (Why the Lucky Stiff!)</p>
+</section><section class='slide' name='33'>
+<h2>Modern Ruby: 2010-2015</h2>
+<p>“They grow up so fast”</p>
+<p>Big Rails apps maintained for 5+ years<br>
+Desire for best practices, consistency<br>
+Wide adoption of a common style</p>
+</section><section class='slide' name='34'>
+<h2>Modern Ruby: 2010-2015</h2>
+<p>Wide adoption of a common style</p>
+<ul><li>2011 Ruby Style Guide</li><li>2012 Rubocop</li></ul>
+</section><section class='slide' name='35'>
+<h2>Modern Ruby: 2010-2015</h2>
+<p>“The parallel track”</p>
+<p>Resurgence of a “pure Ruby” crowd<br>
+More open to novel approaches<br>
+Develop their own idioms</p>
+</section><section class='slide chapter' name='36'>
+<h2>Chapter 3</h2>
+<p>in which idiom prevails</p>
+</section><section class='slide' name='37'>
+<h2>Idiomatic</h2>
+<p>Conforming to idiom²</p>
+<p>Sounding “natural”</p>
+</section><section class='slide' name='38'>
+<h2>Idiomatic Code</h2>
+<p>Takes advantage of the language</p>
+<p>Is more easily understood by others</p>
+<p>Is consistent</p>
+</section><section class='slide' name='39'>
+<h2>Consistency</h2>
+<p>Important for projects</p>
+<p>Shared ownership</p>
+<p>Reduced cognitive overhead</p>
+</section><section class='slide' name='40'>
+<h2>Who makes the rules?</h2>
+<p>In theory: descriptivist, style guide captures what people do</p>
+<p>In practice: well known influencers</p>
+
+</section><section class='slide' name='41'>
+<p><img src='assets/5a64bf983f3d3b7943dfc0bcb4501b30.svg' alt='' style='width: 100%'></p>
+</section><section class='slide' name='42'>
+<p><img src='assets/5fe9bcd38bba3321a517b9450052b889.svg' alt='' style='width: 100%'></p>
+</section><section class='slide' name='43'>
+<h2>Downsides</h2>
+<p>Extra hurdle for newcomers</p>
+<p>Treating idiom as normative hampers innovation</p>
+</section><section class='slide chapter' name='44'>
+<h2>Chapter 4</h2>
+<p>a whole new idiom</p>
+</section><section class='slide' name='45'>
+<h2>Times are changing</h2>
+<p>The only constant is change</p>
+<p>When a society changes, its language changes</p>
+<p>When it comes into contact with other language groups, its language changes</p>
+</section><section class='slide' name='46'>
+<h2>Times are changing</h2>
+<p>Distributed systems, parallelization</p>
+<p>Concurrency models, type systems</p>
+<p>Go, Idris, Elixir, Elm, Rust</p>
+</section><section class='slide' name='47'>
+<h2>Porting concepts to Ruby</h2>
+<p>Monads, functional composition, transducers, CSP</p>
+<p>Unseen in Ruby</p>
+<p>Will look unfamliar by necessity</p>
+</section><section class='slide' name='48'>
+<h2>Kleisli</h2>
+<pre class='language-ruby'><code>json_string = get_json_from_somewhere
+
+result =
+  Try { JSON.parse(json_string) } &gt;-&gt; json {
+    Try { json[&quot;dividend&quot;].to_i /
+          json[&quot;divisor&quot;].to_i }
+  }
+</code></pre>
+</section><section class='slide' name='49'>
+<h2>Kleisli</h2>
+<pre class='language-ruby'><code>maybe_user =
+  Maybe(user) &gt;-&gt; user {
+    Maybe(user.address)
+  } &gt;-&gt; address {
+    Maybe(address.street)
+  }
+</code></pre>
+</section><section class='slide' name='50'>
+<h2>Kleisli</h2>
+<p>From Call Sheet</p>
+<pre class='language-ruby'><code>result.fmap { |value|
+  broadcast :&quot;#{step_name}_success&quot;, value
+  value
+}.or { |value|
+  broadcast :&quot;#{step_name}_failure&quot;, *args, value
+  Left(StepFailure.new(step_name, value))
+}
+</code></pre>
+</section><section class='slide' name='51'>
+<h2>Transproc</h2>
+<pre class='language-ruby'><code>transformation = t(:map_array, t(:symbolize_keys)
+ .&gt;&gt; t(:rename_keys, user_name: :user))
+ .&gt;&gt; t(:wrap, :address, [:city, :street])
+</code></pre>
+</section><section class='slide' name='52'>
+<h2>Transducers</h2>
+<pre class='language-ruby'><code>T.transduce(
+  T.compose(
+     T.map(:succ),
+     T.filter(:even?)
+  ),
+  :&lt;&lt;, [], 0..9
+)
+# =&gt; [2, 4, 6, 8, 10]
+</code></pre>
+</section><section class='slide' name='53'>
+<h2>Agent</h2>
+<pre class='language-ruby'><code>cw = channel!(Integer, 1)
+cr = channel!(Integer, 1)
+
+select! do |s|
+  s.case(cr, :receive) { |value| perform(value) }
+  s.case(cw, :send, 3)
+end
+</code></pre>
+</section><section class='slide' name='54'>
+<h2>Conclusion</h2>
+<p>Idiom is fluid, treat it as such</p>
+<p>Programming is a form of expression, find your own voice</p>
+<p>“Idiomatic” does not imply “good” and vice versa, look beyond face-value</p>
+
+</section><section class='slide chapter' name='55'>
+<h2 style='padding-left: 300px; padding-top: 150px;'>FIN</h2></section><script src='assets/a3b20c8ec6c5c4b05bcb38d98d132244.js' type='text/javascript'></script><div id='overlay'>@plexus</div></body></html>

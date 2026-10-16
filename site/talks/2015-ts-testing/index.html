@@ -1,0 +1,231 @@
+<html><head><link href='assets/de1b70e22db1eaf4af6297cd2a40b324.css' rel='stylesheet'><link href='assets/cc2bcbb279f9d3cc8da52ca7e52c08e1.css' rel='stylesheet'><title>ROSSConf: Yaks | @plexus</title><link rel='stylesheet' href='assets/c1cd938f43002a217f591a8a4303a896.css'><script src='assets/8f16b5edb7f88bfec561d7749e3c2241.js'></script><script>hljs.initHighlightingOnLoad();</script><meta charset='utf-8'><meta name='viewport' content='width=1024'><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><link rel='stylesheet' type='text/css' href='assets/6ddf6efb47eeb1883f3e8d985dca5e93.css'></head><body><div class='reveal'><div class='slides'><section><h2>Topics</h2>
+<ul><li><p>New and improved “Context”</p></li><li><p>Test isolation</p></li><li><p>RSpec deprecations</p></li></ul>
+</section><section name='1'>
+<h2>New Context</h2>
+<p>Before</p>
+<pre class='language-ruby'><code>Context.account = ...
+Context.subdomain = ...
+Context.user = ...
+Context.locale = ...
+# ...
+</code></pre>
+<p>Set and reset in several places</p>
+</section><section name='2'>
+<h2>New Context</h2>
+<p>After</p>
+<pre class='language-ruby'><code>  def call(env)
+    Context.context = Context::LazyContext.new(env)
+    @app.call(env)
+  ensure
+    Context.context = Context::NullContext
+  end
+</code></pre>
+</section><section name='3'>
+<h2>New Context</h2>
+<p>Benefits</p>
+<ul><li><p>Always consistent</p></li><li><p>Always correctly reset</p></li></ul>
+
+
+</section><section name='4'>
+
+<h2>Keeping Tests Isolated</h2>
+<p>In principle tests should be isolated</p>
+<ul><li><p>Each individual tests starts from the same clean slate</p></li><li><p>Setup =&gt; Test =&gt; Teardown</p></li><li><p>At the end we’re back where we started</p></li></ul>
+</section><section name='5'>
+<p>In practice this it’s not always so simple</p>
+<ul><li><p>Database content</p></li><li><p>Globals (<code>Context</code>, <code>ActionController::Base.perform_caching</code>, …)</p></li><li><p><code>Rails.cache</code></p></li><li><p>Redis (feature flags, …)</p></li><li><p>Test group instance variables</p></li><li><p>Object caches (FooBar.null_object_cache, …)</p></li></ul>
+</section><section name='6'>
+<h3>Database Content</h3>
+<p>Most often done this way</p>
+<ul><li><p>start from an empty DB</p></li><li><p>test runs in a transaction, rolls back at the end</p></li><li><p>DB is empty again for next</p></li></ul>
+</section><section name='7'>
+<h3>Database Content</h3>
+<pre class='language-ruby'><code>config.use_transactional_fixtures = true
+</code></pre>
+<p><code>before :each</code> / <code>after :each</code> are part of the transaction</p>
+<p><code>before :all</code> / <code>after :all</code> are not!</p>
+</section><section name='8'>
+<h3>Database Content</h3>
+<p>Setup in <code>before :each</code> will be rolled back</p>
+<p>Setup in <code>before :all</code> will not</p>
+<p>Few if any tests clean up in <code>after :all</code></p>
+<p>What state is the DB in?</p>
+</section><section name='9'>
+<h3>What state is the DB in?</h3>
+<p>Assume nothing</p>
+<p>Likely: vanilla</p>
+<p>To be sure: <code>Rspec.describe Foo, :create_vanilla_account do</code></p>
+<p>More about that later</p>
+</section><section name='10'>
+<h2>Example Group Instance Variables</h2>
+<p>Proper usage</p>
+<pre class='language-ruby'><code>RSpec.describe Foo do
+  before :all do
+    @member = Member.create!(...)
+  end
+
+  before :each do
+    @member.reload
+  end
+
+  after :all do
+    @member.destroy!
+  end
+end
+</code></pre>
+<p>Can be done sparingly to speed things up</p>
+</section><section name='11'>
+<h2>Example Group Instance Variables</h2>
+<p>Caveats</p>
+<pre class='language-ruby'><code>RSpec.describe Foo do
+  before :all do
+    @member = Member.create!(...)
+  end
+
+  before :each do
+    @member.reload
+    @member.errors = nil
+    @member.email_validation = nil
+    @member.password_validation = nil
+    # what else?
+  end
+
+  after :all do
+    @member.destroy!
+  end
+end
+</code></pre>
+</section><section name='12'>
+<h2>Example Group Instance Variables</h2>
+<p>Possible but slower: “hard reload”</p>
+<pre class='language-ruby'><code>RSpec.describe Foo do
+  before :all do
+    @member = Member.create!(...)
+  end
+
+  before :each do
+    @member = @member.class.find(@member.id)
+  end
+
+  after :all do
+    @member.destroy!
+  end
+end
+</code></pre>
+</section><section name='13'>
+<h2>Context</h2>
+<ul><li><p>gets set to <code>MutableContext</code> before each test</p></li><li><p>gets set back to <code>NullContext</code> after each test</p></li><li><p>if you must change it in a test, consider using <code>with_context</code> / <code>merge_context</code></p></li><li><p>to isolate from Context changes elsewhere, use <code>preverving_context</code></p></li></ul>
+</section><section name='14'>
+<p><code>with_context</code> temporarily swaps out the context, swaps the old one<br>
+back in the end.</p>
+<p>Shields in two directions</p>
+<pre class='language-ruby'><code>with_context account: ..., subdomain: ..., locale: ... do
+  # code that relies on new Context
+end
+</code></pre>
+</section><section name='15'>
+<p><code>merge_context</code> is like <code>with_context</code>, but copies over context fields<br>
+that aren’t mentioned explicitly</p>
+<pre class='language-ruby'><code>  def merge_context(values, &amp;block)
+    with_context Context.context.to_h.merge(values), &amp;block
+  end
+</code></pre>
+</section><section name='16'>
+<p>These are usable in migrations!</p>
+<pre class='language-ruby'><code>require Rails.root.join(&#x27;spec/global_context_helper&#x27;)
+
+class FooBar &lt; ActiveRecord::Migration
+
+  def up
+    Account.all.each do | account |
+      merge_context account: account do
+
+        # do stuff here
+
+      end
+    end
+  end
+
+end
+</code></pre>
+</section><section name='17'>
+<h2>:create_vanilla_account</h2>
+<pre class='language-ruby'><code>RSpec.describe FooClass, :create_vanilla_account do
+  # ...
+end
+</code></pre>
+</section><section name='18'>
+<h2>:create_vanilla_account</h2>
+<ul><li><p>creates (new or from dump) in <code>before :all</code></p></li><li><p>sets <code>Context</code> (and resets for each test)
+</p><ul><li><p>account</p></li><li><p>subdomain</p></li><li><p>user</p></li><li><p>locale</p></li></ul></li></ul>
+</section><section name='19'>
+<h2>:create_vanilla_account</h2>
+<ul><li><p>Does “smart reloading” of AR instances in <code>after :each</code>
+</p><ul><li><p><code>reload</code> if changed (<code>lock_version</code>, <code>cache_version</code>, <code>updated_on</code>)</p></li><li><p><code>clear_associations_cache</code></p></li><li><p>“hard reload” if destroyed</p></li><li><p>clear <code>errors</code></p></li></ul></li></ul>
+</section><section name='20'>
+<h2>:create_vanilla_account</h2>
+<p>No need to</p>
+<pre class='language-ruby'><code>before do
+  Context.account = ...
+  [@foo, @bar, @baz].map(&amp;:reload)
+  # etc.
+end
+</code></pre>
+</section><section name='21'>
+<h2>:create_vanilla_account</h2>
+<p>Occasionally the automatic reloading really doesn’t fix it, and you have to do a “hard reload” yourself</p>
+<pre class='language-ruby'><code>before do
+  @foo = @foo.class.find(@foo.id)
+end
+</code></pre>
+<p>That’s a last resort</p>
+</section><section name='22'>
+<h2>:create_vanilla_account</h2>
+<p>If you find more cases where state leaks between tests, especially<br>
+through ActiveRecord instances, ping me, I want to know!</p>
+<p><code>:force_clean</code> should never be needed</p>
+</section><section name='23'>
+<h2>:create_vanilla_account</h2>
+<p>Try to keep it “vanilla”</p>
+<pre><code>RSpec.describe :create_vanilla_account, ticket_zone_unallocated_size: 100 do
+</code></pre>
+<p>Provided for existing tests that used it. Prevents us from using the<br>
+CSV dump (reloads in 0.1s), forced to do a full “create_vanilla”<br>
+(~17s)</p>
+<p>Same for</p>
+<pre><code>create_vanilla_account do
+  # mess up your vanilla account here
+end
+</code></pre>
+<p>Better: change things after loading vanilla, so your changes are rolled back.</p>
+</section><section name='24'>
+<h3>:isolated_vanilla_account</h3>
+<p>This will reload the database before <em>each</em> test.</p>
+<p>Used for capybara tests. In the case of capybara tests (when ticketbooth/integration_helper.rb) is loaded, it will also add an extra before hook to tests that use this to set the subdomain to <code>foo</code>.</p>
+<p>Also for tests with <code>uses_transaction</code>. This tells Rails/RSpec that, because some code your calling <em>does</em> use transactions, the test <em>should not</em> be wrapped in a transaction. In other words all bets are off, database state is kept from test to test.</p>
+</section><section name='25'>
+<h2>Selenium / Capybara</h2>
+</section><section name='26'>
+<h2>Inconsistencies that are left</h2>
+<ul><li><p>Vanilla sets <code>Context.user</code>, probably should be opt-in</p></li><li><p>Move <code>spec/*_helper.rb</code> to <code>lib/test_helper</code>?</p></li><li><p>remove <code>force_clean</code></p></li><li><p><code>before(:each)</code> vs <code>before( :each )</code> vs <code>before :each</code> vs <code>before</code></p></li></ul>
+</section><section name='27'>
+<h2>RSpec deprecations</h2>
+<p><code>stub</code> vs <code>double</code></p>
+<p><em>Stub</em> methods on existing objects</p>
+<pre class='language-ruby'><code>@foo.stub(:method_name =&gt; value)
+@foo.stub(:method_name) { value }
+@foo.stub(:method_name).and_return(value)
+</code></pre>
+<p>Create test <em>doubles</em></p>
+<pre class='language-ruby'><code>double(&#x27;user&#x27;, logged_in: true)
+</code></pre>
+<p>Use double/stub instead of <code>any_number_of_times</code></p>
+</section><section name='28'>
+<h2>RSpec deprecations</h2>
+<p><code>not_to raise_error</code></p>
+<p>Check if no errors are raised. Checking only for a certain type is deprecated, so don’t do this</p>
+<p>```` ruby<br>
+expect {<br>
+  …<br>
+}.not_to raise_error(FooException, /message something something/)<br>
+```</p></section></div></div><script src='assets/8244e91e3efc1ad6285d9beb8125fe4b.js' type='text/javascript'></script><script src='assets/e1e39b646fdf31ab1352cb14bee76d84.js' type='text/javascript'></script><script>Reveal.initialize({"dependencies":[],"history":true,"transition":"none","backgroundTransition":"none","width":1500,"height":1000,"loop":true,"include_assets":true});</script></body></html>

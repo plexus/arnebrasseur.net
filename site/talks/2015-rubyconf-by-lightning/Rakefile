@@ -1,0 +1,58 @@
+require 'slippery'
+require_relative 'hexp_hacks'
+
+Slippery::RakeTasks.new do
+  title 'Slippery Slides'
+  add_highlighting :default, '8.2'
+
+  # reveal_js
+  js_options theme: 'sky', # beige default moon night serif simple sky solarized
+             transition: 'none',
+             backgroundTransition: 'none',
+             width: 1500,  #1680,
+             height: 1000,  #1050
+             loop: true
+
+
+  pack_assets
+
+  # processor 'section' do |section|
+  #   next section unless imgseq = section.first('.language-imgseq')
+
+  #   imgseq.text.each_line.map(&:strip).map do |img|
+  #     H[:section, 'data-background' => "img/#{img}"]
+  #   end
+  # end
+
+  processor 'head' do |head|
+    H[:head, head.attributes, head.children + [
+        H[:meta, charset: 'utf-8'],
+        H[:meta, name: 'viewport', content: 'width=1024'],
+        H[:meta, "http-equiv" => 'X-UA-Compatible', content: 'IE=edge,chrome=1'],
+      ]
+    ]
+  end
+
+  processor '.green' do |section|
+    section.attr('data-background-color', '#393')
+  end
+
+  processor 'head' do |head|
+    head <<= H[:link, rel: 'stylesheet', href: 'stylesheet.css']
+  end
+
+
+  processor 'section[fullscreen-img]' do |section|
+    section.attr('data-background', section.attr('fullscreen-img'))
+  end
+
+  processors << Slippery::Processors::GraphvizDot
+
+  processor 'section' do |section|
+    if section.text.strip == '' && section.attr('data-background').nil? && section.select('img').any?
+      []
+    else
+      section
+    end
+  end
+end

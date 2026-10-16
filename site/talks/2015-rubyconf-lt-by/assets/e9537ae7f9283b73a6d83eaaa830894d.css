@@ -1,0 +1,146 @@
+body {
+  background: url(../assets/b713e1e3f3651ac7ab042ba20b8441e9.png) repeat scroll 0% 0% transparent;
+}
+
+body .reveal .slides {
+  font-size: 52px;
+  text-align: left;
+}
+
+body .reveal img {
+  border: 0px;
+}
+
+.reveal h2, .reveal h3, .reveal h4, .reveal p, .reveal li {
+  padding-bottom: 0.4em;
+}
+
+.reveal section[fullscreen-img] {
+  height: 100%;
+  width: 100%;
+}
+
+.reveal .fragment {
+  color: #666;
+}
+
+.reveal .fragment.current-fragment{
+  color: black;
+}
+
+body .reveal pre {
+  width: inherit;
+}
+
+body .reveal pre code {
+  max-height: 800px;
+}
+
+.reveal section[fullscreen-img] a, .reveal .big-image a {
+  position: absolute;
+  bottom: 35px;
+  right: 40px;
+  font-style: italic;
+}
+
+.reveal section[fullscreen-img].dark a {
+  color: white;
+}
+
+.heading h1, .center {
+  text-align: center;
+}
+
+.big-image {
+  height: 100%;
+}
+
+/* .heading { */
+/*   height: 50%; */
+/* } */
+
+.reveal .big-image img {
+  width: 40%;
+}
+
+.reveal .big-image.bigger img {
+  width: 60%;
+}
+
+.reveal .big-image.huge img {
+  width: 90%;
+}
+
+.heading h1:after {
+  font-family: "Times New Roman", Times, serif;
+  content: "§";
+  display: block;
+  font-size: 910px;
+  font-weight: lighter;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  left: 0;
+  top: -5%;
+  color: #eeeeee;
+  z-index: -1
+}
+
+.heading.double h1:after {
+  top: 15%;
+}
+
+
+.reveal li {
+  list-style-type: none;
+}
+
+.reveal ul {
+  position: relative;
+  padding-left: 60px;
+}
+
+.reveal section > ul > li:before {
+  content: "●";
+}
+
+.reveal section > ul > li > ul > li:before {
+  content: "■";
+}
+
+.reveal li:before {
+  position: absolute;
+  font-size: 25px;
+  left: 20px;
+}
+
+body .reveal blockquote p {
+  line-height: 2em;
+}
+
+body .reveal blockquote {
+  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+  border-left: 15px solid #aaa;
+  padding-left: 0.8em;
+}
+
+.text-scale-0 p, .text-scale-0 pre {
+  font-size: 1.5rem;
+}
+
+.text-scale-1 p, .text-scale-1 pre {
+  font-size: 1.8rem;
+}
+
+.text-scale-2 p, .text-scale-2 pre {
+  font-size: 2.1rem;
+}
+
+.text-scale-3 p, .text-scale-3 pre {
+  font-size: 2.3rem;
+}
+
+.hljs-symbol { color: #268bd2; }
+.hljs-constant { color: #b58900; }
+.hljs-string { color: #2aa198; }
+.hljs-keyword { color: #859900; }

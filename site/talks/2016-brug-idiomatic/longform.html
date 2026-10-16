@@ -1,0 +1,147 @@
+<html><head><link href='file:///home/arne/github/slippery/assets/shower/themes/material/styles/screen-4x3.css' rel='stylesheet'><title>Burn Your Idiomatic Ruby</title><link rel='stylesheet' href='file:///home/arne/github/slippery/assets/highlight.js/highlight-0.8.default.min.css'><script src='file:///home/arne/github/slippery/assets/highlight.js/highlight.pack.js'></script><script>hljs.initHighlightingOnLoad();</script><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><link rel='stylesheet' type='text/css' href='hljs.css'></head><body class='shower list'><section class='slide'><p>Rubyists, we need to talk. We need to talk about idioms, about what you call<br>
+“idiomatic Ruby”. What does it mean? Where does it come from? Why would be want<br>
+it?</p>
+<p>Let’s first look at the word, “idiomatic”. Idiomatic means “relating to, or<br>
+confirming to idiom”, so what is idiom?</p>
+<p>Idiom has two separate, but related, meanings. An idiom is a way of using<br>
+language that is particular to a specific group. It can also mean a specific,<br>
+peculiar phrase or expression that is commonly understood, even though its<br>
+meaning isn’t self-obvious.</p>
+<p>Example idioms are “to kick the bucket”, or “Bob’s your uncle”, but the latter<br>
+is only common in the British idiom, not the American.</p>
+<p>In programming we, too, have idioms. They are like tiny design patterns, ways of<br>
+doing things “in the small” that have been proven to work well, and are part of<br>
+idiom programmers share.</p>
+<p>This is the Ruby idiom for having a file with library code that can also be<br>
+executed directly:</p>
+<pre class='language-ruby'><code>if __FILE__ = $0
+
+end
+</code></pre>
+<p>This is the Ruby idiom for a function that memoizes:</p>
+<pre class='language-ruby'><code>def sum
+  @sum ||= @left + @right
+end
+</code></pre>
+<p>This is the Ruby idiom for doing precondition checks:</p>
+<pre class='language-ruby'><code>def filter_negatives(list)
+  raise &quot;list can&#x27;t be empty&quot; if list.empty?
+  # ...
+end
+</code></pre>
+<p>But being idiomatic isn’t just about using idioms, it is also about expressing<br>
+yourself in a way that seems “natural”. To put it the other way, when something<br>
+“sounds weird” to a native speaker, it’s a telltale sign you’re not being<br>
+idiomatic. Should you tell someone: “please follow me along” that will be<br>
+readily understood, but it doesn’t really sound <em>right</em>, whereas “come with me,<br>
+please” would be a more idiomatic way of saying it.</p>
+<p>Similarly, when programming, you often have more than one way to do something,<br>
+and while all the options might be equivalent to the computer, some will “look<br>
+weird” to other programmers, again a sign you are no longer being idiomatic.</p>
+<p>But who defines what is and isn’t idiomatic? At first glance it would appear<br>
+that no-one does, after all it’s just “how people speak” (or program, as the<br>
+case may be), all we can do is describe it.</p>
+<p>In reality though a small group of influencers will have a disproportianate<br>
+amount of influence on how the idiom, the norm, evolves. These are the<br>
+Shakespeares, the Charles Dickens, the T.S. Elliots of programming, the people<br>
+writing famous libraries and frameworks, the programming elite, the rockstars we<br>
+look up to. When you “lie low” or wish someone “good riddance”, you are quoting<br>
+Shakespeare word for word. If you use “fail” and “raise” to make a semantic<br>
+distinction, you can thank Jim Weirich for that.</p>
+<p>There’s a second phenomon that has a big influence on idiom, and that is when<br>
+description becomes prescription. This is the purpose of a style guide, to<br>
+describe the rules that people already use, often unconsciously, and turn them<br>
+into guidelines.</p>
+<p>There are a few good reasons to do this. Some things are just objectively better<br>
+than others, because they are more efficient, or because following the rules<br>
+prevents common mistakes. For example, some programmers prefer “yoda conditions”<br>
+for equality checks, because it prevents accidentally writing an assignment<br>
+instead.</p>
+<pre class='language-ruby'><code>if x = 3
+  # does x equal 3? ah.. oops
+end
+
+if 3 == x
+  # would raise an error if we accidentally used an assignment
+end
+</code></pre>
+<p>Another reason for having a style guide is for consistency. Some things are<br>
+simply arbitrary: use of whitecase, camelcase vs snake case, <code>proc {}</code> vs<br>
+<code>Proc.new {}</code>, <code>foo</code> vs <code>foo()</code>. When code within the same file or project uses<br>
+these things inconsitently, there are constantly things that look a bit out of<br>
+place, thus wasting brain cycles that could have gone to understanding the<br>
+program. Consistency eases refactoring, encourages shared ownership, and eases<br>
+pair-programming.</p>
+<p>But there’s a danger with style guides: they can cause a language to become<br>
+stuck in its past. To see how far in the past, we need to only look at Chinese,<br>
+up until the early 20th century the norm for written texts was still Classical<br>
+Chinese, a language that had last been spoken two-thousand years prior.</p>
+<p>Ruby is, as far as programming languages go, a very organic language. It was<br>
+inspired by Perl, a language created by a linguist. Ruby is characterized by a<br>
+flexible syntax, and by humane interfaces, where redundant aliases are provided<br>
+merely to provide joy and expressive power to the programmer.</p>
+<p>When you look around for older Ruby code, you can see how its style has evolved.<br>
+I think we can roughly split the evolution of Ruby’s style and idiom into three<br>
+eras: 1995-2005: the pre-Rails era, 2005-2010: the _why era, and 2010-now,<br>
+post-why.</p>
+<p>In the first era Ruby is still very much a niche language. Early adopters are<br>
+mostly coming from Perl or C, and just like there are many styles of Perl (Perl<br>
+embraces diversity), so we had several styles of Ruby. Everyone was new to the<br>
+language, and so people used what was most familiar to them, Perl-ism, C-ism,<br>
+etc.</p>
+<p>By the early two-thousands Ruby has matured enough that it is starting to<br>
+develop a style of its own. People are coming up with best practices and<br>
+“Ruby-isms” that are considered good form. But there is still a lot of diversity<br>
+in use of whitespace, placement of parentheses, choice of API aliases.</p>
+<p>Then Rails hits the scene, and Ruby’s following explodes. The majority of<br>
+Rubyists are beginners again. But this time there’s a clear blueprint to study<br>
+and copy: Rails itself. From naming everything <code>acts_as_foo</code>, to widespread<br>
+monkey-patching, to elaborate DSLs, the Rails way is the right way, because it’s<br>
+all people know. Just mix it into ApplicationController! Cargo-culting abounds.</p>
+<p>There is still significant variety in how things are done. _why is still around<br>
+to encourage people to explore and be creative, and in many little ways people<br>
+and teams develop their own styles.</p>
+<p>Then we head towards 2010. The early adopters of Rails, and their startups, have<br>
+now matured. With a couple years of experience maintaining a Ruby code base<br>
+under their belt, people become a bit more cautious. Maybe this free-form<br>
+creative programming comes at a price. Maybe these monkey patches and custom<br>
+DSLs weren’t such a good idea to start with. Then _why disappears, discouraged<br>
+and driven away at last, as we would later learn, by the pain of maintaining his<br>
+own coding exploits. The wild days are over.</p>
+<p>In 2011 Bozhidar Batsov starts writing the Ruby Style Guide. In 2012 work starts<br>
+on Rubocop. Awareness of “good style” and “being idiomatic” increases”.<br>
+Gradually people fall in line, and present day Ruby code, especially in<br>
+open-source projects, is surprisingly consistent.</p>
+<p>Since then a lot has been happening in programming language development. New<br>
+languages like Rust, Elixir, Elm, Go, Idris are introducing new paradigms.<br>
+Functional programming has gone mainstream, and Rubyists are starting to pay<br>
+attention. We’re seeing a new wave of experimentation. Some of the resulting<br>
+code may look foreign at first, but we would be wise not to dismiss it too<br>
+quickly because it’s “not idiomatic”.</p>
+<p>They want the same guarantees, reliability, expressiveness, concurrency<br>
+constructs, that they’ve seen elsewhere. Distributed systems, multicore<br>
+processing, fast and cheap random access memory, all of these change the context<br>
+in which we as programmers operate, and so our code must change as well.</p>
+<p>Here’s an example from the Transproc library, used heavily by ROM</p>
+<pre class='language-ruby'><code>transformation = t(:map_array, t(:symbolize_keys)
+ .&gt;&gt; t(:rename_keys, user_name: :user))
+ .&gt;&gt; t(:wrap, :address, [:city, :street, :zipcode])
+</code></pre>
+<p>And here’s an example from the “transducers” gem</p>
+<pre class='language-ruby'><code>require &#x27;transducers&#x27;
+T = Transducers
+T.transduce(T.compose(T.map(:succ), T.filter(:even?)), :&lt;&lt;, [], 0..9)
+# =&gt; [2, 4, 6, 8, 10]
+</code></pre>
+<p>And then there’s Kleisli. Here’s just one example from the documentation</p>
+<pre class='language-ruby'><code>require &quot;kleisli&quot;
+
+json_string = get_json_from_somewhere
+
+result = Try { JSON.parse(json_string) } &gt;-&gt; json {
+  Try { json[&quot;dividend&quot;].to_i / json[&quot;divisor&quot;].to_i }}
+</code></pre>
+<p>All of these look “weird” at first, because they implement features on top of<br>
+Ruby that didn’t exist before. Transproc does functional compositions,<br>
+Transducers implements, well, transducers, and Kleisli implements a number of<br>
+useful monads.</p></section><script src='file:///home/arne/github/slippery/assets/shower/shower.min.js' type='text/javascript'></script></body></html>

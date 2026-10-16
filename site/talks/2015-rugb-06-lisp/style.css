@@ -1,0 +1,28 @@
+body {
+  background: white;
+}
+
+body .reveal h2 {
+  text-align: left;
+  font-size: 350%;
+  text-decoration: underline;
+  margin-bottom: 0.5em;
+}
+
+body .reveal, body .reveal h2 {
+  color: black;
+}
+
+body .reveal section {
+  height: 800px;
+}
+
+body .reveal pre {
+  font-size: 175%;
+  box-shadow: 0px 0px 0px;
+  width: 100%
+}
+
+body .hljs {
+  background-color: white;
+}

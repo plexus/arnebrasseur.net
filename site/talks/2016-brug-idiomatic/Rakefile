@@ -1,0 +1,77 @@
+require 'slippery'
+
+Slippery::RakeTasks.new do
+  title "Burn Your Idiomatic Ruby"
+  type :shower
+  add_highlighting :default, '8.2'
+
+  # shower
+  js_options theme: :ribbon
+  #js_options theme: :material
+
+
+  # reveal_js
+  # js_options theme: 'sky', # beige default moon night serif simple sky solarized
+  #            transition: 'none',
+  #            backgroundTransition: 'none',
+  #            width: 1500,  #1680,
+  #            height: 1000,  #1050
+  #            loop: true
+
+  pack_assets
+
+  transform 'head' do |head|
+    H[:head, head.attributes, head.children + [
+        H[:meta, charset: 'utf-8'],
+        #H[:meta, name: 'viewport', content: 'width=1024'],
+        H[:meta, name: 'viewport', content: 'width=device-width, initial-scale=1'],
+        H[:meta, "http-equiv" => 'X-UA-Compatible', content: 'IE=edge,chrome=1'],
+        H[:link, rel: 'stylesheet', type: 'text/css', href: 'hljs.css'],
+        H[:link, rel: 'stylesheet', type: 'text/css', href: 'style.css'],
+        H[:link, href: 'https://fonts.googleapis.com/css?family=EB+Garamond', rel: 'stylesheet', type:'text/css'],
+        #H[:script, {type: 'text/javascript'}, File.read('ga.js')],
+      ]
+    ]
+  end
+
+  transform('body') do |body|
+    body
+      .set_children(body.children.drop(1))
+      .add_child(H[:div, {id: "overlay"}, "@plexus"])
+  end
+
+  transform 'section[fullscreen-img]' do |section|
+    section.attr('data-background', section.attr('fullscreen-img'))
+  end
+
+  transform '.fragments, .fragments ul' do |section|
+    section.map_children do |ch|
+      if ch.text? || ch.tag?(:h2) || ch.tag?(:ul)
+        ch
+      else
+        ch.add_class('fragment')
+      end
+    end
+  end
+
+  transform '.hljs-attribute' do |attr|
+    if %w[_links _controls _embedded].include?(attr.text.strip)
+      H[:strong, attr]
+    else
+      attr
+    end
+  end
+
+  transform 'li' do |p|
+    H[:li, p.text]
+  end
+
+
+  transform 'pre.linum' do |pre|
+    H[:pre, pre.text.lines.map{|l| H[:code, {class: "ruby"}, l]}]
+  end
+
+end
+
+task :default => 'slippery:build:index'
+task :watch   => 'slippery:watch:index'

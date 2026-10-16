@@ -1,0 +1,335 @@
+* Idiomatic
+
+** Dictionaries
+*** Merriam-webster
+
+ adjective    id·i·o·mat·ic     \i-dē-ə-ˈma-tik\
+
+    1:  of, relating to, or conforming to idiom
+    2:  peculiar to a particular group, individual, or style
+
+id·i·o·mat·i·cal·ly   \-ti-k(ə-)lē\   adverb
+id·i·o·mat·ic·ness    \-tik-nəs\      noun
+
+** Wiktionary
+
+From Ancient Greek ἰδιωματικός ‎(idiōmatikós, “related to an idiom”), from ἰδίωμα ‎(idíōma, “idiomatic”).
+
+IPA: /ˌɪdiəˈmætɪk/
+
+1. Pertaining or conforming to the mode of expression characteristic of a
+   language.
+2. Resembling or characteristic of an idiom.
+3. Using many idioms.
+4. (music) Parts or pieces which are written both within the natural physical
+   limitations of the instrument and human body and, less so or less often, the
+   styles of playing used on specific instruments.
+
+*** Idiom
+
+From Middle French idiome, and its source, Late Latin idioma, from Ancient Greek
+ἰδίωμα ‎(idíōma, “a peculiarity, property, a peculiar phraseology, idiom”), from
+ἰδιοῦσθαι ‎(idioûsthai, “to make one's own, appropriate to oneself”), from ἴδιος
+‎(ídios, “one's own, pertaining to oneself, private, personal, peculiar,
+separate”).
+
+1. (now rare) A manner of speaking, a way of expressing oneself.
+2. A language or dialect.
+3. Specifically, a particular variety of language; a restricted dialect used in
+   a given historical period, context etc.
+4. An artistic style (for example, in art, architecture, or music); an instance
+   of such a style.
+5. An expression peculiar to or characteristic of a particular language,
+   especially when the meaning is illogical or separate from the meanings of its
+   component words.
+6. (programming) A programming construct or phraseology generally held to be the
+   most efficient or elegant means to achieve a particular result or behavior.
+
+
+* old code
+
+** stdlib
+
+#+BEGIN_SRC
+class CGI
+  def CGI::escape(string)
+    #...
+  end
+
+  def CGI::unescapeHTML(string)
+    string.gsub(/&(.*?);/n) do
+      match = $1.dup
+      case match
+      when /\Aamp\z/ni           then '&'
+      when /\Aquot\z/ni          then '"'
+      when /\Agt\z/ni            then '>'
+      when /\Alt\z/ni            then '<'
+      when /\A#0*(\d+)\z/n       then
+#+END_SRC
+
+#+BEGIN_SRC
+        /Content-Disposition:.* filename="?([^\";]*)"?/ni.match(head)
+	filename = ($1 or "")
+	if /Mac/ni.match(env_table['HTTP_USER_AGENT']) and
+	    /Mozilla/ni.match(env_table['HTTP_USER_AGENT']) and
+	    (not /MSIE/ni.match(env_table['HTTP_USER_AGENT']))
+	  filename = CGI::unescape(filename)
+	end
+#+END_SRC
+
+#+BEGIN_SRC
+module SOAP
+
+class WSDLDriverFactory
+  def ...
+  end
+
+private
+
+  def ...
+  end
+end
+#+END_SRC
+
+#+BEGIN_SRC
+    def create_method_obj(names, params)
+      o = Object.new
+      for idx in 0 ... params.length
+        o.instance_variable_set('@' + names[idx], params[idx])
+      end
+      o
+    end
+#+END_SRC
+
+- explicit return
+- foo()
+
+
+* Libraries
+
+*** transducers
+
+https://github.com/cognitect-labs/transducers-ruby
+
+#+BEGIN_SRC ruby :results list
+require 'transducers'
+T = Transducers
+T.transduce(T.compose(T.map(:succ), T.filter(:even?)), :<<, [], 0..9)
+# => [2, 4, 6, 8, 10]
+#+END_SRC
+
+*** kleisli
+
+http://blog.txus.io/kleisli/
+
+#+BEGIN_SRC
+require "kleisli"
+
+maybe_user = Maybe(user) >-> user {
+  Maybe(user.address) } >-> address {
+    Maybe(address.street) }
+#+END_SRC
+
+https://github.com/icelab/call_sheet
+
+*** Transproc
+
+https://github.com/solnic/transproc
+
+#+BEGIN_SRC
+transformation = t(:map_array, t(:symbolize_keys)
+ .>> t(:rename_keys, user_name: :user))
+ .>> t(:wrap, :address, [:city, :street, :zipcode])
+
+transformation.call(
+  [
+    { 'user_name' => 'Jane',
+      'city' => 'NYC',
+      'street' => 'Street 1',
+      'zipcode' => '123' }
+  ]
+)
+#+END_SRC
+
+*** el4r
+
+http://www.rubyist.net/~rubikitch/computer/el4r/index.en.html
+
+*** Mutant
+
+#+BEGIN_SRC
+module Mutant
+  class Matcher
+    # Abstract base class for method matchers
+    class Method < self
+      include AbstractType,
+              Adamantium::Flat,
+              Concord::Public.new(:scope, :target_method, :evaluator)
+#+END_SRC
+
+- class Method < self
+- include Foo.new(...)
+
+* DSLs
+
+** RSpec
+** Siteprism
+** Shoes
+** rake
+
+** other examples
+
+*** _why: hobix
+
+https://github.com/whymirror/hobix/blob/master/lib/hobix/comments.rb
+
+#+BEGIN_SRC
+class Comment < BaseContent
+  _! "Comment Information"
+  _ :author,    :req => true, :edit_as => :text, :search => :prefix
+  _ :created,   :edit_as => :datetime
+  _ :url,       :edit_as => :text
+  _ :email,     :edit_as => :text
+  _ :content,   :edit_as => :textarea, :search => :fulltext, :text_processor => true
+  _ :ipaddress, :edit_as => :text
+
+  yaml_type "tag:hobix.com,2005:comment"
+end
+#+END_SRC
+
+- 4 space indent
+- no indent for outer modules/classes
+
+#+BEGIN_SRC
+module Hobix
+class LinkList < BaseEntry
+
+    _ :links,   :req => true, :edit_as => :textarea
+#+END_SRC
+
+https://github.com/whymirror/parkplace/blob/72e4efc17d6455765829f3548ad12ae3e7d9177d/lib/parkplace/torrent.rb
+
+#+BEGIN_SRC
+   class CTrackerScrape < R '/tracker/scrape'
+        def get
+            torrents = torrent_list @input.info_hash
+            tracker_reply('files' => torrents.map { |t|
+                {'complete' => t.seeders, 'downloaded' => t.total, 'incomplete' => t.leechers, 'name' => t.bit.name} })
+        end
+    end
+#+END_SRC
+
+
+
+* Idiomatic evolution
+
+- whitespace, 4->2, indent of classes
+- fail vs rescue
+- curly blocks vs do/end
+- &method(:foo)
+- alias
+- autoload
+- ivars vs barewords
+- for ... in
+- no_arg_method()
+
+Language features also change idiom
+
+- Symbol#to_proc
+- stabby lambda
+- Pathname
+- Enumerator vs Enumerable
+- "try" operator &.
+
+
+Old habits die hard
+
+- Pathname
+- Enumerator
+
+* Ruby idioms(1)
+
+- ruby-core Ruby
+- Rails Ruby
+- DataMapper / ROM
+- Lotus Ruby
+- Thoughtbot Ruby
+
+* Outline
+
+- Idiomatic, what does it mean?
+- idiom changes over time
+- descriptive vs descriptive
+- ruby has gone great lengths to standardize (styleguide, rubocop)
+- some of it is cargo-culting
+- descriptive has become descriptive, code is now dismissed on looks alone
+
+- get off your idiomatic high horse
+-- the newbies!
+-- new developments
+-- creativity and joy --> rubyists are poets at heart, let them express themselves
+
+- Idiom¹ natural language
+- Idiom¹ Ruby
+- Idiom²¹ Ruby examples
+- Idiom² natural language
+- Idiom² Ruby
+- Idiom² Ruby examples
+
+
+
+
+
+* Why idiomatic
+
+** Take better advantage of the language
+** Easier to understand by others (because shared pattern language)
+
+
+* links
+
+[[http://www.extremeperl.org/bk/coding-style][Extreme Perl: Coding Style]]
+
+consistency is not an end in itself, it is the means to facilitate testing, collective ownership, pair programming, and refactoring
+
+[[http://www.decodingeurope.com/parlez-vous-eurospeak/][Eurospeak]]
+
+* mention of "idiomatic" in GH issues
+
+#+BEGIN_SRC emacs-lisp
+`(
+js
+,(* 10000
+   (/ 2225.0 323938))
+                                        ; 0.006868598312022671
+                                        ; 68.68598312022671
+
+ruby
+,(* 10000
+   (/ 1456.0 132848))                   ; 0.01095989401421173
+                                        ; 109.5989401421173
+
+go
+,(* 10000
+   (/ 1685.0 22264))                    ; 0.07568271649299317
+                                        ; 756.8271649299317
+
+
+java
+,(* 10000
+   (/ 826.0 222852))                    ; 0.0037064957909285086
+                                        ; 37.064957909285084
+
+python
+,(* 10000
+   (/ 1208.0 164852))                   ; 0.007327784922233276
+)                                       ; 73.27784922233276
+#+END_SRC
+
+#+RESULTS:
+| js | 68.68598312022671 | ruby | 109.5989401421173 | go | 756.8271649299317 | java | 37.064957909285084 | python | 73.27784922233276 |
+|    |                   |      |                   |    |                   |      |                    |        |                   |
+
+
+Go Ruby Python Javascript Java
+756 110 73 68 37

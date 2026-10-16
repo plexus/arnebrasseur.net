@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'News Cycle';
+  font-style: normal;
+  font-weight: 400;
+  src: local('News Cycle'), local('NewsCycle'), url(../assets/0c9c2d5033231df9d0c138e9302f6907.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'News Cycle';
+  font-style: normal;
+  font-weight: 700;
+  src: local('News Cycle Bold'), local('NewsCycle-Bold'), url(../assets/1d1c96160d903420816dbb940ac8bbd4.ttf) format('truetype');
+}

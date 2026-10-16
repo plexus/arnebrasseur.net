@@ -1,0 +1,348 @@
+<html><head><link href='assets/de1b70e22db1eaf4af6297cd2a40b324.css' rel='stylesheet'><link href='assets/0461edae4d98de61df57ae3cecf57314.css' rel='stylesheet'><title>Growing a LISP | @plexus</title><meta charset='utf-8'><meta name='viewport' content='width=1024'><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><link rel='stylesheet' type='text/css' href='assets/b10cc432cfd08580bb67c801f2290c51.css'><script type='text/javascript'>var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-16178122-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script></head><body><div class='reveal'><div class='slides'><section><h1>Growing a LISP</h1>
+<p>Talk done at the Ruby User Group Berlin, 4 June 2015</p>
+<p>Dedicated to <a href='https://www.youtube.com/watch?v=_ahvzDzKdB0'>Guy Steele</a></p>
+<p>Use the space bar or arrow keys to navigate</p>
+<p>These slides will make more sense if you read the <a href='notes.txt'>speaker notes</a>.</p>
+</section><section name='1'>
+<h2>Characters</h2>
+<pre><code>0123456789
+abcdefghijklmnopqrstuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+!&quot;#$%&amp;&#x27;()*+,-./:;&lt;=&gt;?@[\]^_`{|}~
+</code></pre>
+</section><section name='2'>
+<h2>Digits</h2>
+<pre><code>0123456789
+</code></pre>
+</section><section name='3'>
+<h2>Letters</h2>
+<pre><code>abcdefghijklmnopqrstuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+</code></pre>
+</section><section name='4'>
+<h2>Special Characters</h2>
+<pre><code>!&quot;#$%&amp;&#x27;()*+,-./:;&lt;=&gt;?@[\]^_`{|}~
+</code></pre>
+</section><section name='5'>
+<h2>Numbers</h2>
+<pre><code>0
+1
+11
+42
+8939247
+</code></pre>
+</section><section name='6'>
+<h2>Strings</h2>
+<pre><code>&quot;Do not go gentle!&quot;
+&quot;Into that good night&quot;
+&quot;R2D2&quot;
+&quot;*@#%(^$#)(^$#&quot;
+</code></pre>
+</section><section name='7'>
+<h2>true &amp; false</h2>
+<pre><code>true
+false
+</code></pre>
+</section><section name='8'>
+<h2>Primitives</h2>
+<pre><code>12
+&quot;hello&quot;
+true
+</code></pre>
+</section><section name='9'>
+<h2>Reserved Special Characters</h2>
+<pre><code>()&quot;&#x27;,;`
+</code></pre>
+</section><section name='10'>
+<h2>Symbols</h2>
+<pre><code>hello
+*rug-b*
+i-can-3/5/many-symbols
+</code></pre>
+</section><section name='11'>
+<h2>Atoms</h2>
+<pre><code>325352
+hello-world
+&quot;Ruby is nice but&quot;
+&quot;I miss my parentheses&quot;
+</code></pre>
+</section><section name='12'>
+<h2>Cons cell</h2>
+<pre><code>(23  . hello)
+(&quot;my&quot; . &quot;word&quot;)
+</code></pre>
+</section><section name='13'>
+<h2>Cons cell</h2>
+<pre><code>(car . cdr)
+</code></pre>
+</section><section name='14'>
+<h2>Cons cell</h2>
+<pre><code>((7 . amazing) . (&quot;head&quot; . &quot;lines&quot;))
+(1 . (2 . ( 3 . things)))
+</code></pre>
+</section><section name='15'>
+<h2>nil</h2>
+<pre><code>(nil . nil)
+(nil . 5)
+(1 . (2 . (3 . nil)))
+</code></pre>
+</section><section name='16'>
+<h2>Convention</h2>
+</section><section name='17'>
+<h2>nil</h2>
+<pre><code>nil
+()
+</code></pre>
+</section><section name='18'>
+<h2>Cons cell</h2>
+<pre><code>(car . cdr)
+(first . rest)
+</code></pre></section><section name='19'>
+<h2>Lists</h2>
+<pre><code>()
+(1 . ())
+(2 . (1 . nil))
+(3 . (2. (1 . ())))
+</code></pre>
+</section><section name='20'>
+<h2>Lists</h2>
+<pre><code>(1 . (2 . (3 . nil)))
+(1 2 3)
+</code></pre>
+</section><section name='21'>
+<h2>S-expressions</h2>
+<pre><code>42
+&quot;smug&quot;
+(+ 2 3 5)
+(filter (lambda (x) (&gt; x 3))
+        (list 1 2 3 4 5))
+((&quot;name&quot; &quot;Arne&quot;) (&quot;twitter&quot; &quot;@plexus&quot;))
+</code></pre>
+</section><section name='22'>
+<h2>Binding</h2>
+<pre><code>binding:
+  name: &quot;Arne&quot;
+  twitter: &quot;@plexus&quot;
+  drinks: &quot;tea&quot;
+  likes: (&quot;programming&quot; &quot;juggling&quot;)
+</code></pre>
+</section><section name='23'>
+<h2>Eval</h2>
+<pre><code>binding, s-expression -&gt; result
+</code></pre>
+</section><section name='24'>
+<h2>Primitives</h2>
+<pre><code>12
+&quot;hello&quot;
+true
+</code></pre>
+</section><section name='25'>
+<h2>Eval: primitives</h2>
+<pre><code>42
+==&gt; 42
+
+&quot;rug-b&quot;
+==&gt; &quot;rug-b&quot;
+
+true
+==&gt; true
+</code></pre>
+</section><section name='26'>
+<h2>Symbols</h2>
+<pre><code>hello
+*rug-b*
+i-can-3/5/many-symbols
+</code></pre>
+</section><section name='27'>
+<h2>Eval: symbols</h2>
+<pre><code>binding:
+ name: &quot;Arne&quot;
+ twitter: &quot;@plexus&quot;
+</code></pre>
+<p> </p>
+<pre><code>name
+==&gt; &quot;Arne&quot;
+</code></pre>
+</section><section name='28'>
+<h2>List positions</h2>
+<pre><code>(function-pos
+  arg-pos1 arg-pos2 arg-pos3)
+</code></pre>
+</section><section name='29'>
+<h2>Eval: Lists</h2>
+</section><section name='30'>
+<h2>Eval: quote</h2>
+<pre><code>(quote (hello 123 (&quot;world&quot;)))
+==&gt; (hello 123 (&quot;world&quot;))
+</code></pre>
+</section><section name='31'>
+<h2>Eval: quote</h2>
+<pre><code>&#x27;(hello 123 (&quot;world&quot;))
+==&gt; (hello 123 (&quot;world&quot;))
+</code></pre>
+</section><section name='32'>
+<h2>Function</h2>
+<pre><code>fn: input1, input2, ... -&gt; output
+</code></pre>
+<p> </p>
+<pre><code>eval: binding, s-expression -&gt; result
+</code></pre>
+<p> </p>
+<pre><code>apply: fn, args -&gt; result
+</code></pre>
+</section><section name='33'>
+<h2>Built-in functions</h2>
+<pre><code>+
+-
+=
+&gt;
+zero?
+car
+cdr
+cons
+list
+</code></pre>
+</section><section name='34'>
+<h2>Eval &amp; Apply</h2>
+<pre><code>(EVAL (&gt; 9 (- 10 2)))
+=&gt; (APPLY &gt; 9 (EVAL (- 10 2)))
+=&gt; (APPLY &gt; 9 (APPLY - (10 2)))
+=&gt; (APPLY &gt; 9 8)
+==&gt; true
+</code></pre>
+</section><section name='35'>
+<h2>Eval &amp; Built-in</h2>
+<pre><code>(zero? 0)           ==&gt; true
+(car &#x27;(1 2 3))      ==&gt; 1
+(cdr &#x27;(1 2 3))      ==&gt; (2 3)
+(list 1 2 3)        ==&gt; (1 2 3)
+(car (list 1 2 3))  ==&gt; 1
+(car &#x27;(list 1 2 3)) ==&gt; list
+(cons &#x27;a &#x27;b)        ==&gt; (a . b)
+</code></pre>
+</section><section name='36'>
+<h2>Eval: If</h2>
+<pre><code>(if (&gt; 7 9)
+  &quot;it&#x27;s bigger&quot;
+  &quot;it&#x27;s smaller&quot;)
+
+==&gt; &quot;it&#x27;s smaller&quot;
+</code></pre>
+</section><section name='37'>
+<h2>Eval: def</h2>
+<pre><code>(def x 3)
+</code></pre>
+<p> </p>
+<pre><code>binding:
+  x: 3
+</code></pre>
+<p> </p>
+<pre><code>(+ x 5)
+==&gt; 8
+</code></pre>
+</section><section name='38'>
+<h2>Lambda</h2>
+<pre><code>(lambda (x y)
+  (+ x y))
+</code></pre>
+<p> </p>
+<pre><code>(x y)   : argument list
+(+ x y) : body
+</code></pre>
+</section><section name='39'>
+<h2>Eval: Lambda</h2>
+<pre><code>(lambda (x y) (+ x y))
+==&gt; {binding: b, args: (x y), body: (+ x y)}
+</code></pre>
+</section><section name='40'>
+<h2>Eval: Lambda</h2>
+<pre><code>(def add (lambda (x y) (+ x y)))
+</code></pre>
+<p> </p>
+<pre><code>binding:
+  add: {bind: b, args:.. , body:.. }
+</code></pre>
+<p> </p>
+<pre><code>(add 3 4)
+=&gt; (APPLY {bind: b, ...} 3 4)
+</code></pre>
+</section><section name='41'>
+<h2>APPLY: (lambda (x y) (+ x y))</h2>
+<pre><code>Step 1. bind arguments
+
+(APPLY add 3 4)
+
+binding:
+  x: 3
+  y: 4
+</code></pre>
+</section><section name='42'>
+<h2>APPLY: (lambda (x y) (+ x y))</h2>
+<pre><code>Step 2. evaluate body
+
+binding:
+  x: 3
+  y: 4
+
+(EVAL (+ x y))
+=&gt; (APPLY + (EVAL x) (EVAL y))
+=&gt; (APPLY + 3 4)
+==&gt; 7
+</code></pre>
+</section><section name='43'>
+<h2>Let’s use it!</h2>
+<pre><code>(def map
+     (lambda (fn l)
+       (if (nil? l)
+           nil
+         (cons (fn (car l)) (map fn (cdr l))))))
+
+(map (lambda (x) (* x x)) &#x27;(1 2 3))
+==&gt; (2 4 9)
+</code></pre>
+</section><section name='44'>
+<h2>Let’s use it!</h2>
+<pre><code>(def reduce
+     (lambda (fn val l)
+       (if (nil? l)
+           val
+         (reduce fn (fn val (car l)) (cdr l)))))
+
+(reduce + 0 &#x27;(1 2 3))
+==&gt; 6
+</code></pre>
+</section><section name='45'>
+<h2>Macro</h2>
+<pre><code>(defmacro defun (name args body)
+  (list &#x27;def name
+    (list &#x27;lambda args body)))
+
+
+(defun (x y) (+ x y))
+=&gt; (eval &#x27;(def name (lambda (x y) (+ x y))))
+</code></pre>
+</section><section name='46'>
+<h2>Questions?</h2>
+<pre><code>:trollface:
+</code></pre>
+</section><section name='47'>
+<h2>ClojureBridge</h2>
+<pre><code>Saturday 11 July, 9:00 - 17:00
+
+(InstallFest on Friday)
+
+**Coaches Training**
+
+Next Thursday, 19:30
+
+6Wunderkinder (Alexanderplatz)
+</code></pre></section></div></div><script src='assets/8244e91e3efc1ad6285d9beb8125fe4b.js' type='text/javascript'></script><script src='assets/e1e39b646fdf31ab1352cb14bee76d84.js' type='text/javascript'></script><script>Reveal.initialize({"dependencies":[],"history":true,"transition":"none","backgroundTransition":"none","width":1500,"height":1000,"loop":true,"include_assets":true});</script></body></html>

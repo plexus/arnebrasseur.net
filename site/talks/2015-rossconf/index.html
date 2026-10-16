@@ -1,0 +1,134 @@
+<html><head><link href='assets/de1b70e22db1eaf4af6297cd2a40b324.css' rel='stylesheet'><link href='assets/a664b5ae7665631c4b282834036eef85.css' rel='stylesheet'><title>ROSSConf: Yaks | @plexus</title><link rel='stylesheet' href='assets/c1cd938f43002a217f591a8a4303a896.css'><script src='assets/8f16b5edb7f88bfec561d7749e3c2241.js'></script><script>hljs.initHighlightingOnLoad();</script><meta charset='utf-8'><meta name='viewport' content='width=1024'><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><link rel='stylesheet' type='text/css' href='assets/e9a74ea2b3cb2fd2504960984a127330.css'></head><body><div class='reveal'><div class='slides'><section>
+<p class='center'>Use the space bar or arrow keys to browse the slide.</p>
+<p>Some of the images are pretty big, so if you see an empty slide then wait a bit.</p>
+</section><section name='1'>
+<p style='float: right'><img src='assets/a771017cdbdc4b275172a23731773a67.png' alt=''></p>
+<h1>Yaks</h1>
+<h2> </h2>
+<h2>ROSSConf</h2>
+<h2>25 April 2015</h2>
+<h3>Arne Brasseur</h3>
+</section><section fullscreen-img='img/karaoke_terrence.jpg' name='2' data-background='img/karaoke_terrence.jpg'>
+</section><section fullscreen-img='img/karaoke_charles.jpg' name='3' data-background='img/karaoke_charles.jpg'>
+</section><section class='heading' name='4'>
+<h1>What is it?</h1>
+</section><section class='fragments' name='5'>
+<h2>What is it</h2>
+<p class='fragment'>A library for building APIs</p>
+<p class='fragment'>It serializes objects</p>
+<p class='fragment'>It’s specialized in Hypermedia</p>
+</section><section class='text-scale-6' name='6'>
+<pre class='language-ruby'><code>customer = Customer.find(27)
+yaks = Yaks.new
+
+json = yaks.call(
+  customer,
+  mapper: CustomerMapper,
+  env: rack_env
+)
+</code></pre>
+</section><section class='text-scale-5' name='7'>
+<pre class='language-ruby'><code>class CustomerMapper &lt; Yaks::Mapper
+  attributes :first_name, :last_name, :age
+
+  def age
+    Date.today - customer.date_of_birth
+  end
+
+  link :self,   &#x27;/api/customer/{id}&#x27;
+  link :orders, &#x27;/api/customer/{id}/orders&#x27;,
+    if: -&gt; { is_logged_in_customer? }
+end
+</code></pre>
+</section><section class='fragments text-scale-6' name='8'>
+<p class='fragment'>Three main name spaces</p>
+<pre class='language-ruby fragment'><code>Yaks::Mapper*
+Yaks::Resource*
+Yaks::Format*
+</code></pre>
+<p class='fragment'>Very flexible and configurable</p>
+</section><section class='text-scale-4' name='9'>
+<p>Central representation <code>Yaks::Resource</code></p>
+<pre class='language-ruby'><code>Yaks::Resource.new(
+  type: &quot;customer&quot;,
+  attributes: {
+    first_name: &quot;Arne&quot;,
+    last_name: &quot;Brasseur&quot;
+  },
+  links: [
+    Yaks::Resource::Link.new(rel: :self, uri: &quot;/customer/5&quot;)
+  ],
+  forms: [
+    Yaks::Resource::Form.new(...)
+  ]
+)
+</code></pre>
+<p>Turned into many output formats: HAL, JSON API, Collection+JSON, HTML, HALO, Transit</p>
+
+</section><section class='heading' name='10'>
+<h1>DEMO</h1>
+</section><section class='heading' name='11'>
+<h1>Why?</h1>
+</section><section class='fragments' name='12'>
+<h2>Why I built Yaks</h2>
+<p class='fragment'>Building hypermedia API + Ember app for Ticketsolve</p>
+<p class='fragment'>No existing libraries fitted the bill</p>
+<p class='fragment'>Developing in the open would improve quality</p>
+</section><section class='heading' name='13'>
+<h1>Community</h1>
+</section><section class='fragments' name='14'>
+<h2>Community</h2>
+<p class='fragment'>Still young, small but friendly</p>
+<p class='fragment'>Github issues, Gitter chat</p>
+<p class='fragment'>Main contributions: improvements to specific formats</p>
+</section><section class='heading' style='margin-top: 62px' name='15'>
+<h1 style='margin-top: -62px'>How to contribute?</h1>
+</section><section class='fragments' name='16'>
+<h2>How to contribute?</h2>
+<p class='fragment'>Use it! report back!</p>
+<p class='fragment'>Scratch your own itch</p>
+<p class='fragment'>Coding and non-coding skills needed</p>
+</section><section class='heading' style='margin-top: 62px' name='17'>
+<h1 style='margin-top: -62px'>What’s happening?</h1>
+</section><section class='fragments' name='18'>
+<h2>What’s happening?</h2>
+<p class='fragment'>Recent focus: improving mutation coverage</p>
+<p class='fragment'>Improve support for various formats</p>
+<p class='fragment'>Better docs, examples</p>
+</section><section class='heading' style='margin-top: 62px' name='19'>
+<h1 style='margin-top: -62px'>This afternoon</h1>
+</section><section class='text-scale-6 center' name='20'>
+<p>Several issues marked <strong><code>ROSSConf</code></strong><br>
+or <strong><code>Beginner Friendly</code></strong> in Github</p>
+</section><section name='21'>
+<h2>Improve HTML output</h2>
+<p>Ruby / HTML / CSS task</p>
+<p>Fun task because <strong>creative</strong> and <strong>immediate feedback</strong></p>
+</section><section name='22'>
+<h2>Check the README with Ataru</h2>
+<p>Tests code examples in documentation</p>
+<p>8 out of 30 currently fail</p>
+<p>Cool because you learn a useful new tool</p>
+</section><section name='23'>
+<h2>Shorthand attribute syntax</h2>
+<p>Turn this</p>
+<pre class='language-ruby'><code>class FooMapper &lt; Yaks::Mapper
+  attributes :bar
+
+  def bar
+    object.baz
+  end
+end
+</code></pre>
+<p>into</p>
+<pre class='language-ruby'><code>class FooMapper &lt; Yaks::Mapper
+  attribute :bar do
+    object.baz
+  end
+end
+</code></pre>
+</section><section name='24'>
+<h2>Support for Siren</h2>
+<p>JSON-based format that’s becoming popular</p>
+<p>Maps very well to Yaks’s abstractions</p>
+<p>Great for learning about how Yaks works</p></section></div></div><script src='assets/8244e91e3efc1ad6285d9beb8125fe4b.js' type='text/javascript'></script><script src='assets/e1e39b646fdf31ab1352cb14bee76d84.js' type='text/javascript'></script><script>Reveal.initialize({"dependencies":[],"history":true,"transition":"none","backgroundTransition":"none","width":1500,"height":1000,"loop":true,"include_assets":true});</script></body></html>

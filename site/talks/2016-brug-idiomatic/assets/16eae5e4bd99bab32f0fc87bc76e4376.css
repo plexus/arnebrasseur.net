@@ -1,0 +1,90 @@
+#cover {
+  position: relative;
+}
+#cover h2 {
+  margin: 60px 0 0;
+  text-align:center;
+  font-size:80px;
+  color: #000;
+  text-shadow: 1px 2px #f9fcff;
+}
+#cover p {
+  margin: 14px 0 0;
+  text-align:center;
+  font-style:italic;
+  font-size:30px;
+  color: #000;
+  text-shadow: 1px 1px #f9fcff;
+}
+#cover p a {
+  color: #000;
+}
+#cover .attribution {
+  position: absolute;
+  font-size: 50%;
+  bottom: 1em;
+  right: 1em;
+  color: #fff;
+  text-shadow: 0px 0px;
+}
+
+body .slide h2 {
+  font-size: 70px
+}
+
+body .slide p, li {
+  font-size: 35px
+}
+
+.hljs {
+    /* darker default color */
+    color: #2F393D;
+}
+
+body .slide, h2 {
+  font-family: 'EB Garamond', serif !important;
+}
+
+pre {
+  border-left: 1px solid #ccc;
+  padding-left: 0.5em;
+}
+
+.slide pre code:not(:only-child)::before {
+  margin-left: -2.5em;
+}
+
+
+.chapter {
+    background-color: black;
+    color: white;
+    background-image: url(../assets/208adffa21740432331d806accd903e9.png);
+    background-width: 100%;
+    background-height: 100%;
+}
+
+.chapter h2 {
+    color: white;
+    text-decoration: underline;
+    font-family: 'EB Garamond', serif;
+    font-size: 110px !important;
+    margin-top: 40px;
+}
+
+.chapter p {
+    font-size: 80px !important;
+}
+
+.chapter:after {
+    background: none;
+}
+
+#overlay {
+    position: fixed;
+    right: 1em;
+    bottom: 0.5em;
+    z-index: 999999;
+    font-size: 120%;
+    color: #aaa;
+    font-family: 'EB Garamond', serif !important;
+}

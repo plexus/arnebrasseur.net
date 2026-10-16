@@ -1,0 +1,53 @@
+require 'slippery'
+
+Slippery::RakeTasks.new do
+  title "Learn To Learn | @plexus at Spooky Rails 2015"
+  type :reveal_js
+  add_highlighting :default, '8.2'
+
+  # reveal_js
+  js_options theme: 'sky', # beige default moon night serif simple sky solarized
+             transition: 'none',
+             backgroundTransition: 'none',
+             width: 1500,  #1680,
+             height: 1000,  #1050
+             loop: true
+
+  pack_assets
+
+  processor 'head' do |head|
+    H[:head, head.attributes, head.children + [
+        H[:meta, charset: 'utf-8'],
+        H[:meta, name: 'viewport', content: 'width=1024'],
+        H[:meta, "http-equiv" => 'X-UA-Compatible', content: 'IE=edge,chrome=1'],
+        H[:link, rel: 'stylesheet', type: 'text/css', href: 'style.css'],
+        #H[:script, {type: 'text/javascript'}, File.read('ga.js')],
+      ]
+    ]
+  end
+
+  processor 'section[fullscreen-img]' do |section|
+    section.attr('data-background', section.attr('fullscreen-img'))
+  end
+
+  processor '.fragments, .fragments ul' do |section|
+    section.map_children do |ch|
+      if ch.text? || ch.tag?(:h2) || ch.tag?(:ul)
+        ch
+      else
+        ch.add_class('fragment')
+      end
+    end
+  end
+
+  processor '.hljs-attribute' do |attr|
+    if %w[_links _controls _embedded].include?(attr.text.strip)
+      H[:strong, attr]
+    else
+      attr
+    end
+  end
+end
+
+task :default => 'slippery:build:index'
+task :watch   => 'slippery:watch:index'
