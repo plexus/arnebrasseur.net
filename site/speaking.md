@@ -383,6 +383,7 @@ Adaptation of the lightning talk I did at JRubyConf. People really liked it, whi
 
 * [slides](http://arnebrasseur.net/talks/arrrrcamp2013/functional_ruby.html)
 * [conference website](http://2013.arrrrcamp.be/)
+* [video](https://www.youtube.com/watch?v=lN9DWl51WeI&t=1743s)
 
 {:#eurucamp2013}
 ### eurucamp: Web Linguistics
@@ -391,8 +392,8 @@ _16-08-2013 - 18-08-2013, Berlin, Germany_
 
 A rewrite of the talk I did at Rulu, trying to make it more concrete and entertaining.
 
-* [video](http://media.eurucamp.org/#talk-2013-plexus)
-* [slides](http://arnebrasseur.net/talks/eurucamp2013/)
+* [video](http://media.eurucamp.org/eurucamp/2013/plexus)
+* [slides](https://arnebrasseur.net/talks/eurucamp2013/presentation.html)
 * [conference website](http://2013.eurucamp.org/)
 
 I also did a talk at the Rails Girls workshop, titled "Learning to Learn"

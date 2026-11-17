@@ -57,10 +57,8 @@
                                                   i)))
               ~(utopia-clamp space-min space-max space-ratio i min-vw max-vw))))))
 
-(macroexpand
- '
- (fluid-props))
 (fluid-props)
+
 (o/defrules reset
   [#{:* "*::before" "*::after"}
    {:box-sizing "border-box"
